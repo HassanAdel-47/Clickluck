@@ -3,27 +3,61 @@ $content = getContent('how_it_work.content', true);
 $elements = getContent('how_it_work.element', false, null, true);
 ?>
 <!-- how work section start -->
-<section class="pt-50 pb-50" style="background-image: url('<?php echo e(asset($activeTemplateTrue . 'images/HowToJoin.png')); ?>') ">
+<section class="how__join" style="background-image: url('<?php echo e(asset($activeTemplateTrue . 'images/HowToJoin.png')); ?>') ">
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-6">
-                <div class="section-header text-center">
-                    <h2 class="section-title"><?php echo e(__(@$content->data_values->heading)); ?></h2>
-                    <p class="mt-3"><?php echo e(__(@$content->data_values->subheading)); ?></p>
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="w-100 row d-flex align-items-center justify-content-center">
+                <h1 class="gold__title text-center ">How To Join?</h1>
+                <h1 class="grey__title__bold  text-center">How To Join?</h1>
+                <p class="title__slogan text-center">Follow these easy steps and start winning</p>
+            </div>
+            <div class="row mt-5 d-flex justify-content-between align-items-center">
+                <div class="circles__container col-lg-6 d-flex align-items-center justify-content-center ">
+                    <div class="left__circles my-2">
+                        <div class="hero__circle hero__circle__one  ">
+                            <div class="hero__circle__inner w-full d-flex justify-content-center align-items-center">
+                                <p>1</p>
+                            </div>
+                            <p class="mt-2 hero__circle__text">Create Account</p>
+                        </div>
+
+                        <div class="hero__circle hero__circle__two ">
+                            <div class="hero__circle__inner  w-full d-flex justify-content-center align-items-center">
+                                <p>4</p>
+                            </div>
+                            <p class="mt-2 hero__circle__text">Choose Lottery</p>
+                        </div>
+                    </div>
+                    <img class="arrow__one" src="<?php echo e(asset($activeTemplateTrue . 'images/arrow.png')); ?>" alt="image">
+                    <img class="arrow__two" src="<?php echo e(asset($activeTemplateTrue . 'images/arrow.png')); ?>" alt="image">
+                    <img class="arrow__three" src="<?php echo e(asset($activeTemplateTrue . 'images/arrow.png')); ?>" alt="image">
+                    <div class="right__circles my-2">
+                        <div class="hero__circle hero__circle__three ">
+                            <div class="hero__circle__inner  w-full d-flex justify-content-center align-items-center">
+                                <p>2</p>
+                            </div>
+                            <p class="mt-2 hero__circle__text">Buy Ticket</p>
+                        </div>
+                        <div class="hero__circle hero__circle__four ">
+                            <div class="hero__circle__inner  w-full d-flex justify-content-center align-items-center">
+                                <p>3</p>
+                            </div>
+                            <p class="mt-2 hero__circle__text">Start Winning</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-flex align-items-center justify-content-center">
+                    <div class="video__side w-100 d-flex flex-column align-items-end mt-5 lg:mt-0">
+                        <video class="w-100 " src=""></video>
+                        <a class="btn p-2 btn--base--message lottary__btn wow fadeInUp mt-4 " style="width: 4rem"
+                            data-wow-duration="0.5s" data-wow-delay="0.7s"
+                            href="<?php echo e(@$banner->data_values->button_url); ?>"><img class="w-75"
+                                src="<?php echo e(asset($activeTemplateTrue . 'images/message.png')); ?>" alt="image"></a>
+                    </div>
                 </div>
             </div>
         </div><!-- row end -->
-        <div class="row gy-4">
-            <?php $__currentLoopData = $elements; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <div class="col-lg-3 col-sm-6 how-work-item wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0.3s">
-                <div class="how-work-card">
-                    <div class="how-work-card__step text--base text-shadow--base"><?php echo e($loop->iteration); ?></div>
-                    <h3 class="title mt-4"><?php echo e(__(@$item->data_values->title)); ?></h3>
-                    <p class="mt-2"><?php echo e(__(@$item->data_values->content)); ?></p>
-                </div><!-- how-work-card end -->
-            </div>
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-        </div>
+
     </div>
 </section>
 <!-- how work section end --><?php /**PATH D:\Web Development\Lotto\ClickLuck\ClickLuck\resources\views/templates/basic/sections/how_it_work.blade.php ENDPATH**/ ?>

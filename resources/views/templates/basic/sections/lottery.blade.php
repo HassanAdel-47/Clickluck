@@ -2,8 +2,8 @@
     style="background-image: url('{{ asset($activeTemplateTrue . 'images/money_gold.png')}}') ">
     <div class="lottary-container container w-100 ">
         <div class="w-100 row d-flex align-items-center justify-content-center">
-            <h1 class="lottary__title text-center ">Lotteries</h1>
-            <h1 class="overview__title__bold  text-center">Lotteries</h1>
+            <h1 class="black__title text-center ">Lotteries</h1>
+            <h1 class="black__title__bold  text-center">Lotteries</h1>
         </div>
         <div class="row mt-4 d-flex justify-content-center align-items-center w-100">
             <div

@@ -6,9 +6,9 @@ $counters = getContent('counter.element', false, 3, true);
     style="background-image: url('{{ asset($activeTemplateTrue . 'images/money_gold.png')}}'); ">
     <div class="container w-100 ">
         <div class="w-100 row d-flex align-items-center justify-content-center">
-            <h1 class="overview__title text-center ">Join Now</h1>
-            <h1 class="overview__title__bold  text-center">Join Now</h1>
-            <p class="overview__slogan text-center">Become one of our winners!</p>
+            <h1 class="gold__title text-center ">Join Now</h1>
+            <h1 class="black__title__bold  text-center">Join Now</h1>
+            <p class="title__slogan text-center">Become one of our winners!</p>
         </div>
         <div class="row mt-4">
             <div
