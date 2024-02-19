@@ -287,9 +287,7 @@
                         <p>Coming</p>
                     </div>
                 </div>
-                <a class="btn p-2 btn--base--message lottary__btn wow fadeInUp mt-4 " data-wow-duration="0.5s"
-                    data-wow-delay="0.7s" href="{{ @$banner->data_values->button_url }}"><img class="w-75"
-                        src="{{ asset($activeTemplateTrue . 'images/message.png') }}" alt="image"></a>
+
             </div>
         </div>
 

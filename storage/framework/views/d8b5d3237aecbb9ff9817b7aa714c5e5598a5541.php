@@ -42,11 +42,10 @@ $banner = getContent('banner.content', true);
                 <div class="d-flex w-100 justify-content-evenly justify-content-lg-between mt-4 mt-lg-0">
                     <a class="btn btn--base wow fadeInUp mt-4" data-wow-duration="0.5s" data-wow-delay="0.7s"
                         href="<?php echo e(@$banner->data_values->button_url); ?>"><?php echo e(__(@$banner->data_values->button_name)); ?></a>
-                    <a class="btn p-2 btn--base--message wow fadeInUp mt-4" data-wow-duration="0.5s"
-                        data-wow-delay="0.7s" href="<?php echo e(@$banner->data_values->button_url); ?>"><img class="w-75"
-                            src="<?php echo e(asset($activeTemplateTrue . 'images/message.png')); ?>" alt="image"></a>
+
                 </div>
             </div>
         </div>
     </div>
-</section><?php /**PATH D:\Web Development\Lotto\ClickLuck\ClickLuck\resources\views/templates/basic/sections/banner.blade.php ENDPATH**/ ?>
+</section>
+<?php /**PATH D:\Web Development\Lotto\ClickLuck\ClickLuck\resources\views/templates/basic/sections/banner.blade.php ENDPATH**/ ?>

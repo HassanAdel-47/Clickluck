@@ -12,7 +12,7 @@ $elements = getContent('how_it_work.element', false, null, true);
                 <p class="title__slogan text-center">Follow these easy steps and start winning</p>
             </div>
             <div class="row mt-5 d-flex justify-content-between align-items-center">
-                <div class="circles__container col-lg-6 d-flex align-items-center justify-content-center ">
+                <div class="circles__container col-lg-6 d-flex align-items-center justify-content-center">
                     <div class="left__circles my-2">
                         <div class="hero__circle hero__circle__one  ">
                             <div class="hero__circle__inner w-full d-flex justify-content-center align-items-center">
@@ -49,15 +49,11 @@ $elements = getContent('how_it_work.element', false, null, true);
                 <div class="col-lg-6 d-flex align-items-center justify-content-center">
                     <div class="video__side w-100 d-flex flex-column align-items-end mt-5 lg:mt-0">
                         <video class="w-100 " src=""></video>
-                        <a class="btn p-2 btn--base--message lottary__btn wow fadeInUp mt-4 " style="width: 4rem"
-                            data-wow-duration="0.5s" data-wow-delay="0.7s"
-                            href="{{ @$banner->data_values->button_url }}"><img class="w-75"
-                                src="{{ asset($activeTemplateTrue . 'images/message.png') }}" alt="image"></a>
+
                     </div>
                 </div>
             </div>
-        </div><!-- row end -->
-
+        </div>
     </div>
 </section>
 <!-- how work section end -->

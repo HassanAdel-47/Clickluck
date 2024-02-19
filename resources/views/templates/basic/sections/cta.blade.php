@@ -1,15 +1,69 @@
 @php
-    $cta = getContent('cta.content', true);
+$cta = getContent('cta.content', true);
 @endphp
 
 <!-- cta section start -->
-<section class="pt-100 pb-100 bg_img" style="background-image: url({{ getImage('assets/images/frontend/cta/' . @$cta->data_values->image, '1920x999') }});">
+<section class="recent__section pt-100  pb-100 bg_img"
+    style="background-image:  url('{{ asset($activeTemplateTrue . 'images/OurRecentWinners.jpg')}}') ">
     <div class="container">
-        <div class="row justify-content-center wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.3s">
-            <div class="col-lg-7 text-center">
-                <h2 class="section-title">{{ __(@$cta->data_values->heading) }}</h2>
-                <p class="mt-3">{{ __(@$cta->data_values->subheading) }}</p>
-                <a class="btn btn--base btn--capsule mt-4" href="{{ @$cta->data_values->button_url }}">{{ __(@$cta->data_values->button_name) }}</a>
+        <div class="row justify-content-center wow fadeInUp " data-wow-duration="0.5s" data-wow-delay="0.3s">
+            <div class="w-100 row d-flex align-items-center justify-content-center re">
+                <h1 class="gold__title text-center ">Our Recent Winners</h1>
+                <h1 class="grey__title__bold  text-center">Our Recent Winners</h1>
+                <p class="title__slogan text-center">Join us now and win big prizes</p>
+            </div>
+            <div class="col-lg-8 text-center">
+                <div class="recentTable mt-5">
+                    <table class="table table-bordered dt-responsive">
+                        <thead>
+                            <tr>
+                                <th>User</th>
+                                <th>Tickets</th>
+                                <th>Game</th>
+                                <th>Win</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>User</td>
+                                <td>10</td>
+                                <td>Game Name</td>
+                                <td>$5,000.00</td>
+                            </tr>
+                            <tr>
+                                <td>User</td>
+                                <td>10</td>
+                                <td>Game Name</td>
+                                <td>$5,000.00</td>
+                            </tr>
+                            <tr>
+                                <td>User</td>
+                                <td>10</td>
+                                <td>Game Name</td>
+                                <td>$5,000.00</td>
+                            </tr>
+                            <tr>
+                                <td>User</td>
+                                <td>10</td>
+                                <td>Game Name</td>
+                                <td>$5,000.00</td>
+                            </tr>
+                            <tr>
+                                <td>User</td>
+                                <td>10</td>
+                                <td>Game Name</td>
+                                <td>$5,000.00</td>
+                            </tr>
+                            <tr>
+                                <td>User</td>
+                                <td>10</td>
+                                <td>Game Name</td>
+                                <td>$5,000.00</td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
             </div>
         </div>
     </div>

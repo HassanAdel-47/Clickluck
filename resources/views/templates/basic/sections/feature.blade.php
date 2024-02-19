@@ -1,32 +1,57 @@
 @php
-    $content = getContent('feature.content', true);
-    $features = getContent('feature.element', false, null, true);
+$content = getContent('feature.content', true);
+$features = getContent('feature.element', false, null, true);
 @endphp
 
 <!-- feature section start -->
-<section class="pt-100 pb-50">
+<section class="featured__section pt-100 pb-50">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="section-header">
-                    <h2 class="section-title">{{ __(@$content->data_values->heading) }}</h2>
-                </div>
-            </div>
+        <div class="w-100 row d-flex align-items-center justify-content-center">
+            <h1 class="black__title text-center ">What Our Clients Say About Us</h1>
+            <h1 class="black__title__bold  text-center ">What Our Clients Say About Us</h1>
+        </div>
+        <div class="row mt-5">
         </div><!-- row end -->
         <div class="row justify-content-center gy-4">
-            @foreach($features as $feature)
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.3s">
-                    <div class="feature-card rounded-3">
-                        <div class="feature-card__icon text--base text-shadow--base">
-                            @php echo @$feature->data_values->icon @endphp
-                        </div>
-                        <div class="feature-card__content mt-4">
-                            <h3 class="title">{{ __(@$feature->data_values->title) }}</h3>
-                            <p class="mt-3">{{ __(@$feature->data_values->description) }}</p>
-                        </div>
-                    </div><!-- feature-card end -->
-                </div>
-            @endforeach
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.3s">
+                <div class="feature-card">
+                    <div class="feature-card__icon text--base text-shadow--base">
+                        <img class="w-25" src="{{ asset($activeTemplateTrue . 'images/quotation.png') }}" alt="image">
+                    </div>
+                    <div class="feature-card__content mt-4">
+                        <p class="mt-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium ipsum
+                            ullam doloremque veritatis qui molestiae illo aliquid provident officia eaque beatae, nisi,
+                            deleniti nemo neque quo modi placeat architecto a? </p>
+                        <h3 class="title mt-3">Client Name</h3>
+                    </div>
+                </div><!-- feature-card end -->
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.3s">
+                <div class="feature-card">
+                    <div class="feature-card__icon text--base text-shadow--base">
+                        <img class="w-25" src="{{ asset($activeTemplateTrue . 'images/quotation.png') }}" alt="image">
+                    </div>
+                    <div class="feature-card__content mt-4">
+                        <p class="mt-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium ipsum
+                            ullam doloremque veritatis qui molestiae illo aliquid provident officia eaque beatae, nisi,
+                            deleniti nemo neque quo modi placeat architecto a? </p>
+                        <h3 class="title mt-3">Client Name</h3>
+                    </div>
+                </div><!-- feature-card end -->
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.3s">
+                <div class="feature-card">
+                    <div class="feature-card__icon text--base text-shadow--base">
+                        <img class="w-25" src="{{ asset($activeTemplateTrue . 'images/quotation.png') }}" alt="image">
+                    </div>
+                    <div class="feature-card__content mt-4">
+                        <p class="mt-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium ipsum
+                            ullam doloremque veritatis qui molestiae illo aliquid provident officia eaque beatae, nisi,
+                            deleniti nemo neque quo modi placeat architecto a? </p>
+                        <h3 class="title mt-3">Client Name</h3>
+                    </div>
+                </div><!-- feature-card end -->
+            </div>
         </div>
     </div>
 </section>

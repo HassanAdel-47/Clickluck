@@ -287,9 +287,7 @@
                         <p>Coming</p>
                     </div>
                 </div>
-                <a class="btn p-2 btn--base--message lottary__btn wow fadeInUp mt-4 " data-wow-duration="0.5s"
-                    data-wow-delay="0.7s" href="<?php echo e(@$banner->data_values->button_url); ?>"><img class="w-75"
-                        src="<?php echo e(asset($activeTemplateTrue . 'images/message.png')); ?>" alt="image"></a>
+
             </div>
         </div>
 
@@ -304,4 +302,5 @@
 
     </div>
 
-</section><?php /**PATH D:\Web Development\Lotto\ClickLuck\ClickLuck\resources\views/templates/basic/sections/lottery.blade.php ENDPATH**/ ?>
+</section>
+<?php /**PATH D:\Web Development\Lotto\ClickLuck\ClickLuck\resources\views/templates/basic/sections/lottery.blade.php ENDPATH**/ ?>

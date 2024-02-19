@@ -1,8 +1,8 @@
 <?php
-    $subscribe = getContent('subscribe.content', true);
+$subscribe = getContent('subscribe.content', true);
 ?>
 
-<section class="pb-100">
+<!-- <section class="pb-100">
     <div class="container">
         <div class="row justify-content-center mt-5">
             <div class="col-lg-10 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.3s">
@@ -23,42 +23,42 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
 <?php $__env->startPush('script'); ?>
-    <script type="text/javascript">
-        $('.subscribe-form').on('submit', function(e) {
-            e.preventDefault();
-            let url = `<?php echo e(route('subscribe')); ?>`;
+<script type="text/javascript">
+    $('.subscribe-form').on('submit', function (e) {
+        e.preventDefault();
+        let url = `<?php echo e(route('subscribe')); ?>`;
 
-            let data = {
-                email: $(this).find('input[name=email]').val()
-            };
+        let data = {
+            email: $(this).find('input[name=email]').val()
+        };
 
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': `<?php echo e(csrf_token()); ?>`
-                }
-            });
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': `<?php echo e(csrf_token()); ?>`
+            }
+        });
 
-            $.post(url, data, function(response) {
-                if (response.errors) {
-                    for (var i = 0; i < response.errors.length; i++) {
-                        iziToast.error({
-                            message: response.errors[i],
-                            position: "topRight"
-                        });
-                    }
-                } else {
-                    $('.subscribe-form').trigger("reset");
-                    iziToast.success({
-                        message: response.success,
+        $.post(url, data, function (response) {
+            if (response.errors) {
+                for (var i = 0; i < response.errors.length; i++) {
+                    iziToast.error({
+                        message: response.errors[i],
                         position: "topRight"
                     });
                 }
-            });
-            this.reset();
-        })
-    </script>
+            } else {
+                $('.subscribe-form').trigger("reset");
+                iziToast.success({
+                    message: response.success,
+                    position: "topRight"
+                });
+            }
+        });
+        this.reset();
+    })
+</script>
 <?php $__env->stopPush(); ?>
 <?php /**PATH D:\Web Development\Lotto\ClickLuck\ClickLuck\resources\views/templates/basic/sections/subscribe.blade.php ENDPATH**/ ?>
