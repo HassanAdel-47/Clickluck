@@ -10,21 +10,22 @@
 @include($activeTemplate . 'partials.header')
 
 <div class="main-wrapper">
-    @if (!request()->routeIs('home'))
+    <!-- @if (!request()->routeIs('home'))
     @include($activeTemplate . 'partials.breadcrumb')
-    @endif
+    @endif -->
 
     @yield('content')
 
-</div><!-- main-wrapper end -->
+</div>
+<!-- main-wrapper end -->
 
 @include($activeTemplate . 'partials.footer')
 
+<!-- cookies dark version start -->
 @php
 $cookie = App\Models\Frontend::where('data_keys', 'cookie.data')->first();
 @endphp
 @if ($cookie->data_values->status == Status::ENABLE && !\Cookie::get('gdpr_cookie'))
-<!-- cookies dark version start -->
 <div class="cookies-card hide text-center">
     <div class="cookies-card__icon bg--base">
         <i class="las la-cookie-bite"></i>
@@ -36,6 +37,6 @@ $cookie = App\Models\Frontend::where('data_keys', 'cookie.data')->first();
         <a class="btn btn--base w-100 policy" href="javascript:void(0)">@lang('Allow')</a>
     </div>
 </div>
-<!-- cookies dark version end -->
 @endif
+<!-- cookies dark version end -->
 @endsection

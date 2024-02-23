@@ -22,7 +22,7 @@ $features = getContent('feature.element', false, null, true);
                         <p class="mt-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium ipsum
                             ullam doloremque veritatis qui molestiae illo aliquid provident officia eaque beatae, nisi,
                             deleniti nemo neque quo modi placeat architecto a? </p>
-                        <h3 class="title mt-3">Client Name</h3>
+                        <p class="title mt-3">Client Name</p>
                     </div>
                 </div><!-- feature-card end -->
             </div>
@@ -35,7 +35,7 @@ $features = getContent('feature.element', false, null, true);
                         <p class="mt-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium ipsum
                             ullam doloremque veritatis qui molestiae illo aliquid provident officia eaque beatae, nisi,
                             deleniti nemo neque quo modi placeat architecto a? </p>
-                        <h3 class="title mt-3">Client Name</h3>
+                        <p class="title mt-3">Client Name</p>
                     </div>
                 </div><!-- feature-card end -->
             </div>
@@ -48,12 +48,11 @@ $features = getContent('feature.element', false, null, true);
                         <p class="mt-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium ipsum
                             ullam doloremque veritatis qui molestiae illo aliquid provident officia eaque beatae, nisi,
                             deleniti nemo neque quo modi placeat architecto a? </p>
-                        <h3 class="title mt-3">Client Name</h3>
+                        <p class="title mt-3">Client Name</p>
                     </div>
                 </div><!-- feature-card end -->
             </div>
         </div>
     </div>
 </section>
-<!-- feature section end -->
-<?php /**PATH D:\Web Development\Lotto\ClickLuck\ClickLuck\resources\views/templates/basic/sections/feature.blade.php ENDPATH**/ ?>
+<!-- feature section end --><?php /**PATH D:\Web Development\Lotto\ClickLuck\ClickLuck\resources\views/templates/basic/sections/feature.blade.php ENDPATH**/ ?>

@@ -2,8 +2,9 @@
 $banner = getContent('banner.content', true);
 @endphp
 
-<section class="hero  bg_img"
+<section class="hero bg_img"
     style="background-image: url('{{ asset($activeTemplateTrue . 'images/banner-bg.png')}}'); ">
+    <div class="blackLayout"></div>
     <div class="container">
         <div class="row justify-content-center justify-content-lg-start">
             <div class="col-xxl-7 col-xl-8 col-lg-10 text-center text-lg-start w-100">

@@ -2,8 +2,9 @@
 $banner = getContent('banner.content', true);
 ?>
 
-<section class="hero  bg_img"
+<section class="hero bg_img"
     style="background-image: url('<?php echo e(asset($activeTemplateTrue . 'images/banner-bg.png')); ?>'); ">
+    <div class="blackLayout"></div>
     <div class="container">
         <div class="row justify-content-center justify-content-lg-start">
             <div class="col-xxl-7 col-xl-8 col-lg-10 text-center text-lg-start w-100">
@@ -47,5 +48,4 @@ $banner = getContent('banner.content', true);
             </div>
         </div>
     </div>
-</section>
-<?php /**PATH D:\Web Development\Lotto\ClickLuck\ClickLuck\resources\views/templates/basic/sections/banner.blade.php ENDPATH**/ ?>
+</section><?php /**PATH D:\Web Development\Lotto\ClickLuck\ClickLuck\resources\views/templates/basic/sections/banner.blade.php ENDPATH**/ ?>

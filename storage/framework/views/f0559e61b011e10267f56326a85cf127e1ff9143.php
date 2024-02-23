@@ -9,21 +9,22 @@
 <?php echo $__env->make($activeTemplate . 'partials.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 <div class="main-wrapper">
-    <?php if(!request()->routeIs('home')): ?>
+    <!-- <?php if(!request()->routeIs('home')): ?>
     <?php echo $__env->make($activeTemplate . 'partials.breadcrumb', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-    <?php endif; ?>
+    <?php endif; ?> -->
 
     <?php echo $__env->yieldContent('content'); ?>
 
-</div><!-- main-wrapper end -->
+</div>
+<!-- main-wrapper end -->
 
 <?php echo $__env->make($activeTemplate . 'partials.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
+<!-- cookies dark version start -->
 <?php
 $cookie = App\Models\Frontend::where('data_keys', 'cookie.data')->first();
 ?>
 <?php if($cookie->data_values->status == Status::ENABLE && !\Cookie::get('gdpr_cookie')): ?>
-<!-- cookies dark version start -->
 <div class="cookies-card hide text-center">
     <div class="cookies-card__icon bg--base">
         <i class="las la-cookie-bite"></i>
@@ -36,8 +37,8 @@ $cookie = App\Models\Frontend::where('data_keys', 'cookie.data')->first();
         <a class="btn btn--base w-100 policy" href="javascript:void(0)"><?php echo app('translator')->get('Allow'); ?></a>
     </div>
 </div>
-<!-- cookies dark version end -->
 <?php endif; ?>
+<!-- cookies dark version end -->
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make($activeTemplate . 'layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Web Development\Lotto\ClickLuck\ClickLuck\resources\views/templates/basic/layouts/frontend.blade.php ENDPATH**/ ?>

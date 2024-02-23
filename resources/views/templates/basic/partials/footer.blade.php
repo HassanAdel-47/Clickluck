@@ -3,7 +3,7 @@ $socialIcons = getContent('social_icon.element', false, null, true);
 $policyPages = getContent('policy_pages.element', false, null, true);
 @endphp
 
-<footer class="footer">
+<footer class="footer" style="background-image: url('{{ asset($activeTemplateTrue . 'images/Footer.png')}}'); ">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-2 col-md-3 text-md-start text-center">
@@ -29,7 +29,13 @@ $policyPages = getContent('policy_pages.element', false, null, true);
                 </ul>
             </div>
         </div>
-        <hr class="mt-3">
+        <div class="line">
+            <hr>
+            <hr>
+            <hr>
+            <hr>
+            <hr>
+        </div>
         <div class="row align-items-center">
             <div class="col-md-6 text-md-start text-center">
                 <span class="footer-content__left-text"> @lang('Copyright') &copy;
