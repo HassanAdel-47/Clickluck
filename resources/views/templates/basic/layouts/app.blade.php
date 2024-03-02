@@ -17,6 +17,7 @@
     <link href="{{ asset($activeTemplateTrue . 'css/main.css') }}" rel="stylesheet">
     <link href="{{ asset($activeTemplateTrue . 'css/bootstrap-fileinput.css') }}" rel="stylesheet">
     <link href="{{ asset($activeTemplateTrue . 'css/custom.css') }}" rel="stylesheet">
+    <link href="{{ asset($activeTemplateTrue . 'css/odometer.css') }}" rel="stylesheet">
 
     @stack('style-lib')
 
@@ -42,6 +43,7 @@
 
     <script src="{{ asset($activeTemplateTrue . 'js/slick.min.js') }}"></script>
     <script src="{{ asset($activeTemplateTrue . 'js/wow.min.js') }}"></script>
+    <script src="{{ asset($activeTemplateTrue . 'js/odometer.js') }}"></script>
     <script src="{{ asset($activeTemplateTrue . 'js/jquery.countdown.js') }}"></script>
     <script src="{{ asset($activeTemplateTrue . 'js/app.js') }}"></script>
 
@@ -54,9 +56,9 @@
     @include('partials.notify')
 
     <script>
-        (function($) {
+        (function ($) {
             "use strict";
-            $(".langSel").on("change", function() {
+            $(".langSel").on("change", function () {
                 window.location.href = "{{ route('home') }}/change/" + $(this).val();
             });
 
@@ -81,30 +83,30 @@
             }
 
             var inputElements = $('input,select');
-            $.each(inputElements, function(index, element) {
+            $.each(inputElements, function (index, element) {
                 element = $(element);
                 element.closest('.form-group').find('label').attr('for', element.attr('name'));
                 element.attr('id', element.attr('name'))
             });
 
-            $('.policy').on('click', function() {
-                $.get('{{ route('cookie.accept') }}', function(response) {
+            $('.policy').on('click', function () {
+                $.get('{{ route('cookie.accept') }}', function (response) {
                     $('.cookies-card').addClass('d-none');
                 });
             });
 
-            setTimeout(function() {
+            setTimeout(function () {
                 $('.cookies-card').removeClass('hide')
             }, 2000);
 
             var inputElements = $('[type=text],select,textarea');
-            $.each(inputElements, function(index, element) {
+            $.each(inputElements, function (index, element) {
                 element = $(element);
                 element.closest('.form-group').find('label').attr('for', element.attr('name'));
                 element.attr('id', element.attr('name'))
             });
 
-            $.each($('input, select, textarea'), function(i, element) {
+            $.each($('input, select, textarea'), function (i, element) {
                 var elementType = $(element);
                 if (elementType.attr('type') != 'checkbox') {
                     if (element.hasAttribute('required')) {

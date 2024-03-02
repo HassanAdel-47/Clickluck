@@ -1,8 +1,7 @@
-@extends($activeTemplate . 'layouts.frontend')
-@section('content')
+<?php $__env->startSection('content'); ?>
 <!-- blog section start -->
 <section class="pt-100 pb-50">
-    <div class="machine" style="background-image:  url('{{ asset($activeTemplateTrue . 'images/Machine.jpg')}}') ">
+    <div class="machine" style="background-image:  url('<?php echo e(asset($activeTemplateTrue . 'images/Machine.jpg')); ?>') ">
         <div class="red">
             <div class="machine__counter">
                 <div id="odometer" class="odometer ">
@@ -41,10 +40,11 @@
     </div>
 
 </section>
-@if ($sections->secs != null)
-@foreach (json_decode($sections->secs) as $sec)
-@include($activeTemplate . 'sections.' . $sec)
-@endforeach
-@endif
+<?php if($sections->secs != null): ?>
+<?php $__currentLoopData = json_decode($sections->secs); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sec): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+<?php echo $__env->make($activeTemplate . 'sections.' . $sec, \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+<?php endif; ?>
 <!-- blog section end -->
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make($activeTemplate . 'layouts.frontend', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Web Development\Lotto\ClickLuck\ClickLuck\resources\views/templates/basic/blog.blade.php ENDPATH**/ ?>

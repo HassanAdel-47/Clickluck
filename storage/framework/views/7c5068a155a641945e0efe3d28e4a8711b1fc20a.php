@@ -69,4 +69,7 @@ $cta = getContent('cta.content', true);
     </div>
 </section>
 <!-- cta section end -->
+<script>
+    console.log('Hello world')
+</script>
 <?php /**PATH D:\Web Development\Lotto\ClickLuck\ClickLuck\resources\views/templates/basic/sections/cta.blade.php ENDPATH**/ ?>

@@ -10,10 +10,10 @@
 @include($activeTemplate . 'partials.header')
 
 <div class="main-wrapper">
-    <!-- @if (!request()->routeIs('home'))
+    {{-- @if (!request()->routeIs('home'))
     @include($activeTemplate . 'partials.breadcrumb')
-    @endif -->
-
+    @endif
+    --}}
     @yield('content')
 
 </div>

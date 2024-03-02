@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title> <?php echo e($general->siteName(__(@$customTitle ? $customTitle : $pageTitle))); ?></title>
+    <title> <?php echo e($general->siteName(__($pageTitle))); ?></title>
 
     <?php echo $__env->make('partials.seo', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
@@ -23,20 +23,38 @@
 
     <?php echo $__env->yieldPushContent('style'); ?>
 
-    <!-- <link href="<?php echo e(asset($activeTemplateTrue . 'css/color.php')); ?>?color=<?php echo e($general->base_color); ?>&secondColor=<?php echo e($general->secondary_color); ?>" rel="stylesheet"> -->
+    <link
+        href="<?php echo e(asset($activeTemplateTrue . 'css/color.php')); ?>?color=<?php echo e($general->base_color); ?>&secondColor=<?php echo e($general->secondary_color); ?>"
+        rel="stylesheet">
 </head>
 
 <body>
-    <?php echo $__env->yieldPushContent('fbComment'); ?>
 
-    <!-- preloader -->
     <div class="preloader">
         <div class="preloader-container">
             <span class="animated-preloader"></span>
         </div>
     </div>
-    <?php echo $__env->yieldContent('panel'); ?>
-    <!-- Optional JavaScript -->
+
+    <!-- scroll-to-top start -->
+    <div class="scroll-to-top">
+        <span class="scroll-icon">
+            <i class="fa fa-rocket" aria-hidden="true"></i>
+        </span>
+    </div>
+    <!-- scroll-to-top end -->
+    <?php echo $__env->make($activeTemplate . 'partials.auth_header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+
+    <div class="main-wrapper">
+
+        <?php echo $__env->make($activeTemplate . 'partials.breadcrumb', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+
+        <?php echo $__env->yieldContent('content'); ?>
+
+    </div>
+
+    <?php echo $__env->make($activeTemplate . 'partials.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="<?php echo e(asset('assets/global/js/jquery-3.6.0.min.js')); ?>"></script>
     <script src="<?php echo e(asset('assets/global/js/bootstrap.bundle.min.js')); ?>"></script>
@@ -47,13 +65,15 @@
     <script src="<?php echo e(asset($activeTemplateTrue . 'js/jquery.countdown.js')); ?>"></script>
     <script src="<?php echo e(asset($activeTemplateTrue . 'js/app.js')); ?>"></script>
 
+    <script src="<?php echo e(asset($activeTemplateTrue . 'js/jquery.validate.js')); ?>"></script>
+
     <?php echo $__env->yieldPushContent('script-lib'); ?>
 
-    <?php echo $__env->yieldPushContent('script'); ?>
+    <?php echo $__env->make('partials.notify', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
     <?php echo $__env->make('partials.plugins', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
-    <?php echo $__env->make('partials.notify', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+    <?php echo $__env->yieldPushContent('script'); ?>
 
     <script>
         (function ($) {
@@ -62,44 +82,20 @@
                 window.location.href = "<?php echo e(route('home')); ?>/change/" + $(this).val();
             });
 
-            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
-                matched = event.matches;
-                if (matched) {
-                    $('body').addClass('dark-mode');
-                    $('.navbar').addClass('navbar-dark');
-                } else {
-                    $('body').removeClass('dark-mode');
-                    $('.navbar').removeClass('navbar-dark');
+        })(jQuery);
+    </script>
+
+    <script>
+        (function ($) {
+            "use strict";
+
+            $('form').on('submit', function () {
+                if ($(this).valid()) {
+                    $(':submit', this).attr('disabled', 'disabled');
                 }
             });
 
-            let matched = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            if (matched) {
-                $('body').addClass('dark-mode');
-                $('.navbar').addClass('navbar-dark');
-            } else {
-                $('body').removeClass('dark-mode');
-                $('.navbar').removeClass('navbar-dark');
-            }
-
-            var inputElements = $('input,select');
-            $.each(inputElements, function (index, element) {
-                element = $(element);
-                element.closest('.form-group').find('label').attr('for', element.attr('name'));
-                element.attr('id', element.attr('name'))
-            });
-
-            $('.policy').on('click', function () {
-                $.get('<?php echo e(route('cookie.accept')); ?>', function (response) {
-                    $('.cookies-card').addClass('d-none');
-                });
-            });
-
-            setTimeout(function () {
-                $('.cookies-card').removeClass('hide')
-            }, 2000);
-
-            var inputElements = $('[type=text],select,textarea');
+            var inputElements = $('[type=text],[type=password],select,textarea');
             $.each(inputElements, function (index, element) {
                 element = $(element);
                 element.closest('.form-group').find('label').attr('for', element.attr('name'));
@@ -107,13 +103,16 @@
             });
 
             $.each($('input, select, textarea'), function (i, element) {
-                var elementType = $(element);
-                if (elementType.attr('type') != 'checkbox') {
-                    if (element.hasAttribute('required')) {
-                        $(element).closest('.form-group').find('label').addClass('required');
-                    }
+
+                if (element.hasAttribute('required')) {
+                    $(element).closest('.form-group').find('label').addClass('required');
                 }
 
+            });
+
+
+            $('.showFilterBtn').on('click', function () {
+                $('.responsive-filter-card').slideToggle();
             });
 
         })(jQuery);
@@ -122,4 +121,4 @@
 </body>
 
 </html>
-<?php /**PATH D:\Web Development\Lotto\ClickLuck\ClickLuck\resources\views/templates/basic/layouts/app.blade.php ENDPATH**/ ?>
+<?php /**PATH D:\Web Development\Lotto\ClickLuck\ClickLuck\resources\views/templates/basic/layouts/master.blade.php ENDPATH**/ ?>

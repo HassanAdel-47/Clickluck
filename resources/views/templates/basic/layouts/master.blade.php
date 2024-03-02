@@ -17,12 +17,15 @@
     <link href="{{ asset($activeTemplateTrue . 'css/main.css') }}" rel="stylesheet">
     <link href="{{ asset($activeTemplateTrue . 'css/bootstrap-fileinput.css') }}" rel="stylesheet">
     <link href="{{ asset($activeTemplateTrue . 'css/custom.css') }}" rel="stylesheet">
+    <link href="{{ asset($activeTemplateTrue . 'css/odometer.css') }}" rel="stylesheet">
 
     @stack('style-lib')
 
     @stack('style')
 
-    <link href="{{ asset($activeTemplateTrue . 'css/color.php') }}?color={{ $general->base_color }}&secondColor={{ $general->secondary_color }}" rel="stylesheet">
+    <link
+        href="{{ asset($activeTemplateTrue . 'css/color.php') }}?color={{ $general->base_color }}&secondColor={{ $general->secondary_color }}"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -58,6 +61,7 @@
 
     <script src="{{ asset($activeTemplateTrue . 'js/slick.min.js') }}"></script>
     <script src="{{ asset($activeTemplateTrue . 'js/wow.min.js') }}"></script>
+    <script src="{{ asset($activeTemplateTrue . 'js/odometer.js') }}"></script>
     <script src="{{ asset($activeTemplateTrue . 'js/jquery.countdown.js') }}"></script>
     <script src="{{ asset($activeTemplateTrue . 'js/app.js') }}"></script>
 
@@ -72,9 +76,9 @@
     @stack('script')
 
     <script>
-        (function($) {
+        (function ($) {
             "use strict";
-            $(".langSel").on("change", function() {
+            $(".langSel").on("change", function () {
                 window.location.href = "{{ route('home') }}/change/" + $(this).val();
             });
 
@@ -82,23 +86,23 @@
     </script>
 
     <script>
-        (function($) {
+        (function ($) {
             "use strict";
 
-            $('form').on('submit', function() {
+            $('form').on('submit', function () {
                 if ($(this).valid()) {
                     $(':submit', this).attr('disabled', 'disabled');
                 }
             });
 
             var inputElements = $('[type=text],[type=password],select,textarea');
-            $.each(inputElements, function(index, element) {
+            $.each(inputElements, function (index, element) {
                 element = $(element);
                 element.closest('.form-group').find('label').attr('for', element.attr('name'));
                 element.attr('id', element.attr('name'))
             });
 
-            $.each($('input, select, textarea'), function(i, element) {
+            $.each($('input, select, textarea'), function (i, element) {
 
                 if (element.hasAttribute('required')) {
                     $(element).closest('.form-group').find('label').addClass('required');
@@ -107,7 +111,7 @@
             });
 
 
-            $('.showFilterBtn').on('click', function() {
+            $('.showFilterBtn').on('click', function () {
                 $('.responsive-filter-card').slideToggle();
             });
 

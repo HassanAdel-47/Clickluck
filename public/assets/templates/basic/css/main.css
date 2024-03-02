@@ -5390,3 +5390,81 @@ body.modal-open {
 .about__page .section-title {
     color: #ffb125 !important;
 }
+
+.odometer {
+    margin-right: 0.7rem;
+    position: relative !important;
+    left: 0.45rem;
+    font-size: 3rem !important;
+    font-family: "Alfa Slab One", serif !important;
+    font-weight: 400 !important;
+    font-style: normal !important;
+}
+.odometer-value {
+    background: linear-gradient(180deg, #27242b 0%, #100f11 100%);
+    color: linear-gradient(#27242b, #100f11) !important;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0px 8.287px 16.574px rgba(6, 5, 6, 0.76);
+}
+.odometer-digit-inner {
+    width: 35px;
+}
+.machine {
+    height: 31rem;
+    background-position: center;
+    background-size: contain;
+    position: relative;
+    left: -1rem;
+    background-repeat: no-repeat;
+}
+
+.machine .red {
+    width: 22rem;
+    height: 6rem;
+    position: relative;
+    top: 8rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3rem;
+    left: -0.5rem;
+}
+
+.machine__counter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.machineInfo {
+    background-color: #1d1b20;
+    height: 50px;
+    position: absolute;
+    width: 50rem;
+    bottom: -14rem;
+    left: -13rem;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.machineInfo span {
+    color: #fbb125;
+}
+.dashboardButtons .dashboardButton {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.dashboardButtons .dashboardButton a {
+    color: #fbb125;
+    font-size: 13px;
+    margin-left: 10px;
+}
+
+.dashboardTable {
+    background-color: orange;
+    height: 10px;
+}

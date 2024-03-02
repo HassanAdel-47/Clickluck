@@ -1,5 +1,4 @@
-@extends($activeTemplate . 'layouts.master')
-@section('content')
+<?php $__env->startSection('content'); ?>
 <section class="pt-100 pb-100">
     <div class="container">
         <div class="row justify-content-center mt-2">
@@ -8,16 +7,16 @@
                     <form class="flex-grow-1 form-in-width" action="">
                         <div class="d-flex justify-content-end">
                             <div class="input-group">
-                                <input class="form-control" name="search" type="text" value="{{ request()->search }}"
-                                    placeholder="@lang('Search by transactions')">
+                                <input class="form-control" name="search" type="text" value="<?php echo e(request()->search); ?>"
+                                    placeholder="<?php echo app('translator')->get('Search by transactions'); ?>">
                                 <button class="input-group-text bg-primary border-0 text-white">
                                     <i class="las la-search"></i>
                                 </button>
                             </div>
                         </div>
                     </form>
-                    <a class="btn btn--base flex-shrink-0" href="{{ route('user.withdraw') }}">
-                        @lang('Withdraw')
+                    <a class="btn btn--base flex-shrink-0" href="<?php echo e(route('user.withdraw')); ?>">
+                        <?php echo app('translator')->get('Withdraw'); ?>
                     </a>
                 </div>
 
@@ -25,83 +24,87 @@
                     <table class="custom--table table">
                         <thead>
                             <tr>
-                                <th>@lang('Gateway | Transaction')</th>
-                                <th class="text-center">@lang('Initiated')</th>
-                                <th class="text-center">@lang('Amount')</th>
-                                <th class="text-center">@lang('Conversion')</th>
-                                <th class="text-center">@lang('Status')</th>
-                                <th>@lang('Action')</th>
+                                <th><?php echo app('translator')->get('Gateway | Transaction'); ?></th>
+                                <th class="text-center"><?php echo app('translator')->get('Initiated'); ?></th>
+                                <th class="text-center"><?php echo app('translator')->get('Amount'); ?></th>
+                                <th class="text-center"><?php echo app('translator')->get('Conversion'); ?></th>
+                                <th class="text-center"><?php echo app('translator')->get('Status'); ?></th>
+                                <th><?php echo app('translator')->get('Action'); ?></th>
                             </tr>
                         </thead>
                         <tbody>
 
-                            @forelse($withdraws as $withdraw)
+                            <?php $__empty_1 = true; $__currentLoopData = $withdraws; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $withdraw): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                             <tr>
                                 <td>
                                     <span class="fw-bold"><span class="text-primary">
-                                            {{ __(@$withdraw->method->name) }}</span></span>
+                                            <?php echo e(__(@$withdraw->method->name)); ?></span></span>
                                     <br>
-                                    <small>{{ $withdraw->trx }}</small>
+                                    <small><?php echo e($withdraw->trx); ?></small>
                                 </td>
                                 <td class="text-center">
-                                    {{ showDateTime($withdraw->created_at) }} <br>
-                                    {{ diffForHumans($withdraw->created_at) }}
+                                    <?php echo e(showDateTime($withdraw->created_at)); ?> <br>
+                                    <?php echo e(diffForHumans($withdraw->created_at)); ?>
+
                                 </td>
                                 <td class="text-center">
-                                    {{ __($general->cur_sym) }}{{ showAmount($withdraw->amount) }} - <span
-                                        class="text-danger" title="@lang('charge')">{{ showAmount($withdraw->charge) }}
+                                    <?php echo e(__($general->cur_sym)); ?><?php echo e(showAmount($withdraw->amount)); ?> - <span
+                                        class="text-danger" title="<?php echo app('translator')->get('charge'); ?>"><?php echo e(showAmount($withdraw->charge)); ?>
+
                                     </span>
                                     <br>
-                                    <strong title="@lang('Amount after charge')">
-                                        {{ showAmount($withdraw->amount - $withdraw->charge) }}
-                                        {{ __($general->cur_text) }}
+                                    <strong title="<?php echo app('translator')->get('Amount after charge'); ?>">
+                                        <?php echo e(showAmount($withdraw->amount - $withdraw->charge)); ?>
+
+                                        <?php echo e(__($general->cur_text)); ?>
+
                                     </strong>
 
                                 </td>
                                 <td class="text-center">
-                                    1 {{ __($general->cur_text) }} = {{ showAmount($withdraw->rate) }}
-                                    {{ __($withdraw->currency) }}
+                                    1 <?php echo e(__($general->cur_text)); ?> = <?php echo e(showAmount($withdraw->rate)); ?>
+
+                                    <?php echo e(__($withdraw->currency)); ?>
+
                                     <br>
-                                    <strong>{{ showAmount($withdraw->final_amount) }}
-                                        {{ __($withdraw->currency) }}</strong>
+                                    <strong><?php echo e(showAmount($withdraw->final_amount)); ?>
+
+                                        <?php echo e(__($withdraw->currency)); ?></strong>
                                 </td>
                                 <td class="text-center">
-                                    @php echo $withdraw->statusBadge @endphp
+                                    <?php echo $withdraw->statusBadge ?>
                                 </td>
                                 <td>
-                                    <button class="btn btn-sm btn--base detailBtn" {{--
-                                        data-user_data="{{ json_encode($withdraw->withdraw_information) }}" @if
-                                        ($withdraw->status == Status::PAYMENT_REJECT) data-admin_feedback="{{
-                                        $withdraw->admin_feedback }}" @endif>
-                                        <i class="la la-desktop"></i>--}}
+                                    <button class="btn btn-sm btn--base detailBtn" 
                                     </button>
                                 </td>
                             </tr>
-                            @empty
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                             <tr>
-                                <td class="rounded-bottom text-center" colspan="100%">{{ __($emptyMessage) }}</td>
+                                <td class="rounded-bottom text-center" colspan="100%"><?php echo e(__($emptyMessage)); ?></td>
                             </tr>
-                            @endforelse
+                            <?php endif; ?>
                         </tbody>
                     </table>
                 </div>
-                @if ($withdraws->hasPages())
+                <?php if($withdraws->hasPages()): ?>
                 <div class="card-footer">
-                    {{ $withdraws->links() }}
+                    <?php echo e($withdraws->links()); ?>
+
                 </div>
-                @endif
+                <?php endif; ?>
             </div>
         </div>
     </div>
     </div>
 </section>
 
-{{-- APPROVE MODAL --}}
+
 <div class="modal fade" id="detailModal" role="dialog" tabindex="-1">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">@lang('Details')</h5>
+                <h5 class="modal-title"><?php echo app('translator')->get('Details'); ?></h5>
                 <span class="close" data-bs-dismiss="modal" type="button" aria-label="Close">
                     <i class="las la-times"></i>
                 </span>
@@ -113,14 +116,14 @@
             </div>
             <div class="modal-footer">
                 <button class="btn btn-sm btn--danger text-white" data-bs-dismiss="modal"
-                    type="button">@lang('Close')</button>
+                    type="button"><?php echo app('translator')->get('Close'); ?></button>
             </div>
         </div>
     </div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@push('script')
+<?php $__env->startPush('script'); ?>
 <script>
     (function ($) {
         "use strict";
@@ -142,7 +145,7 @@
             if ($(this).data('admin_feedback') != undefined) {
                 var adminFeedback = `
                         <div class="my-3">
-                            <strong>@lang('Admin Feedback')</strong>
+                            <strong><?php echo app('translator')->get('Admin Feedback'); ?></strong>
                             <p>${$(this).data('admin_feedback')}</p>
                         </div>
                     `;
@@ -156,4 +159,5 @@
         });
     })(jQuery);
 </script>
-@endpush
+<?php $__env->stopPush(); ?>
+<?php echo $__env->make($activeTemplate . 'layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Web Development\Lotto\ClickLuck\ClickLuck\resources\views/templates/basic/user/withdraw/log.blade.php ENDPATH**/ ?>

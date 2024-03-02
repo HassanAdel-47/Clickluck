@@ -69,3 +69,6 @@ $cta = getContent('cta.content', true);
     </div>
 </section>
 <!-- cta section end -->
+<script>
+    console.log('Hello world')
+</script>
