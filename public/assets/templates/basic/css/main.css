@@ -5392,10 +5392,10 @@ body.modal-open {
 }
 
 .odometer {
-    margin-right: 0.7rem;
+    margin-right: 0.8rem;
     position: relative !important;
     left: 0.45rem;
-    font-size: 3rem !important;
+    font-size: 3.2rem !important;
     font-family: "Alfa Slab One", serif !important;
     font-weight: 400 !important;
     font-style: normal !important;
@@ -5409,25 +5409,28 @@ body.modal-open {
     text-shadow: 0px 8.287px 16.574px rgba(6, 5, 6, 0.76);
 }
 .odometer-digit-inner {
-    width: 35px;
+    /* width: 35px; */
 }
 .machine {
-    height: 31rem;
+    height: 44rem;
+    width: 100vw;
     background-position: center;
-    background-size: contain;
+    background-size: cover;
     position: relative;
     left: -1rem;
     background-repeat: no-repeat;
+    margin-top: 13rem;
+    background-size: 85rem;
 }
 
 .machine .red {
     width: 22rem;
     height: 6rem;
     position: relative;
-    top: 8rem;
+    top: 18.7rem;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 3rem;
+    margin-top: -13rem;
     left: -0.5rem;
 }
 
@@ -5435,24 +5438,26 @@ body.modal-open {
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
 }
 
 .machineInfo {
     background-color: #1d1b20;
     height: 50px;
-    position: absolute;
+    position: relative;
     width: 50rem;
-    bottom: -14rem;
-    left: -13rem;
+    bottom: -30rem;
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-right: auto;
+    margin-left: auto;
 }
+
 .machineInfo span {
     color: #fbb125;
 }
+
 .dashboardButtons .dashboardButton {
     display: flex;
     margin-bottom: 10px;
