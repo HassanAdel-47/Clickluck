@@ -6,12 +6,11 @@
         <div class="row mt-5">
             <div class="col-lg-12">
                 @if (auth()->user()->kv == 0)
-                <div class="alert alert-danger p-3" role="alert">
+                {{-- <div class="alert alert-danger p-3" role="alert">
                     <h4 class="alert-heading">@lang('KYC Verification required')</h4>
                     <hr>
-                    <p class="mb-0">{{ __($kycInstruction->data_values->verification_instruction) }} <a
-                            href="{{ route('user.kyc.form') }}">@lang('Click Here to Verify')</a></p>
-                </div>
+
+                </div>--}}
                 @elseif(auth()->user()->kv == 2)
                 <div class="alert alert-warning p-3" role="alert">
                     <h4 class="alert-heading">@lang('KYC Verification pending')</h4>

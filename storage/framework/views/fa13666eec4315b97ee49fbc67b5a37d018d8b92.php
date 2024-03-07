@@ -1,6 +1,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <section class="tabsSection"
-    style="background-image:  url('{{ asset($activeTemplateTrue . 'images/LotteriesSection.png')}}') ">
+    style="background-image:  url('<?php echo e(asset($activeTemplateTrue . 'images/LotteriesSection.png')); ?>') ">
     <figure class="tabBlock">
         <ul class="tabBlock-tabs">
             <li class="tabBlock-tab is-active">Instructions</li>
@@ -169,4 +169,4 @@
             odometerEight.innerHTML = 1 + num;
         }, 2000);
     }
-</script>
+</script><?php /**PATH D:\Web Development\Lotto\ClickLuck\ClickLuck\resources\views/templates/basic/sections/blog.blade.php ENDPATH**/ ?>

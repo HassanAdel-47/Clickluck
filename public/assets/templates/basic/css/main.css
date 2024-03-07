@@ -2208,9 +2208,9 @@ button:focus {
 
 .form--control {
     padding: 0.625rem 1.25rem;
-    border: 1px solid #37f5f9;
+    border: 1px solid #cac4d0;
     width: 100%;
-    background-color: #1c1c43;
+    background-color: transparent;
     border-radius: 3px;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
@@ -2237,8 +2237,8 @@ button:focus {
 }
 
 .form--control:focus {
-    background-color: #141431;
-    border-color: #37f5f9 !important;
+    background-color: transparent;
+    border-color: #fbb125 !important;
     box-shadow: 0 0 5px rgba(55, 245, 249, 0.35);
     color: #fff;
 }
@@ -4399,22 +4399,6 @@ div[class*="ball-"] img {
     color: #fafafa;
 }
 
-.contact-wrapper {
-    padding: 3.125rem;
-}
-
-@media (max-width: 575px) {
-    .contact-wrapper {
-        padding: 30px;
-    }
-}
-
-@media (max-width: 440px) {
-    .contact-wrapper {
-        padding: 20px;
-    }
-}
-
 .market-card {
     background-color: #fff;
     padding: 1.25rem;
@@ -5472,4 +5456,150 @@ body.modal-open {
 .dashboardTable {
     background-color: orange;
     height: 10px;
+}
+
+.group::after,
+.tabBlock-tabs::after {
+    clear: both;
+    content: "";
+    display: table;
+}
+
+.unstyledList,
+.tabBlock-tabs {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 25px !important;
+}
+
+.tabsSection {
+    background-position: center;
+    background-size: cover;
+    padding: 4rem;
+}
+
+.tabBlock {
+    margin: 0 0 2.5rem;
+    background-color: #1d1b20;
+    padding: 35px;
+    border-radius: 12px;
+    height: 25rem;
+}
+
+.tabBlock-tab {
+    background-color: #1d1b20;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 700;
+    padding: 0.625rem 1.25rem;
+    padding-right: 1.25rem;
+    padding-left: 1.25rem;
+    -webkit-transition: 0.1s ease-in-out;
+    transition: 0.1s ease-in-out;
+    font-size: 20px;
+}
+.tabBlock hr {
+    height: 2px !important;
+}
+.tabBlock-tab::before,
+.tabBlock-tab::after {
+    content: "";
+    display: block;
+    height: 4px;
+    position: absolute;
+    -webkit-transition: 0.1s ease-in-out;
+    transition: 0.1s ease-in-out;
+}
+.tabBlock-tab::before {
+    background-color: #1d1b20;
+    left: -2px;
+    right: -2px;
+    top: -2px;
+}
+.tabBlock-tab::after {
+    background-color: transparent;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+}
+@media screen and (min-width: 700px) {
+    .tabBlock-tabs .tabBlock-tab {
+        padding-left: 0.4rem;
+        padding-right: 1rem;
+        margin-right: 2rem;
+    }
+}
+.tabBlock-tabs .tabBlock-tab.is-active {
+    color: #ffb125;
+    border-bottom: 1px solid #ffb125 !important;
+}
+.tabBlock-tabs .tabBlock-tab.is-active::before {
+    background-color: #1d1b20;
+}
+.tabBlock-tabs .tabBlock-tab.is-active::after {
+    background-color: #1d1b20;
+}
+
+.tabBlock-tabs .tabBlock-content {
+    background-color: #1d1b20;
+    padding-top: 1.25rem;
+    height: 20rem;
+}
+
+.tabBlock-tabs .tabBlock-pane > :last-child {
+    margin-bottom: 0;
+}
+.tabBlock-tabs .tabBlock-pane {
+    color: #fff;
+    font-weight: 100;
+    font-size: 16px;
+}
+.tabBlock-tabs .tabBlock-pane p {
+    text-align: justify;
+}
+
+.contact__page {
+    background-color: white;
+    position: relative;
+}
+.contact__page .contact__title {
+    height: 25rem;
+    display: flex;
+    align-items: center;
+}
+.contact__page .contact__title h1 {
+    margin-left: 3rem;
+    font-size: 4rem;
+    color: #ffb125;
+}
+
+.contact_page_container {
+    margin-top: 8rem;
+}
+.contact_page_container,
+.contact_page_container p,
+.contact_page_container p a,
+.contact_page_container h1,
+.contact_page_container h2,
+.contact_page_container h3,
+.contact_page_container h4,
+.contact_page_container h5,
+.contact_page_container h6 {
+    color: #1d1b20;
+}
+.contact-info {
+    display: flex;
+    align-items: center;
+}
+.contact-info i {
+    font-size: 2.75rem;
+    margin-right: 1rem;
+}
+.contact_us_info {
+    background-color: #1d1b20;
+    padding: 0.5rem;
+    margin-bottom: 8rem;
+    border-radius: 1rem;
 }
