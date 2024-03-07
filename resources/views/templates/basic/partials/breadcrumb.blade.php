@@ -1,9 +1,9 @@
-<section class="inner-hero bg_img overlay--one"
-    style="background-image: url({{ asset('assets/images/frontend/breadcrumb/' . getContent('breadcrumb.content', true)->data_values->background_image) }});">
+<section class="inner-hero bg_img "
+    style="background-image: url('{{ asset($activeTemplateTrue . 'images/dashhboard_breadcrumb.png')}}')">
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-6 text-center">
-                <h2 class="page-title text-white">{{ __($pageTitle) }}</h2>
+        <div class="breadcrumb-container row ">
+            <div class="col-lg-6 ">
+                <h1 class="breadcrumb-title text-white">{{ __($pageTitle) }}</h1>
             </div>
         </div>
     </div>

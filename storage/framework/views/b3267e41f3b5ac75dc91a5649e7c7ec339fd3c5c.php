@@ -1,5 +1,4 @@
-@extends($activeTemplate . 'layouts.master')
-@section('content')
+<?php $__env->startSection('content'); ?>
 <!-- dashboard section start -->
 <section class="pt-100 pb-100">
     <div class="container">
@@ -12,9 +11,9 @@
                 <div class="pagination_buttons w-full d-flex align-items-center justify-content-end">
                     <p class="me-2">Showing Results 1-10 of 20</p>
                     <button onclick="console.log('test')" class="me-4"><img class="w-75 "
-                            src="{{ asset($activeTemplateTrue . 'images/Arrow.svg') }}" alt="image"></button>
+                            src="<?php echo e(asset($activeTemplateTrue . 'images/Arrow.svg')); ?>" alt="image"></button>
                     <button onclick="console.log('test')"><img class="w-75"
-                            src="{{ asset($activeTemplateTrue . 'images/Arrow.svg') }}" alt="image"></button>
+                            src="<?php echo e(asset($activeTemplateTrue . 'images/Arrow.svg')); ?>" alt="image"></button>
                 </div>
                 <div class="recentTable mt-2">
                     <table class="table table-bordered dt-responsive">
@@ -118,27 +117,23 @@
                 </div>
             </div>
             <!-- <div class="col-lg-12">
-                @if (auth()->user()->kv == 0)
-                {{-- <div class="alert alert-danger p-3" role="alert">
-                    <h4 class="alert-heading">@lang('KYC Verification required')</h4>
-                    <hr>
-
-                </div>--}}
-                @elseif(auth()->user()->kv == 2)
+                <?php if(auth()->user()->kv == 0): ?>
+                
+                <?php elseif(auth()->user()->kv == 2): ?>
                 <div class="alert alert-warning p-3" role="alert">
-                    <h4 class="alert-heading">@lang('KYC Verification pending')</h4>
+                    <h4 class="alert-heading"><?php echo app('translator')->get('KYC Verification pending'); ?></h4>
                     <hr>
-                    <p class="mb-0">{{ __($kycInstruction->data_values->pending_instruction) }} <a
-                            href="{{ route('user.kyc.data') }}">@lang('See KYC Data')</a></p>
+                    <p class="mb-0"><?php echo e(__($kycInstruction->data_values->pending_instruction)); ?> <a
+                            href="<?php echo e(route('user.kyc.data')); ?>"><?php echo app('translator')->get('See KYC Data'); ?></a></p>
                 </div>
-                @endif
+                <?php endif; ?>
             </div> -->
             <!-- <div class="col-lg-12">
                 <div class="form-group">
-                    <label>@lang('Referral Link')</label>
+                    <label><?php echo app('translator')->get('Referral Link'); ?></label>
                     <div class="input-group">
                         <input class="form--control referralURL" name="text" type="text"
-                            value="{{ route('home') }}?reference={{ auth()->user()->username }}" readonly>
+                            value="<?php echo e(route('home')); ?>?reference=<?php echo e(auth()->user()->username); ?>" readonly>
                         <span class="input-group-text copytext copyBoard" id="copyBoard"> <i class="fa fa-copy"></i>
                         </span>
                     </div>
@@ -149,32 +144,32 @@
         <!-- <div class="row gy-4 align-items-center mt-2">
             <div class="col-lg-3 col-sm-6">
                 <div class="balance-card">
-                    <span class="text--dark">@lang('Total Balance')</span>
-                    <h3 class="number text--dark">{{ __($general->cur_sym) }}{{ getAmount($user->balance) }}</h3>
+                    <span class="text--dark"><?php echo app('translator')->get('Total Balance'); ?></span>
+                    <h3 class="number text--dark"><?php echo e(__($general->cur_sym)); ?><?php echo e(getAmount($user->balance)); ?></h3>
                 </div>
             </div>
             <div class="col-lg-3 col-sm-6">
                 <div class="dashboard-card">
-                    <span>@lang('Total Win')</span>
-                    <a class="view--btn" href="{{ route('user.wins') }}">@lang('View log')</a>
-                    <h3 class="number">{{ $user->wins->count() }}</h3>
+                    <span><?php echo app('translator')->get('Total Win'); ?></span>
+                    <a class="view--btn" href="<?php echo e(route('user.wins')); ?>"><?php echo app('translator')->get('View log'); ?></a>
+                    <h3 class="number"><?php echo e($user->wins->count()); ?></h3>
                     <i class="las la-trophy icon"></i>
                 </div>
             </div>
             <div class="col-lg-3 col-sm-6">
                 <div class="dashboard-card">
-                    <span>@lang('Total Deposit')</span>
-                    <a class="view--btn" href="{{ route('user.deposit.history') }}">@lang('View log')</a>
-                    <h3 class="number">{{ __($general->cur_sym) }}{{ $user->deposits->sum('amount') + 0 }}</h3>
+                    <span><?php echo app('translator')->get('Total Deposit'); ?></span>
+                    <a class="view--btn" href="<?php echo e(route('user.deposit.history')); ?>"><?php echo app('translator')->get('View log'); ?></a>
+                    <h3 class="number"><?php echo e(__($general->cur_sym)); ?><?php echo e($user->deposits->sum('amount') + 0); ?></h3>
                     <i class="las la-dollar-sign icon"></i>
                 </div>
             </div>
             <div class="col-lg-3 col-sm-6">
                 <div class="dashboard-card">
-                    <span>@lang('Total Withdraw')</span>
-                    <a class="view--btn" href="{{ route('user.withdraw.history') }}">@lang('View log')</a>
-                    <h3 class="number">{{ __($general->cur_sym) }}{{ $user->withdrawals->where('status',
-                        1)->sum('amount') + 0 }}</h3>
+                    <span><?php echo app('translator')->get('Total Withdraw'); ?></span>
+                    <a class="view--btn" href="<?php echo e(route('user.withdraw.history')); ?>"><?php echo app('translator')->get('View log'); ?></a>
+                    <h3 class="number"><?php echo e(__($general->cur_sym)); ?><?php echo e($user->withdrawals->where('status',
+                        1)->sum('amount') + 0); ?></h3>
                     <i class="las la-hand-holding-usd icon"></i>
                 </div>
             </div>
@@ -184,7 +179,7 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-6">
                         <div class="section-header text-center">
-                            <h2 class="section-title">@lang('Waiting for Draw')</h2>
+                            <h2 class="section-title"><?php echo app('translator')->get('Waiting for Draw'); ?></h2>
                         </div>
                     </div>
                 </div>
@@ -194,37 +189,39 @@
                         <table class="table-responsive--md custom--table table">
                             <thead>
                                 <tr>
-                                    <th>@lang('S.N.')</th>
-                                    <th>@lang('Lottery Name')</th>
-                                    <th>@lang('Phase Number')</th>
-                                    <th>@lang('Ticket')</th>
-                                    <th>@lang('Result')</th>
+                                    <th><?php echo app('translator')->get('S.N.'); ?></th>
+                                    <th><?php echo app('translator')->get('Lottery Name'); ?></th>
+                                    <th><?php echo app('translator')->get('Phase Number'); ?></th>
+                                    <th><?php echo app('translator')->get('Ticket'); ?></th>
+                                    <th><?php echo app('translator')->get('Result'); ?></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse($tickets as $ticket)
+                                <?php $__empty_1 = true; $__currentLoopData = $tickets; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ticket): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                 <tr>
-                                    <td>{{ $tickets->firstItem() + $loop->index }}</td>
-                                    <td>{{ __($ticket->lottery->name) }}</td>
-                                    <td>@lang('Phase ' . $ticket->phase->phase_number)</td>
+                                    <td><?php echo e($tickets->firstItem() + $loop->index); ?></td>
+                                    <td><?php echo e(__($ticket->lottery->name)); ?></td>
+                                    <td><?php echo app('translator')->get('Phase ' . $ticket->phase->phase_number); ?></td>
                                     <td class="text-center">
-                                        {{ $ticket->ticket_number }}
+                                        <?php echo e($ticket->ticket_number); ?>
+
                                     </td>
                                     <td>
-                                        @php
+                                        <?php
                                         echo $ticket->statusBadge;
-                                        @endphp
+                                        ?>
                                     </td>
-                                    @empty
-                                    <td class="rounded-bottom text-center" colspan="100%">{{ __($emptyMessage) }}</td>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                                    <td class="rounded-bottom text-center" colspan="100%"><?php echo e(__($emptyMessage)); ?></td>
                                 </tr>
-                                @endforelse
+                                <?php endif; ?>
                             </tbody>
                         </table>
                         <div class="d-flex justify-content-center mt-3">
-                            @if ($tickets->hasPages())
-                            {{ paginateLinks($tickets) }}
-                            @endif
+                            <?php if($tickets->hasPages()): ?>
+                            <?php echo e(paginateLinks($tickets)); ?>
+
+                            <?php endif; ?>
                         </div>
 
                     </div>
@@ -235,14 +232,14 @@
     </div>
 </section>
 <!-- dashboard section end -->
-@endsection
+<?php $__env->stopSection(); ?>
 
-@push('style-lib')
-<link type="text/css" href="{{ asset('assets/global/css/jquery.treeView.css') }}" rel="stylesheet">
-@endpush
+<?php $__env->startPush('style-lib'); ?>
+<link type="text/css" href="<?php echo e(asset('assets/global/css/jquery.treeView.css')); ?>" rel="stylesheet">
+<?php $__env->stopPush(); ?>
 
-@push('script')
-<script src="{{ asset('assets/global/js/jquery.treeView.js') }}"></script>
+<?php $__env->startPush('script'); ?>
+<script src="<?php echo e(asset('assets/global/js/jquery.treeView.js')); ?>"></script>
 <script>
     (function ($) {
         "use strict"
@@ -262,4 +259,5 @@
         });
     })(jQuery);
 </script>
-@endpush
+<?php $__env->stopPush(); ?>
+<?php echo $__env->make($activeTemplate . 'layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Web Development\Lotto\ClickLuck\ClickLuck\resources\views/templates/basic/user/dashboard.blade.php ENDPATH**/ ?>

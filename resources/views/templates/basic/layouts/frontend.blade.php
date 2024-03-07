@@ -15,9 +15,9 @@
     @endif
     --}}
     @yield('content')
-
 </div>
 <!-- main-wrapper end -->
+
 
 @include($activeTemplate . 'partials.footer')
 

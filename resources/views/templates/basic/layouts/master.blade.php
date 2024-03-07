@@ -44,9 +44,7 @@
     </div>
     <!-- scroll-to-top end -->
     @include($activeTemplate . 'partials.auth_header')
-
     <div class="main-wrapper">
-
         @include($activeTemplate . 'partials.breadcrumb')
 
         @yield('content')

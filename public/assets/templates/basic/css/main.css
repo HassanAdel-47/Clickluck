@@ -195,7 +195,7 @@ a:hover {
 }
 
 .text--base {
-    color: #37f5f9 !important;
+    /* color: #37f5f9 !important; */
 }
 
 .text--dark {
@@ -235,7 +235,7 @@ a:hover {
 }
 
 .bg--base {
-    background-color: #37f5f9 !important;
+    /* background-color: #37f5f9 !important; */
 }
 
 .pt-50 {
@@ -2625,20 +2625,20 @@ header.header {
 }
 
 .header .main-menu li a::before {
-    content: "";
-    position: absolute;
-    top: 35px;
-    left: 0px;
-    width: 0%;
-    height: 2px;
-    border-radius: 100px;
-    background-color: #ffb125;
-    transition: 0.2s all;
+    content: "" !important;
+    position: absolute !important;
+    top: 35px !important;
+    left: 0px !important;
+    width: 0% !important;
+    height: 2px !important;
+    border-radius: 100px !important;
+    background-color: #ffb125 !important;
+    transition: 0.2s all !important;
 }
 
 .header .main-menu li a:hover::before,
 .header .main-menu li a.active::before {
-    width: 100%;
+    width: 100% !important;
 }
 
 .header .main-menu li a.active {
@@ -3186,19 +3186,12 @@ header.header {
     z-index: 1;
     padding: 65px 0;
 }
-
-.inner-hero::before {
-    position: absolute;
-    content: "";
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #20204e;
-    opacity: 0.65;
-    z-index: -1;
+.breadcrumb-container {
+    padding-top: 6rem;
 }
-
+.breadcrumb-title {
+    color: #fbb125 !important;
+}
 .overview-section {
     margin-top: -0.9375rem;
     position: relative;
@@ -5314,47 +5307,48 @@ body.modal-open {
 .recent__section .container {
     position: relative;
 }
-.recent__section .recentTable table {
+.recentTable table {
     border-radius: 10px;
     border-style: hidden;
     box-shadow: 0 0 0 1px rgba(163, 163, 163, 0.582);
     overflow: hidden;
 }
 
-.recent__section .recentTable table th,
-.recent__section .recentTable table td {
+.recentTable table th,
+.recentTable table td {
+    text-align: center;
     border-width: 0px !important;
 }
 
-.recent__section .recentTable table th,
-.recent__section .recentTable table tr {
+.recentTable table th,
+.recentTable table tr {
     background-color: #453521 !important;
     color: white;
     font-weight: normal;
     font-size: 12px;
 }
 
-.recent__section .recentTable table tr {
+.recentTable table tr {
     background-color: transparent !important;
     box-shadow: 0 0 0 1px rgba(163, 163, 163, 0.582);
     border-color: rgba(163, 163, 163, 0.582);
 }
-.recent__section .recentTable table tr:first-child {
+.recentTable table tr:first-child {
     border: 0px;
     box-shadow: 0px 0px 0px 0px;
 }
-.recent__section .recentTable table td:last-child,
-.recent__section .recentTable table td:nth-last-child(2) {
+.recentTable table td:last-child,
+.recentTable table td:nth-last-child(2) {
     color: #ffb125 !important;
 }
-.recent__section .recentTable a {
+.recentTable a {
     position: absolute;
     right: 1rem;
     bottom: 1rem;
 }
 
 @media (max-width: 991px) {
-    .recent__section .recentTable a {
+    .recentTable a {
         bottom: -4rem !important;
     }
 }
@@ -5602,4 +5596,14 @@ body.modal-open {
     padding: 0.5rem;
     margin-bottom: 8rem;
     border-radius: 1rem;
+}
+
+.pagination_buttons button {
+    background-color: transparent;
+    width: 1.3rem;
+}
+
+.pagination_buttons button:last-child {
+    transform: rotate(180deg);
+    margin-top: 5px;
 }
