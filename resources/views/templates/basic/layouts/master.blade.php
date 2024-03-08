@@ -46,8 +46,23 @@
     @include($activeTemplate . 'partials.auth_header')
     <div class="main-wrapper">
         @include($activeTemplate . 'partials.breadcrumb')
+        <div class="row">
+            <div class="dashboard__sidebar col-lg-3 text-center pt-100 pb-100">
+                <div class="sidebar">
+                    <ul>
+                        <li class="active"><a href="/user/dashboard">Win History</a></li>
+                        <li><a href="/user/lottery">Purchase History</a></li>
+                        <li><a href="/user/wins">Withdraw History</a></li>
+                        <li><a href="/user/tickets">Deposit History</a></li>
+                        <li><a href="/user/deposit">Profile</a></li>
+                    </ul>
+                </div>
 
-        @yield('content')
+            </div>
+            <div class="col-lg-9 ">
+                @yield('content')
+            </div>
+        </div>
 
     </div>
 
@@ -114,6 +129,38 @@
             });
 
         })(jQuery);
+
+        // SideBar
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get the active menu item from local storage
+            var activeMenuItem = localStorage.getItem('activeMenuItem');
+
+            // Set the initial active state based on local storage
+            if (activeMenuItem) {
+                document.querySelector('.sidebar .active').classList.remove('active');
+                document.querySelector('.sidebar a[href="' + activeMenuItem + '"]').parentElement.classList.add('active');
+            }
+
+            // Add an event listener to set the 'active' class on click
+            var menuItems = document.querySelectorAll('.sidebar a');
+            menuItems.forEach(function (item) {
+                item.addEventListener('click', function () {
+                    // Remove 'active' class from all items
+                    menuItems.forEach(function (innerItem) {
+                        innerItem.parentElement.classList.remove('active');
+                    });
+
+                    // Add 'active' class to the clicked item's parent (li)
+                    item.parentElement.classList.add('active');
+
+                    // Store the active menu item in local storage
+                    localStorage.setItem('activeMenuItem', item.getAttribute('href'));
+                });
+            });
+        });
+
+
+
     </script>
 
 </body>

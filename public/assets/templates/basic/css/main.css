@@ -5607,3 +5607,54 @@ body.modal-open {
     transform: rotate(180deg);
     margin-top: 5px;
 }
+
+.dashboard__sidebar {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+.sidebar {
+    padding-top: 20px;
+    color: white;
+    text-align: center;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul {
+    padding: 10px;
+}
+
+.sidebar ul li {
+    margin-bottom: 8px;
+}
+
+.sidebar ul li a {
+    padding: 10px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #fbb125;
+    display: block;
+    transition: 0.3s;
+    text-align: start;
+}
+
+.sidebar ul ul li a:hover {
+    background-color: #555 !important;
+}
+.sidebar .active {
+    background-color: #fbb02533;
+    border-radius: 7px;
+}
+.content {
+    flex: 1;
+    padding: 20px;
+}
+
+.win__history__title {
+    font-size: 2rem;
+    color: #fbb125;
+}
