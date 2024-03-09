@@ -1652,11 +1652,14 @@ button:focus {
 }
 
 .btn--primary {
-    background-color: #7367f0;
+    background-color: #ffb125;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 }
 
 .btn--primary:hover {
-    background-color: #5e50ee;
+    background-color: rgb(255, 217, 147);
 }
 
 .btn--secondary {
@@ -2294,9 +2297,9 @@ button:focus {
 }
 
 .select option {
-    padding: 0.625rem 0;
+    /* padding: 0.625rem 0;
     display: block;
-    border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5; */
 }
 
 .select.style--trans {
@@ -5611,12 +5614,20 @@ body.modal-open {
 .dashboard__sidebar {
     position: relative;
     display: flex;
-    justify-content: center;
+    justify-content: end;
+    margin-left: 4rem;
+}
+
+.dashboard__line {
+    border-left: 1px solid #79747e;
+    height: 545px;
 }
 .sidebar {
     padding-top: 20px;
     color: white;
     text-align: center;
+    display: flex;
+    justify-content: space-around;
 }
 
 .sidebar ul {
@@ -5630,6 +5641,9 @@ body.modal-open {
 
 .sidebar ul li {
     margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    padding-left: rem;
 }
 
 .sidebar ul li a {
@@ -5654,7 +5668,35 @@ body.modal-open {
     padding: 20px;
 }
 
-.win__history__title {
+.Purchase__history__title,
+.Deposit__history__title,
+.Win__history__title,
+.Withdraw__history__title {
     font-size: 2rem;
     color: #fbb125;
+}
+
+.Withdraw {
+}
+.Withdraw label {
+    font-size: 1.4rem;
+    color: #cac4d0;
+}
+
+.Withdraw select,
+.Withdraw input {
+    background: transparent;
+    border: 1px solid #cac4d0;
+    border-radius: 5px;
+    height: 2.5rem;
+    color: #cac4d0;
+    padding-left: 10px;
+}
+.withdrawOption {
+    background-color: #1d1b20 !important;
+    padding: 0px !important;
+    width: 150px;
+    color: #fbb125 !important;
+    cursor: pointer !important;
+    border: 0px;
 }

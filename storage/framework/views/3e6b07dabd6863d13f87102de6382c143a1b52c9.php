@@ -47,15 +47,31 @@
     <div class="main-wrapper">
         <?php echo $__env->make($activeTemplate . 'partials.breadcrumb', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         <div class="row">
-            <div class="dashboard__sidebar col-lg-3 text-center pt-100 pb-100">
+            <div class="dashboard__sidebar col-lg-2 text-center pt-100 pb-100">
                 <div class="sidebar">
                     <ul>
-                        <li class="active"><a href="/user/dashboard">Win History</a></li>
-                        <li><a href="/user/lottery">Purchase History</a></li>
-                        <li><a href="/user/wins">Withdraw History</a></li>
-                        <li><a href="/user/tickets">Deposit History</a></li>
-                        <li><a href="/user/deposit">Profile</a></li>
+                        <li class="active">
+                            <img src="<?php echo e(asset($activeTemplateTrue . 'images/Cup.svg')); ?>" alt="image">
+                            <a href="/user/dashboard">Win History</a>
+                        </li>
+                        <li>
+                            <img src="<?php echo e(asset($activeTemplateTrue . 'images/Dollar.svg')); ?>" alt="image">
+                            <a href="/user/lottery">Purchase History</a>
+                        </li>
+                        <li>
+                            <img src="<?php echo e(asset($activeTemplateTrue . 'images/ExportDollar.svg')); ?>" alt="image">
+                            <a href="/user/wins">Withdraw History</a>
+                        </li>
+                        <li>
+                            <img src="<?php echo e(asset($activeTemplateTrue . 'images/ImportDollar.svg')); ?>" alt="image">
+                            <a href="/user/tickets">Deposit History</a>
+                        </li>
+                        <li>
+                            <img src="<?php echo e(asset($activeTemplateTrue . 'images/User.svg')); ?>" alt="image">
+                            <a href="/user/deposit">Profile</a>
+                        </li>
                     </ul>
+                    <div class="dashboard__line"></div>
                 </div>
 
             </div>
@@ -165,5 +181,4 @@
 
 </body>
 
-</html>
-<?php /**PATH D:\Web Development\Lotto\ClickLuck\ClickLuck\resources\views/templates/basic/layouts/master.blade.php ENDPATH**/ ?>
+</html><?php /**PATH D:\Web Development\Lotto\ClickLuck\ClickLuck\resources\views/templates/basic/layouts/master.blade.php ENDPATH**/ ?>

@@ -47,15 +47,31 @@
     <div class="main-wrapper">
         @include($activeTemplate . 'partials.breadcrumb')
         <div class="row">
-            <div class="dashboard__sidebar col-lg-3 text-center pt-100 pb-100">
+            <div class="dashboard__sidebar col-lg-2 text-center pt-100 pb-100">
                 <div class="sidebar">
                     <ul>
-                        <li class="active"><a href="/user/dashboard">Win History</a></li>
-                        <li><a href="/user/lottery">Purchase History</a></li>
-                        <li><a href="/user/wins">Withdraw History</a></li>
-                        <li><a href="/user/tickets">Deposit History</a></li>
-                        <li><a href="/user/deposit">Profile</a></li>
+                        <li class="active">
+                            <img src="{{ asset($activeTemplateTrue . 'images/Cup.svg') }}" alt="image">
+                            <a href="/user/dashboard">Win History</a>
+                        </li>
+                        <li>
+                            <img src="{{ asset($activeTemplateTrue . 'images/Dollar.svg') }}" alt="image">
+                            <a href="/user/lottery">Purchase History</a>
+                        </li>
+                        <li>
+                            <img src="{{ asset($activeTemplateTrue . 'images/ExportDollar.svg') }}" alt="image">
+                            <a href="/user/wins">Withdraw History</a>
+                        </li>
+                        <li>
+                            <img src="{{ asset($activeTemplateTrue . 'images/ImportDollar.svg') }}" alt="image">
+                            <a href="/user/tickets">Deposit History</a>
+                        </li>
+                        <li>
+                            <img src="{{ asset($activeTemplateTrue . 'images/User.svg') }}" alt="image">
+                            <a href="/user/deposit">Profile</a>
+                        </li>
                     </ul>
+                    <div class="dashboard__line"></div>
                 </div>
 
             </div>

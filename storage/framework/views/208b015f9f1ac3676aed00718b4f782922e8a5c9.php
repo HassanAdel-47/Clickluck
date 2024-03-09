@@ -1,11 +1,10 @@
-@extends($activeTemplate . 'layouts.master')
-@section('content')
+<?php $__env->startSection('content'); ?>
 <section class="pt-100 pb-100">
     <div class="Withdraw">
         <div class="row justify-content-center">
             <div class="d-flex align-items-center">
                 <a href="/user/tickets" class="me-2"><img
-                        src="{{ asset($activeTemplateTrue . 'images/Back_Arrow.svg') }}" alt="image"></a>
+                        src="<?php echo e(asset($activeTemplateTrue . 'images/Back_Arrow.svg')); ?>" alt="image"></a>
                 <p class="Deposit__history__title ml-4">Witdraw Money</p>
             </div>
             <form id="withdrawForm">
@@ -28,12 +27,12 @@
 </section>
 </div>
 
-{{-- APPROVE MODAL --}}
+
 <div class="modal fade" id="detailModal" role="dialog" tabindex="-1">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">@lang('Details')</h5>
+                <h5 class="modal-title"><?php echo app('translator')->get('Details'); ?></h5>
                 <span class="close" data-bs-dismiss="modal" type="button" aria-label="Close">
                     <i class="las la-times"></i>
                 </span>
@@ -45,14 +44,14 @@
             </div>
             <div class="modal-footer">
                 <button class="btn btn-sm btn--danger text-white" data-bs-dismiss="modal"
-                    type="button">@lang('Close')</button>
+                    type="button"><?php echo app('translator')->get('Close'); ?></button>
             </div>
         </div>
     </div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@push('script')
+<?php $__env->startPush('script'); ?>
 <script>
     function confirmWithdraw() {
         var withdrawAmount = document.getElementById("withdrawAmount").value;
@@ -63,4 +62,5 @@
         console.log("Withdraw Amount: " + withdrawAmount + "\nPayment Method: " + paymentMethod);
     }
 </script>
-@endpush
+<?php $__env->stopPush(); ?>
+<?php echo $__env->make($activeTemplate . 'layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Web Development\Lotto\ClickLuck\ClickLuck\resources\views/templates/basic/user/deposit_history.blade.php ENDPATH**/ ?>
