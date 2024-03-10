@@ -7,7 +7,7 @@
             <div>
                 <div class="w-full d-flex justify-content-between">
                     <p class="Deposit__history__title">Deposit History</p>
-                    <a class="btn btn--primary" href="/user/deposit/history">Deposit Now</a>
+                    <a class="btn btn--primary" href="/user/kyc-form">Deposit Now</a>
                 </div>
                 <div class="pagination_buttons w-full d-flex align-items-center justify-content-between my-3">
                     <p class="d-none Deposit__history__title">Balance: $500.00

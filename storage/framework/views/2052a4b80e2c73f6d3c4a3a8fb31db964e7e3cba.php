@@ -1,11 +1,10 @@
-@extends($activeTemplate . 'layouts.master')
-@section('content')
+<?php $__env->startSection('content'); ?>
 <section class="pt-100 pb-100">
     <div class="Deposit">
         <div class="row justify-content-center">
             <div class="d-flex align-items-center">
                 <a href="/user/tickets" class="me-2"><img
-                        src="{{ asset($activeTemplateTrue . 'images/Back_Arrow.svg') }}" alt="image"></a>
+                        src="<?php echo e(asset($activeTemplateTrue . 'images/Back_Arrow.svg')); ?>" alt="image"></a>
                 <p class="Deposit__history__title ml-4">Deposit Money</p>
             </div>
             <form id="depositForm">
@@ -29,9 +28,9 @@
         </div>
 </section>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@push('script')
+<?php $__env->startPush('script'); ?>
 <script>
     function confirmDeposit() {
         var depositAmount = document.getElementById("depositAmount").value;
@@ -39,4 +38,5 @@
         console.log("Deposit Amount: " + depositAmount + "\nPayment Method: " + paymentMethod);
     }
 </script>
-@endpush
+<?php $__env->stopPush(); ?>
+<?php echo $__env->make($activeTemplate . 'layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Web Development\Lotto\ClickLuck\ClickLuck\resources\views/templates/basic/user/kyc/form.blade.php ENDPATH**/ ?>

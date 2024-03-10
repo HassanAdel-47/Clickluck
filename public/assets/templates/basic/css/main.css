@@ -5623,7 +5623,6 @@ body.modal-open {
     height: 545px;
 }
 .sidebar {
-    padding-top: 20px;
     color: white;
     text-align: center;
     display: flex;
@@ -5643,7 +5642,7 @@ body.modal-open {
     margin-bottom: 8px;
     display: flex;
     align-items: center;
-    padding-left: rem;
+    padding-left: 1rem;
 }
 
 .sidebar ul li a {
@@ -5676,13 +5675,14 @@ body.modal-open {
     color: #fbb125;
 }
 
-.Withdraw {
-}
+.Deposit label,
 .Withdraw label {
     font-size: 1.4rem;
     color: #cac4d0;
 }
 
+.Deposit select,
+.Deposit input,
 .Withdraw select,
 .Withdraw input {
     background: transparent;
@@ -5692,6 +5692,7 @@ body.modal-open {
     color: #cac4d0;
     padding-left: 10px;
 }
+.depositOption,
 .withdrawOption {
     background-color: #1d1b20 !important;
     padding: 0px !important;

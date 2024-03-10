@@ -7,7 +7,7 @@
             <div>
                 <div class="w-full d-flex justify-content-between">
                     <p class="Withdraw__history__title">Withdraw History</p>
-                    <a class="btn btn--primary" href="#">Withdraw Now</a>
+                    <a class="btn btn--primary" href="/user/deposit/history">Withdraw Now</a>
                 </div>
                 <div class="pagination_buttons w-full d-flex align-items-center justify-content-between my-3">
                     <p class="d-none Withdraw__history__title">Balance: $500.00

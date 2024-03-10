@@ -7,7 +7,7 @@
                 <div class="w-full d-flex justify-content-start">
                     <p class="Win__history__title">Win History</p>
                 </div>
-                <div class="pagination_buttons w-full d-flex align-items-center justify-content-end">
+                <div class="pagination_buttons w-full d-flex align-items-center justify-content-end my-3">
                     <p class="me-2">Showing Results 1-10 of 20</p>
                     <button onclick="updateTable('prev')" class="me-4"><img class="w-75"
                             src="<?php echo e(asset($activeTemplateTrue . 'images/Arrow.svg')); ?>" alt="image"></button>
