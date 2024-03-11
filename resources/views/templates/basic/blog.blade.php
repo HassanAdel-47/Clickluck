@@ -6,7 +6,7 @@
         <div class="red">
             <div class="machine__counter">
                 <div id="odometer" class="odometer ">
-                    00
+                    0
                 </div>
                 <div id="odometerTwo" class="odometer ">
                     0
