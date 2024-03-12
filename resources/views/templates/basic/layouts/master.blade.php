@@ -52,23 +52,23 @@
                     <ul>
                         <li class="active">
                             <img src="{{ asset($activeTemplateTrue . 'images/Cup.svg') }}" alt="image">
-                            <a href="/user/dashboard">Win History</a>
+                            <a href="{{route('user.wins')}}">Win History</a>
                         </li>
                         <li>
                             <img src="{{ asset($activeTemplateTrue . 'images/Dollar.svg') }}" alt="image">
-                            <a href="/user/lottery">Purchase History</a>
+                            <a href="{{route('user.transactions')}}">Purchase History</a>
                         </li>
                         <li>
                             <img src="{{ asset($activeTemplateTrue . 'images/ExportDollar.svg') }}" alt="image">
-                            <a href="/user/wins">Withdraw History</a>
+                            <a href="{{route('user.withdraw.history')}}">Withdraw History</a>
                         </li>
                         <li>
                             <img src="{{ asset($activeTemplateTrue . 'images/ImportDollar.svg') }}" alt="image">
-                            <a href="/user/tickets">Deposit History</a>
+                            <a href="{{route("user.deposit.history")}}">Deposit History</a>
                         </li>
                         <li>
-                            <img src="{{ asset($activeTemplateTrue . 'images/User.svg') }}" alt="image">
-                            <a href="/user/deposit">Profile</a>
+                            <img src="{{ asset($activeTemplateTrue . 'images/Dollar.svg') }}" alt="image">
+                            <a href="{{route('user.tickets')}}">my tickets</a>
                         </li>
                     </ul>
                     <div class="dashboard__line"></div>

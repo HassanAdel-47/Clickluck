@@ -27,7 +27,8 @@ class SiteController extends Controller
         }
         $pageTitle = 'Home';
         $sections = Page::where('tempname', $this->activeTemplate)->where('slug', '/')->first();
-        return view($this->activeTemplate . 'home', compact('pageTitle', 'sections'));
+        $phases = Phase::available()->latest('draw_date')->with(['lottery'])->paginate(getPaginate());
+        return view($this->activeTemplate . 'home', compact('pageTitle', 'sections','phases'));
     }
 
     public function pages($slug)

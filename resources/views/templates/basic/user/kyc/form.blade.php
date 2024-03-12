@@ -9,6 +9,8 @@
                 <p class="Deposit__history__title ml-4">Deposit Money</p>
             </div>
             <form id="depositForm">
+                {{-- **************************** --}}
+                @csrf
                 <div class="d-flex align-items-center justify-content-between w-75 mt-3 me-4">
                     <label>
                         Payments we accept:
