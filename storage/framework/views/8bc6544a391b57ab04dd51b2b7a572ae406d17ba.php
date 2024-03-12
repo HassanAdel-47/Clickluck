@@ -1,11 +1,10 @@
-@extends($activeTemplate . 'layouts.master')
-@section('content')
+<?php $__env->startSection('content'); ?>
 <section class="pt-100 pb-100">
     <div class="Deposit">
         <div class="row justify-content-center">
             <div class="d-flex align-items-center">
                 <a href="/user/deposit" class="me-2"><img
-                        src="{{ asset($activeTemplateTrue . 'images/Back_Arrow.svg') }}" alt="image"></a>
+                        src="<?php echo e(asset($activeTemplateTrue . 'images/Back_Arrow.svg')); ?>" alt="image"></a>
                 <p class="Deposit__history__title ml-4">Change Password</p>
             </div>
             <form id="depositForm">
@@ -25,17 +24,17 @@
             </form>
         </div>
 </section>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@push('style')
+<?php $__env->startPush('style'); ?>
 <style>
     .input-group-text:focus {
         box-shadow: none !important;
     }
 </style>
-@endpush
+<?php $__env->stopPush(); ?>
 
-@push('script')
+<?php $__env->startPush('script'); ?>
 <script>
     (function ($) {
         "use strict";
@@ -59,4 +58,5 @@
         });
     })(jQuery);
 </script>
-@endpush
+<?php $__env->stopPush(); ?>
+<?php echo $__env->make($activeTemplate . 'layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Web Development\Lotto\ClickLuck\ClickLuck\resources\views/templates/basic/user/support/create.blade.php ENDPATH**/ ?>

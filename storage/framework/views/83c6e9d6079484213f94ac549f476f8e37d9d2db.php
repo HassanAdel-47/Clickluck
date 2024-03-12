@@ -1,7 +1,6 @@
-@extends($activeTemplate . 'layouts.frontend')
-@section('content')
+<?php $__env->startSection('content'); ?>
 <section class="wallet__charged pt-100 pb-100"
-    style="background-image: url('{{ asset($activeTemplateTrue . 'images/walletCharged.svg')}}') ">
+    style="background-image: url('<?php echo e(asset($activeTemplateTrue . 'images/walletCharged.svg')); ?>') ">
     <div class="w-100 h-100 d-flex align-items-center justify-content-center">
         <div class="d-flex flex-column align-items-center justify-content-center gap-4 ">
             <h1>
@@ -15,9 +14,9 @@
     </div>
 </section>
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-@push('script')
+<?php $__env->startPush('script'); ?>
 <script>
     (function ($) {
         "use strict";
@@ -39,7 +38,7 @@
             if ($(this).data('admin_feedback') != undefined) {
                 var adminFeedback = `
                         <div class="my-3">
-                            <strong>@lang('Admin Feedback')</strong>
+                            <strong><?php echo app('translator')->get('Admin Feedback'); ?></strong>
                             <p>${$(this).data('admin_feedback')}</p>
                         </div>
                     `;
@@ -53,4 +52,5 @@
         });
     })(jQuery);
 </script>
-@endpush
+<?php $__env->stopPush(); ?>
+<?php echo $__env->make($activeTemplate . 'layouts.frontend', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Web Development\Lotto\ClickLuck\ClickLuck\resources\views/templates/basic/user/withdraw/log.blade.php ENDPATH**/ ?>

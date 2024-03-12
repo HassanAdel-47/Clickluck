@@ -1,5 +1,4 @@
-@extends($activeTemplate . 'layouts.master')
-@section('content')
+<?php $__env->startSection('content'); ?>
 <section class="pt-100 pb-100">
     <div class="change__password">
         <div class="row justify-content-center">
@@ -25,10 +24,11 @@
             </form>
         </div>
 </section>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@push('script')
+<?php $__env->startPush('script'); ?>
 <script>
 
 </script>
-@endpush
+<?php $__env->stopPush(); ?>
+<?php echo $__env->make($activeTemplate . 'layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Web Development\Lotto\ClickLuck\ClickLuck\resources\views/templates/basic/user/payment/deposit.blade.php ENDPATH**/ ?>
