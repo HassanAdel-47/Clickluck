@@ -1,42 +1,55 @@
 @extends($activeTemplate . 'layouts.master')
 @section('content')
-<section class="pt-100 pb-100">
-    <div class="Withdraw">
-        <div class="row justify-content-center">
-            <div class="d-flex align-items-center">
-                <a href="/user/tickets" class="me-2"><img
-                        src="{{ asset($activeTemplateTrue . 'images/Back_Arrow.svg') }}" alt="image"></a>
-                <p class="Deposit__history__title ml-4">Witdraw Money</p>
+<!-- dashboard section start -->
+<section class="pt-100 pb-100 Win__history ">
+    <div>
+        <div class="row mt-3 me-5">
+            <div>
+                <div class="w-full d-flex justify-content-between">
+                    <p class="Deposit__history__title">Diposits History</p>
+                </div>
+                <div class="pagination_buttons w-full d-flex align-items-center justify-content-between my-3">
+                    <div class="mt-3">
+                        {{ paginateLinks($deposits) }}
+                    </div>
+                </div>
+                <div class="recentTable mt-2">
+                    <table id="dataTable" class="table table-bordered dt-responsive">
+                        <thead>
+                            <tr>
+                                <th>method_code</th>
+                                <th>amount</th>
+                                <th>method_currency</th>
+                                <th>charge</th>
+                                <th>rate</th>
+                                <th>status</th>
+                                <th>admin_feedback</th>
+                                <th>deposit date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($deposits as $deposit)
+                        <tr>
+                            <td>{{ $deposit->method_code }}</td>
+                            <td>{{ $deposit->amount }}</td>
+                            <td>{{ $deposit->method_currency }}</td>
+                            <td>{{ $deposit->charge }}</td>
+                            <td>{{ $deposit->rate }}</td>
+                            <td>{{ $deposit->status }}</td>
+                            <td>{{ $deposit->admin_feedback }}</td>
+                            <td>{{ $deposit->created_at }}</td>
+
+
+                        </tr>
+                        @endforeach
+                        </tbody>
+
+                    </table>
+                </div>
             </div>
-            <form id="withdrawForm">
-                <div class="d-flex flex-column w-25 mt-3">
-                    <label for="withdrawAmount">Withdraw Amount *</label>
-                    <input type=" text" id="withdrawAmount" name="withdrawAmount" placeholder="50.00" required>
-                </div>
-                <div class="d-flex flex-column w-25 mt-3 ">
-                    <label for="paymentMethod">Payment Method *</label>
-                    <select id="paymentMethod" name="paymentMethod" required>
-                        <option value="paypal" class="withdrawOption">PayPal</option>
-                        <option value="creditCard" class="withdrawOption">Credit Card</option>
-                        <option value="bankTransfer" class="withdrawOption">Bank Transfer</option>
-                    </select>
-                </div>
-
-
-                <button class="btn btn--primary mt-3" type="submit" onclick="confirmWithdraw()">Confirm
-                    Withdraw</button>
-            </form>
         </div>
-</section>
-</div>
-@endsection
 
-@push('script')
-<script>
-    function confirmWithdraw() {
-        var withdrawAmount = document.getElementById("withdrawAmount").value;
-        var paymentMethod = document.getElementById("paymentMethod").value;
-        console.log("Withdraw Amount: " + withdrawAmount + "\nPayment Method: " + paymentMethod);
-    }
-</script>
-@endpush
+    </div>
+</section>
+
+@endsection

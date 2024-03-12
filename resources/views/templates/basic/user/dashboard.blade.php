@@ -5,36 +5,40 @@
     <div>
         <div class="row mt-3 me-5">
             <div>
-                <div class="w-full d-flex justify-content-start">
-                    <p class="Win__history__title">Win History</p>
+                <div class="w-full d-flex justify-content-between">
+                    <p class="Deposit__history__title">My tickets</p>
                 </div>
-                <div class="pagination_buttons w-full d-flex align-items-center justify-content-end my-3">
-                    <p class="me-2">Showing Results 1-10 of 20</p>
-                    <button onclick="updateTable('prev')" class="me-4"><img class="w-75"
-                            src="{{ asset($activeTemplateTrue . 'images/Arrow.svg') }}" alt="image"></button>
-                    <button onclick="updateTable('next')"><img class="w-75"
-                            src="{{ asset($activeTemplateTrue . 'images/Arrow.svg') }}" alt="image"></button>
+                <div class="pagination_buttons w-full d-flex align-items-center justify-content-between my-3">
+                    {{-- <div class="d-flex align-items-center">
+                        <p class="me-2">Showing Results {{$tickets->firstItem()}}-{{$tickets->lastItem()}} of {{$tickets->total()}}</p>
+                        <button onclick="updateTable('prev')" class="me-4"><img class="w-75"
+                                src="{{ asset($activeTemplateTrue . 'images/Arrow.svg') }}" alt="image"></button>
+                        <button onclick="updateTable('next')"><img class="w-75"
+                                src="{{ asset($activeTemplateTrue . 'images/Arrow.svg') }}" alt="image"></button>
+                    </div> --}}
+                    <div class="mt-3">
+                        {{ paginateLinks($tickets) }}
+                    </div>
                 </div>
                 <div class="recentTable mt-2">
                     <table id="dataTable" class="table table-bordered dt-responsive">
                         <thead>
                             <tr>
                                 <th>Ticket Number</th>
-                                <th>Draw Date</th>
-                                <th>Game</th>
-                                <th>Winning Place</th>
-                                <th>Prize</th>
+                                <th>Purchase Date</th>
+                                <th>Ticket Price</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td id="ticketNumber1">Ticket Number</td>
-                                <td id="drawDate1">20/1/2023</td>
-                                <td id="game1">Game Name</td>
-                                <td id="winningPlace1">1st</td>
-                                <td id="prize1">$5,000.00</td>
-                            </tr>
+                            @foreach($tickets as $ticket)
+                        <tr>
+                            <td>{{ $ticket->ticket_number }}</td>
+                            <td>{{ $ticket->created_at }}</td>
+                            <td>{{ $ticket->total_price }}</td>
+                        </tr>
+                        @endforeach
                         </tbody>
+
                     </table>
                 </div>
             </div>
@@ -45,7 +49,7 @@
 <!-- dashboard section end -->
 
 @endsection
-@push('script')
+{{-- @push('script')
 <script>
     // Sample data array with 15 rows
     const dataArray = [
@@ -115,4 +119,4 @@
     // Initial table update
     updateTable();
 </script>
-@endpush
+@endpush --}}
