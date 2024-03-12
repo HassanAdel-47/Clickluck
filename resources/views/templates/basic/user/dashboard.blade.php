@@ -1,53 +1,56 @@
 @extends($activeTemplate . 'layouts.master')
 @section('content')
-<!-- dashboard section start -->
-<section class="pt-100 pb-100 Win__history ">
-    <div>
-        <div class="row mt-3 me-5">
-            <div>
-                <div class="w-full d-flex justify-content-between">
-                    <p class="Deposit__history__title">My tickets</p>
-                </div>
-                <div class="pagination_buttons w-full d-flex align-items-center justify-content-between my-3">
-                    {{-- <div class="d-flex align-items-center">
+    <!-- dashboard section start -->
+    <section class="pt-100 pb-100 Win__history ">
+        <div>
+            <div class="row mt-3 me-5">
+                <div>
+                    <div class="w-full d-flex justify-content-between">
+                        <p class="Deposit__history__title">My tickets</p>
+                    </div>
+                    <div class="pagination_buttons w-full d-flex align-items-center justify-content-between my-3">
+                        {{-- <div class="d-flex align-items-center">
                         <p class="me-2">Showing Results {{$tickets->firstItem()}}-{{$tickets->lastItem()}} of {{$tickets->total()}}</p>
                         <button onclick="updateTable('prev')" class="me-4"><img class="w-75"
                                 src="{{ asset($activeTemplateTrue . 'images/Arrow.svg') }}" alt="image"></button>
                         <button onclick="updateTable('next')"><img class="w-75"
                                 src="{{ asset($activeTemplateTrue . 'images/Arrow.svg') }}" alt="image"></button>
                     </div> --}}
-                    <div class="mt-3">
-                        {{ paginateLinks($tickets) }}
+                        <div class="mt-3">
+                            {{ paginateLinks($tickets) }}
+                        </div>
+                    </div>
+                    <div class="recentTable mt-2">
+                        <table id="dataTable" class="table table-bordered dt-responsive">
+                            <thead>
+                                <tr>
+                                    <th>Ticket Number</th>
+                                    <th>Purchase Date</th>
+                                    <th>Ticket Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse($tickets as $ticket)
+                                    <tr>
+                                        <td>{{ $ticket->ticket_number }}</td>
+                                        <td>{{ $ticket->created_at }}</td>
+                                        <td>{{ $ticket->total_price }}</td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td class="rounded-bottom text-center" colspan="100%"> {{ __($emptyMessage) }}</td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+
+                        </table>
                     </div>
                 </div>
-                <div class="recentTable mt-2">
-                    <table id="dataTable" class="table table-bordered dt-responsive">
-                        <thead>
-                            <tr>
-                                <th>Ticket Number</th>
-                                <th>Purchase Date</th>
-                                <th>Ticket Price</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($tickets as $ticket)
-                        <tr>
-                            <td>{{ $ticket->ticket_number }}</td>
-                            <td>{{ $ticket->created_at }}</td>
-                            <td>{{ $ticket->total_price }}</td>
-                        </tr>
-                        @endforeach
-                        </tbody>
-
-                    </table>
-                </div>
             </div>
+
         </div>
-
-    </div>
-</section>
-<!-- dashboard section end -->
-
+    </section>
+    <!-- dashboard section end -->
 @endsection
 {{-- @push('script')
 <script>

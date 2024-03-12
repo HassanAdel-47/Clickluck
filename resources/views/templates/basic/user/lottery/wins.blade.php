@@ -1,49 +1,52 @@
 @extends($activeTemplate . 'layouts.master')
 @section('content')
-<!-- dashboard section start -->
-<section class="pt-100 pb-100 Withdraw__history ">
-    <div>
-        <div class="row mt-3 me-5">
-            <div>
-                <div class="w-full d-flex justify-content-between">
-                    <p class="Deposit__history__title">Winning History</p>
-                </div>
-                <div class="pagination_buttons w-full d-flex align-items-center justify-content-between my-3">
-                    <div class="mt-3">
-                        {{ paginateLinks($wins) }}
+    <!-- dashboard section start -->
+    <section class="pt-100 pb-100 Withdraw__history ">
+        <div>
+            <div class="row mt-3 me-5">
+                <div>
+                    <div class="w-full d-flex justify-content-between">
+                        <p class="Deposit__history__title">Winning History</p>
+                    </div>
+                    <div class="pagination_buttons w-full d-flex align-items-center justify-content-between my-3">
+                        <div class="mt-3">
+                            {{ paginateLinks($wins) }}
+                        </div>
+                    </div>
+                    <div class="recentTable mt-2">
+                        <table id="dataTable" class="table table-bordered dt-responsive">
+                            <thead>
+                                <tr>
+                                    <th>Ticket Number</th>
+                                    <th>Draw Date</th>
+                                    <th>Ticket Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse($wins as $win)
+                                    <tr>
+                                        <td>{{ $win->ticket_number }}</td>
+                                        <td>{{ $win->created_at }}</td>
+                                        <td>{{ $win->win_bonus }}</td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td class="rounded-bottom text-center" colspan="100%"> {{ __($emptyMessage) }}</td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+
+                        </table>
                     </div>
                 </div>
-                <div class="recentTable mt-2">
-                    <table id="dataTable" class="table table-bordered dt-responsive">
-                        <thead>
-                            <tr>
-                                <th>Ticket Number</th>
-                                <th>Draw Date</th>
-                                <th>Ticket Price</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($wins as $win)
-                        <tr>
-                            <td>{{ $win->ticket_number }}</td>
-                            <td>{{ $win->created_at }}</td>
-                            <td>{{ $win->win_bonus }}</td>
-                        </tr>
-                        @endforeach
-                        </tbody>
-
-                    </table>
-                </div>
             </div>
+
         </div>
-
-    </div>
-</section>
-<!-- dashboard section end -->
-
+    </section>
+    <!-- dashboard section end -->
 @endsection
 @push('script')
-{{-- <script>
+    {{-- <script>
     // Sample data array with 15 rows
     const dataArray = [
         ["Ticket Number 1", "21/1/2023", "$5,000.00"],
