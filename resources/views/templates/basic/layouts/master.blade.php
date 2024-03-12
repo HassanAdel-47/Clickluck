@@ -64,11 +64,11 @@
                         </li>
                         <li>
                             <img src="{{ asset($activeTemplateTrue . 'images/ImportDollar.svg') }}" alt="image">
-                            <a href="/user/tickets">Deposit History</a>
+                            <a href="/user/deposit">Deposit History</a>
                         </li>
                         <li>
-                            <img src="{{ asset($activeTemplateTrue . 'images/User.svg') }}" alt="image">
-                            <a href="/user/deposit">Profile</a>
+                            <img src="{{ asset($activeTemplateTrue . 'images/Dollar.svg') }}" alt="image">
+                            <a href="{{route('user.tickets')}}">my tickets</a>
                         </li>
                     </ul>
                     <div class="dashboard__line"></div>

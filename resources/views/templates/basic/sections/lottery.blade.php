@@ -6,289 +6,92 @@
             <h1 class="black__title__bold  text-center">Lotteries</h1>
         </div>
         <div class="row mt-4 d-flex justify-content-center align-items-center w-100">
+            @foreach ($phases as $phase)
             <div
                 class="lottary__square__container col-12 col-md-6 col-xl-3 d-flex justify-content-center align-items-center">
                 <div class="lottary__square w-75 d-flex flex-column justify-content-center my-5 lg:my-0 ">
                     <div class=" d-flex justify-content-around align-items-between w-100 ">
                         <img src="{{ asset($activeTemplateTrue . 'images/lottary_card.png')}}" alt="image" />
                         <h6>
-                            Game Name
+                            {{$phase->lottery->name}}
                         </h6>
-                    </div>
-                    <h5 class="mt-2">
-                        $5,000 Prize
-                    </h5>
-                    <div class=" mt-2 d-flex justify-content-around align-items-between w-100">
-                        <p>
-                            Start Date:
-                        </p>
-                        <p>
-                            1/1/2023
-                        </p>
-                    </div>
-                    <div class=" mt-2 d-flex justify-content-around align-items-between w-100">
-                        <p>
-                            End Date:
-                        </p>
-                        <p>
-                            1/1/2023
-                        </p>
-                    </div>
-                    <a class="btn p-2 btn--base--message wow fadeInUp mt-2" data-wow-duration="0.5s"
-                        data-wow-delay="0.7s" href="{{ @$banner->data_values->button_url }}">Buy Ticket $50.00</a>
-                    <div class="label__running d-flex justify-content-around align-items-between">
-                        <p>Running</p>
-                    </div>
-                </div>
-            </div>
-            <div
-                class="lottary__square__container col-12 col-md-6 col-xl-3 d-flex justify-content-center align-items-center">
-                <div class="lottary__square w-75 d-flex flex-column justify-content-center my-5 lg:my-0 ">
-                    <div class=" d-flex justify-content-around align-items-between w-100 ">
-                        <img src="{{ asset($activeTemplateTrue . 'images/lottary_card.png')}}" alt="image" />
-                        <h6>
-                            Game Name
-                        </h6>
-                    </div>
-                    <h5 class="mt-2">
-                        $5,000 Prize
-                    </h5>
-                    <div class=" mt-2 d-flex justify-content-around align-items-between w-100">
-                        <p>
-                            Start Date:
-                        </p>
-                        <p>
-                            1/1/2023
-                        </p>
-                    </div>
-                    <div class=" mt-2 d-flex justify-content-around align-items-between w-100">
-                        <p>
-                            End Date:
-                        </p>
-                        <p>
-                            1/1/2023
-                        </p>
-                    </div>
-                    <a class="btn p-2 btn--base--message wow fadeInUp mt-2" data-wow-duration="0.5s"
-                        data-wow-delay="0.7s" href="{{ @$banner->data_values->button_url }}">Buy Ticket $50.00</a>
-                    <div class="label__coming d-flex justify-content-around align-items-between">
-                        <p>Coming</p>
-                    </div>
-                </div>
-            </div>
-            <div
-                class="lottary__square__container col-12 col-md-6 col-xl-3 d-flex justify-content-center align-items-center">
-                <div class="lottary__square w-75 d-flex flex-column justify-content-center my-5 lg:my-0 ">
-                    <div class=" d-flex justify-content-around align-items-between w-100 ">
-                        <img src="{{ asset($activeTemplateTrue . 'images/lottary_card.png')}}" alt="image" />
-                        <h6>
-                            Game Name
-                        </h6>
-                    </div>
-                    <h5 class="mt-2">
-                        $5,000 Prize
-                    </h5>
-                    <div class=" mt-2 d-flex justify-content-around align-items-between w-100">
-                        <p>
-                            Start Date:
-                        </p>
-                        <p>
-                            1/1/2023
-                        </p>
-                    </div>
-                    <div class=" mt-2 d-flex justify-content-around align-items-between w-100">
-                        <p>
-                            End Date:
-                        </p>
-                        <p>
-                            1/1/2023
-                        </p>
-                    </div>
-                    <a class="btn p-2 btn--base--message wow fadeInUp mt-2" data-wow-duration="0.5s"
-                        data-wow-delay="0.7s" href="{{ @$banner->data_values->button_url }}">Buy Ticket $50.00</a>
-                    <div class="label__running d-flex justify-content-around align-items-between">
-                        <p>Running</p>
-                    </div>
-                </div>
-            </div>
-            <div
-                class="lottary__square__container col-12 col-md-6 col-xl-3 d-flex justify-content-center align-items-center">
-                <div class="lottary__square w-75 d-flex flex-column justify-content-center my-5 lg:my-0 ">
-                    <div class=" d-flex justify-content-around align-items-between w-100 ">
-                        <img src="{{ asset($activeTemplateTrue . 'images/lottary_card.png')}}" alt="image" />
-                        <h6>
-                            Game Name
-                        </h6>
-                    </div>
-                    <h5 class="mt-2">
-                        $5,000 Prize
-                    </h5>
-                    <div class=" mt-2 d-flex justify-content-around align-items-between w-100">
-                        <p>
-                            Start Date:
-                        </p>
-                        <p>
-                            1/1/2023
-                        </p>
-                    </div>
-                    <div class=" mt-2 d-flex justify-content-around align-items-between w-100">
-                        <p>
-                            End Date:
-                        </p>
-                        <p>
-                            1/1/2023
-                        </p>
-                    </div>
-                    <a class="btn p-2 btn--base--message wow fadeInUp mt-2" data-wow-duration="0.5s"
-                        data-wow-delay="0.7s" href="{{ @$banner->data_values->button_url }}">Buy Ticket $50.00</a>
-                    <div class="label__coming d-flex justify-content-around align-items-between">
-                        <p>Coming</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row mt-4 d-flex justify-content-center align-items-center w-100">
-            <div
-                class="lottary__square__container col-12 col-md-6 col-xl-3 d-flex justify-content-center align-items-center">
-                <div class="lottary__square w-75 d-flex flex-column justify-content-center my-5 lg:my-0 ">
-                    <div class=" d-flex justify-content-around align-items-between w-100">
-                        <img src="{{ asset($activeTemplateTrue . 'images/lottary_card.png')}}" alt="image" />
-                        <h6>
-                            Game Name
-                        </h6>
-                    </div>
-                    <h5 class="mt-2">
-                        $5,000 Prize
-                    </h5>
-                    <div class=" mt-2 d-flex justify-content-around align-items-between w-100">
-                        <p>
-                            Start Date:
-                        </p>
-                        <p>
-                            1/1/2023
-                        </p>
-                    </div>
-                    <div class=" mt-2 d-flex justify-content-around align-items-between w-100">
-                        <p>
-                            End Date:
-                        </p>
-                        <p>
-                            1/1/2023
-                        </p>
-                    </div>
-                    <a class="btn p-2 btn--base--message wow fadeInUp mt-2" data-wow-duration="0.5s"
-                        data-wow-delay="0.7s" href="{{ @$banner->data_values->button_url }}">Buy Ticket $50.00</a>
-                    <div class="label__running d-flex justify-content-around align-items-between">
-                        <p>Running</p>
-                    </div>
-                </div>
-            </div>
-            <div
-                class="lottary__square__container col-12 col-md-6 col-xl-3 d-flex justify-content-center align-items-center">
-                <div class="lottary__square w-75 d-flex flex-column justify-content-center my-5 lg:my-0 ">
-                    <div class=" d-flex justify-content-around align-items-between w-100">
-                        <img src="{{ asset($activeTemplateTrue . 'images/lottary_card.png')}}" alt="image" />
-                        <h6>
-                            Game Name
-                        </h6>
-                    </div>
-                    <h5 class="mt-2">
-                        $5,000 Prize
-                    </h5>
-                    <div class=" mt-2 d-flex justify-content-around align-items-between w-100">
-                        <p>
-                            Start Date:
-                        </p>
-                        <p>
-                            1/1/2023
-                        </p>
-                    </div>
-                    <div class=" mt-2 d-flex justify-content-around align-items-between w-100">
-                        <p>
-                            End Date:
-                        </p>
-                        <p>
-                            1/1/2023
-                        </p>
-                    </div>
-                    <a class="btn p-2 btn--base--message wow fadeInUp mt-2" data-wow-duration="0.5s"
-                        data-wow-delay="0.7s" href="{{ @$banner->data_values->button_url }}">Buy Ticket $50.00</a>
-                    <div class="label__coming d-flex justify-content-around align-items-between">
-                        <p>Coming</p>
-                    </div>
-                </div>
-            </div>
-            <div
-                class="lottary__square__container col-12 col-md-6 col-xl-3 d-flex justify-content-center align-items-center">
-                <div class="lottary__square w-75 d-flex flex-column justify-content-center my-5 lg:my-0 ">
-                    <div class=" d-flex justify-content-around align-items-between w-100">
-                        <img src="{{ asset($activeTemplateTrue . 'images/lottary_card.png')}}" alt="image" />
-                        <h6>
-                            Game Name
-                        </h6>
-                    </div>
-                    <h5 class="mt-2">
-                        $5,000 Prize
-                    </h5>
-                    <div class=" mt-2 d-flex justify-content-around align-items-between w-100">
-                        <p>
-                            Start Date:
-                        </p>
-                        <p>
-                            1/1/2023
-                        </p>
-                    </div>
-                    <div class=" mt-2 d-flex justify-content-around align-items-between w-100">
-                        <p>
-                            End Date:
-                        </p>
-                        <p>
-                            1/1/2023
-                        </p>
-                    </div>
-                    <a class="btn p-2 btn--base--message wow fadeInUp mt-2" data-wow-duration="0.5s"
-                        data-wow-delay="0.7s" href="{{ @$banner->data_values->button_url }}">Buy Ticket $50.00</a>
-                    <div class="label__running d-flex justify-content-around align-items-between">
-                        <p>Running</p>
-                    </div>
-                </div>
-            </div>
-            <div
-                class=" lottary__square__container col-12 col-md-6 col-xl-3 d-flex justify-content-center align-items-center ">
-                <div class="lottary__square w-75 d-flex flex-column justify-content-center my-5 lg:my-0 ">
-                    <div class=" d-flex justify-content-around align-items-between w-100">
-                        <img src="{{ asset($activeTemplateTrue . 'images/lottary_card.png')}}" alt="image" />
-                        <h6>
-                            Game Name
-                        </h6>
-                    </div>
-                    <h5 class="mt-2">
-                        $5,000 Prize
-                    </h5>
-                    <div class=" mt-2 d-flex justify-content-around align-items-between w-100">
-                        <p>
-                            Start Date:
-                        </p>
-                        <p>
-                            1/1/2023
-                        </p>
-                    </div>
-                    <div class=" mt-2 d-flex justify-content-around align-items-between w-100">
-                        <p>
-                            End Date:
-                        </p>
-                        <p>
-                            1/1/2023
-                        </p>
-                    </div>
-                    <a class="btn p-2 btn--base--message wow fadeInUp mt-2" data-wow-duration="0.5s"
-                        data-wow-delay="0.7s" href="{{ @$banner->data_values->button_url }}">Buy Ticket $50.00</a>
-                    <div class="label__coming d-flex justify-content-around align-items-between">
-                        <p>Coming</p>
-                    </div>
-                </div>
 
+                    </div>
+                    <h5 class="mt-2">
+                        ???????????
+                    </h5>
+                    <div class=" mt-2 d-flex justify-content-around align-items-between w-100">
+                        <p>
+                            Start Date:
+                        </p>
+                        <p>
+                            {{date('d-m-Y', strtotime($phase->start_date))}}
+                        </p>
+                    </div>
+                    <div class=" mt-2 d-flex justify-content-around align-items-between w-100">
+                        <p>
+                            End Date:
+                        </p>
+                        <p>
+                            {{date('d-m-Y', strtotime($phase->draw_date))}}
+
+                        </p>
+                    </div>
+                    <div class=" mt-2 d-flex justify-content-around align-items-between w-100">
+                        <p>
+                           Available lotteries:
+                        </p>
+                        <p>
+                            {{$phase->available}}
+
+                        </p>
+                    </div>
+                    <a class="btn p-2 btn--base--message wow fadeInUp mt-2" data-wow-duration="0.5s"
+                        data-wow-delay="0.7s" href="{{route("lottery.details",$phase->lottery->id)}}">
+                        Buy Ticket ${{number_format($phase->lottery->price,2)}}</a>
+                    <div class="label__running d-flex justify-content-around align-items-between">
+                        <p>Running</p>
+                    </div>
+                </div>
             </div>
+            @endforeach
+
+            {{-- <div
+                class="lottary__square__container col-12 col-md-6 col-xl-3 d-flex justify-content-center align-items-center">
+                <div class="lottary__square w-75 d-flex flex-column justify-content-center my-5 lg:my-0 ">
+                    <div class=" d-flex justify-content-around align-items-between w-100 ">
+                        <img src="{{ asset($activeTemplateTrue . 'images/lottary_card.png')}}" alt="image" />
+                        <h6>
+                            Game Name
+                        </h6>
+                    </div>
+                    <h5 class="mt-2">
+                        $5,000 Prize
+                    </h5>
+                    <div class=" mt-2 d-flex justify-content-around align-items-between w-100">
+                        <p>
+                            Start Date:
+                        </p>
+                        <p>
+                            1/1/2023
+                        </p>
+                    </div>
+                    <div class=" mt-2 d-flex justify-content-around align-items-between w-100">
+                        <p>
+                            End Date:
+                        </p>
+                        <p>
+                            1/1/2023
+                        </p>
+                    </div>
+                    <a class="btn p-2 btn--base--message wow fadeInUp mt-2" data-wow-duration="0.5s"
+                        data-wow-delay="0.7s" href="{{ @$banner->data_values->button_url }}">Buy Ticket $50.00</a>
+                    <div class="label__coming d-flex justify-content-around align-items-between">
+                        <p>Coming</p>
+                    </div>
+                </div>
+            </div> --}}
+
         </div>
 
         <div class="row mt-4 d-flex justify-content-center align-items-center w-100">
