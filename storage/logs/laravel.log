@@ -6044,3 +6044,87 @@
 #75 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\server.php(21): require_once('D:\\\\CODA Company...')
 #76 {main}
 "} 
+[2024-03-13 05:42:15] local.ERROR: Class "Barryvdh\Debugbar\ServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Barryvdh\\Debugbar\\ServiceProvider\" not found at D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php:754)
+[stacktrace]
+#0 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(686): Illuminate\\Foundation\\Application->resolveProvider('Barryvdh\\\\Debugb...')
+#1 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\ProviderRepository.php(75): Illuminate\\Foundation\\Application->register('Barryvdh\\\\Debugb...')
+#2 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(666): Illuminate\\Foundation\\ProviderRepository->load(Array)
+#3 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\RegisterProviders.php(17): Illuminate\\Foundation\\Application->registerConfiguredProviders()
+#4 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(242): Illuminate\\Foundation\\Bootstrap\\RegisterProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#5 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(383): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#6 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(153): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#7 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#8 {main}
+"} 
+[2024-03-13 05:42:16] local.ERROR: Class "Barryvdh\Debugbar\ServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Barryvdh\\Debugbar\\ServiceProvider\" not found at D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php:754)
+[stacktrace]
+#0 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(686): Illuminate\\Foundation\\Application->resolveProvider('Barryvdh\\\\Debugb...')
+#1 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\ProviderRepository.php(75): Illuminate\\Foundation\\Application->register('Barryvdh\\\\Debugb...')
+#2 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(666): Illuminate\\Foundation\\ProviderRepository->load(Array)
+#3 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\RegisterProviders.php(17): Illuminate\\Foundation\\Application->registerConfiguredProviders()
+#4 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(242): Illuminate\\Foundation\\Bootstrap\\RegisterProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#5 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(383): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#6 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(153): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#7 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#8 {main}
+"} 
+[2024-03-13 05:42:16] local.ERROR: Class "Barryvdh\Debugbar\ServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Barryvdh\\Debugbar\\ServiceProvider\" not found at D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php:754)
+[stacktrace]
+#0 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(686): Illuminate\\Foundation\\Application->resolveProvider('Barryvdh\\\\Debugb...')
+#1 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\ProviderRepository.php(75): Illuminate\\Foundation\\Application->register('Barryvdh\\\\Debugb...')
+#2 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(666): Illuminate\\Foundation\\ProviderRepository->load(Array)
+#3 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\RegisterProviders.php(17): Illuminate\\Foundation\\Application->registerConfiguredProviders()
+#4 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(242): Illuminate\\Foundation\\Bootstrap\\RegisterProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#5 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(383): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#6 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(153): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#7 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#8 {main}
+"} 
+[2024-03-13 05:43:16] local.ERROR: Class "Barryvdh\Debugbar\ServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Barryvdh\\Debugbar\\ServiceProvider\" not found at D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php:754)
+[stacktrace]
+#0 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(686): Illuminate\\Foundation\\Application->resolveProvider('Barryvdh\\\\Debugb...')
+#1 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\ProviderRepository.php(75): Illuminate\\Foundation\\Application->register('Barryvdh\\\\Debugb...')
+#2 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(666): Illuminate\\Foundation\\ProviderRepository->load(Array)
+#3 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\RegisterProviders.php(17): Illuminate\\Foundation\\Application->registerConfiguredProviders()
+#4 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(242): Illuminate\\Foundation\\Bootstrap\\RegisterProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#5 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(383): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#6 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(153): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#7 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#8 {main}
+"} 
+[2024-03-13 05:43:16] local.ERROR: Class "Barryvdh\Debugbar\ServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Barryvdh\\Debugbar\\ServiceProvider\" not found at D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php:754)
+[stacktrace]
+#0 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(686): Illuminate\\Foundation\\Application->resolveProvider('Barryvdh\\\\Debugb...')
+#1 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\ProviderRepository.php(75): Illuminate\\Foundation\\Application->register('Barryvdh\\\\Debugb...')
+#2 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(666): Illuminate\\Foundation\\ProviderRepository->load(Array)
+#3 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\RegisterProviders.php(17): Illuminate\\Foundation\\Application->registerConfiguredProviders()
+#4 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(242): Illuminate\\Foundation\\Bootstrap\\RegisterProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#5 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(383): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#6 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(153): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#7 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#8 {main}
+"} 
+[2024-03-13 05:44:16] local.ERROR: Class "Barryvdh\Debugbar\ServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Barryvdh\\Debugbar\\ServiceProvider\" not found at D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php:754)
+[stacktrace]
+#0 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(686): Illuminate\\Foundation\\Application->resolveProvider('Barryvdh\\\\Debugb...')
+#1 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\ProviderRepository.php(75): Illuminate\\Foundation\\Application->register('Barryvdh\\\\Debugb...')
+#2 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(666): Illuminate\\Foundation\\ProviderRepository->load(Array)
+#3 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\RegisterProviders.php(17): Illuminate\\Foundation\\Application->registerConfiguredProviders()
+#4 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(242): Illuminate\\Foundation\\Bootstrap\\RegisterProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#5 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(383): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#6 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(153): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#7 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#8 {main}
+"} 
+[2024-03-13 05:44:16] local.ERROR: Class "Barryvdh\Debugbar\ServiceProvider" not found {"exception":"[object] (Error(code: 0): Class \"Barryvdh\\Debugbar\\ServiceProvider\" not found at D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php:754)
+[stacktrace]
+#0 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(686): Illuminate\\Foundation\\Application->resolveProvider('Barryvdh\\\\Debugb...')
+#1 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\ProviderRepository.php(75): Illuminate\\Foundation\\Application->register('Barryvdh\\\\Debugb...')
+#2 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(666): Illuminate\\Foundation\\ProviderRepository->load(Array)
+#3 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\RegisterProviders.php(17): Illuminate\\Foundation\\Application->registerConfiguredProviders()
+#4 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(242): Illuminate\\Foundation\\Bootstrap\\RegisterProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#5 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(383): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#6 D:\\CODA Company\\projects\\Click Luck\\Clickluck\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(153): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#7 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#8 {main}
+"} 

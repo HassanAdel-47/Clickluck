@@ -20,7 +20,7 @@ use Illuminate\Support\Str;
 
 function systemDetails()
 {
-    $system['name'] = 'LottoLab';
+    $system['name'] = 'ClickLuck';
     $system['version'] = '2.0';
     $system['build_version'] = '4.3.6';
     return $system;
