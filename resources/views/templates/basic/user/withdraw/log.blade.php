@@ -1,56 +1,62 @@
-@extends($activeTemplate . 'layouts.frontend')
+@extends($activeTemplate . 'layouts.master')
 @section('content')
-<section class="wallet__charged pt-100 pb-100"
-    style="background-image: url('{{ asset($activeTemplateTrue . 'images/walletCharged.svg')}}') ">
-    <div class="w-100 h-100 d-flex align-items-center justify-content-center">
-        <div class="d-flex flex-column align-items-center justify-content-center gap-4 ">
-            <h1>
-                Wallet Charged!
-            </h1>
-            <p>
-                Your Wallet Has Been Charged With $50.00 Successfully
-            </p>
-            <a class="btn btn--primary" href="/">Go To Homepage</a>
-        </div>
-    </div>
-</section>
-
-@endsection
-
-@push('script')
-<script>
-    (function ($) {
-        "use strict";
-        $('.detailBtn').on('click', function () {
-            var modal = $('#detailModal');
-            var userData = $(this).data('user_data');
-            var html = ``;
-            userData.forEach(element => {
-                if (element.type != 'file') {
-                    html += `
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <span>${element.name}</span>
-                            <span">${element.value}</span>
-                        </li>`;
-                }
-            });
-            modal.find('.userData').html(html);
-
-            if ($(this).data('admin_feedback') != undefined) {
-                var adminFeedback = `
-                        <div class="my-3">
-                            <strong>@lang('Admin Feedback')</strong>
-                            <p>${$(this).data('admin_feedback')}</p>
+    <!-- dashboard section start -->
+    <section class="pt-100 pb-100 Win__history ">
+        <div>
+            <div class="row mt-3 me-5">
+                <div>
+                    <div class="w-full d-flex justify-content-between">
+                        <p class="Deposit__history__title">My withdraws</p>
+                    </div>
+                    <div class="pagination_buttons w-full d-flex align-items-center justify-content-between my-3">
+                        <div class="mt-3">
+                            {{ paginateLinks($withdraws) }}
                         </div>
-                    `;
-            } else {
-                var adminFeedback = '';
-            }
+                    </div>
+                    <div class="recentTable mt-2">
+                        <table id="dataTable" class="table table-bordered dt-responsive">
+                            <thead>
+                                <tr>
+                                    <th>withdraw method</th>
+                                    <th>amount</th>
+                                    <th>currency</th>
+                                    <th>rate</th>
+                                    <th>charge</th>
+                                    <th>after_charge</th>
+                                    <th>withdraw_information</th>
+                                    <th>status</th>
+                                    <th>admin_feedback</th>
+                                    <th>withdraw date</th>
 
-            modal.find('.feedback').html(adminFeedback);
 
-            modal.modal('show');
-        });
-    })(jQuery);
-</script>
-@endpush
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse($withdraws as $withdraw)
+                                    <tr>
+                                        <td>{{ $withdraw->method->name }}</td>
+                                        <td>{{ $withdraw->amount }}</td>
+                                        <td>{{ $withdraw->currency }}</td>
+                                        <td>{{ $withdraw->rate }}</td>
+                                        <td>{{ $withdraw->charge }}</td>
+                                        <td>{{ $withdraw->after_charge }}</td>
+                                        <td>{{ $withdraw->withdraw_information }}</td>
+                                        <td>{{ $withdraw->status }}</td>
+                                        <td>{{ $withdraw->admin_feedback }}</td>
+                                        <td>{{ $withdraw->created_at }}</td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td class="rounded-bottom text-center" colspan="100%"> {{ __($emptyMessage) }}</td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+@endsection
