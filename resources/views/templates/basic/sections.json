@@ -12,7 +12,8 @@
             "heading": "text",
             "subheading": "text",
             "button_name": "text",
-            "button_url": "text"
+            "button_url": "text",
+            "related_lottery_phase_id": "text"
         }
     },
     "breadcrumb": {
