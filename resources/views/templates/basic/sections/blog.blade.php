@@ -1,3 +1,9 @@
+@php
+$content = getContent('blog.content', true);
+$elements = getContent('blog.element', false, null, true);
+// dd($elements);
+@endphp
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <section class="tabsSection"
     style="background-image:  url('{{ asset($activeTemplateTrue . 'images/LotteriesSection.png')}}') ">
