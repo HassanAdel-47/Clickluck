@@ -6,12 +6,23 @@
             <div class="row mt-3 me-5">
                 <div>
                     <div class="w-full d-flex justify-content-between">
-                        <p class="Deposit__history__title">My withdraws</p>
+                        <p class="Deposit__history__title">Withdraw History</p>
+                        <div class="d-flex justify-content-between mb-3 flex-wrap gap-3">
+
+                            <a class="btn btn--primary flex-shrink-0" href="{{ route('user.withdraw') }}">
+                                @lang('Withdraw Now')
+                            </a>
+                        </div>
                     </div>
                     <div class="pagination_buttons w-full d-flex align-items-center justify-content-between my-3">
+                        <div class="d-flex justify-content-between mb-3 flex-wrap gap-3">
+                            @lang('Balance'): {{ formateNumber(Auth::user()->balance)}}
+                        </div>
                         <div class="mt-3">
                             {{ paginateLinks($withdraws) }}
                         </div>
+
+
                     </div>
                     <div class="recentTable mt-2">
                         <table id="dataTable" class="table table-bordered dt-responsive">
@@ -35,15 +46,15 @@
                                 @forelse($withdraws as $withdraw)
                                     <tr>
                                         <td>{{ $withdraw->method->name }}</td>
-                                        <td>{{ $withdraw->amount }}</td>
+                                        <td>{{ formateNumber($withdraw->amount) }}</td>
                                         <td>{{ $withdraw->currency }}</td>
-                                        <td>{{ $withdraw->rate }}</td>
-                                        <td>{{ $withdraw->charge }}</td>
-                                        <td>{{ $withdraw->after_charge }}</td>
+                                        <td>{{ formateNumber($withdraw->rate) }}</td>
+                                        <td>{{ formateNumber($withdraw->charge) }}</td>
+                                        <td>{{ formateNumber($withdraw->after_charge) }}</td>
                                         <td>{{ $withdraw->withdraw_information }}</td>
                                         <td>{{ $withdraw->status }}</td>
                                         <td>{{ $withdraw->admin_feedback }}</td>
-                                        <td>{{ $withdraw->created_at }}</td>
+                                        <td>{{ date('d-m-Y', strtotime($withdraw->created_at)) }}</td>
                                     </tr>
                                 @empty
                                     <tr>

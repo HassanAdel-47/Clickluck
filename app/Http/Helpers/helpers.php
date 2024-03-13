@@ -513,3 +513,6 @@ function levelCommission($id, $amount, $commissionType = '')
     }
     return 0;
 }
+function formateNumber($number){
+return number_format($number, 2);
+}

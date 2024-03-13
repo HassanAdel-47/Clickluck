@@ -6,7 +6,7 @@
                 <div class="row mt-3 me-5">
                     <div>
                         <div class="w-full d-flex justify-content-between">
-                            <p class="Deposit__history__title">My tickets</p>
+                            <p class="Deposit__history__title">Purchase History</p>
                         </div>
                         <div class="pagination_buttons w-full d-flex align-items-center justify-content-between my-3">
                             {{-- <div class="d-flex align-items-center">
@@ -26,6 +26,7 @@
                                     <tr>
                                         <th>Ticket Number</th>
                                         <th>Purchase Date</th>
+                                        <th>Game</th>
                                         <th>Ticket Price</th>
                                     </tr>
                                 </thead>
@@ -33,8 +34,9 @@
                                     @forelse($tickets as $ticket)
                                         <tr>
                                             <td>{{ $ticket->ticket_number }}</td>
-                                            <td>{{ $ticket->created_at }}</td>
-                                            <td>{{ $ticket->total_price }}</td>
+                                            <td>{{  date('d-m-Y', strtotime($ticket->created_at)) }}</td>
+                                            <td>{{ $ticket->lottery->name }}</td>
+                                            <td>{{ number_format($ticket->total_price , 2)}}</td>
                                         </tr>
                                     @empty
                                         <tr>

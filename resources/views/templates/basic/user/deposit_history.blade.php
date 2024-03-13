@@ -7,8 +7,18 @@
                 <div>
                     <div class="w-full d-flex justify-content-between">
                         <p class="Deposit__history__title">Diposits History</p>
+                        <div class="d-flex justify-content-between mb-3 flex-wrap gap-3">
+
+                            <a class="btn btn--primary flex-shrink-0" href="{{ route('user.deposit.index') }}">
+                                @lang('Deposit Now')
+                            </a>
+                        </div>
+                    </div>
                     </div>
                     <div class="pagination_buttons w-full d-flex align-items-center justify-content-between my-3">
+                        <div class="d-flex justify-content-between mb-3 flex-wrap gap-3">
+                            @lang('Balance'): {{ formateNumber(Auth::user()->balance)}}
+                        </div>
                         <div class="mt-3">
                             {{ paginateLinks($deposits) }}
                         </div>
@@ -31,13 +41,13 @@
                                 @forelse($deposits as $deposit)
                                     <tr>
                                         <td>{{ $deposit->method_code }}</td>
-                                        <td>{{ $deposit->amount }}</td>
+                                        <td>{{ formateNumber($deposit->amount) }}</td>
                                         <td>{{ $deposit->method_currency }}</td>
-                                        <td>{{ $deposit->charge }}</td>
-                                        <td>{{ $deposit->rate }}</td>
+                                        <td>{{ formateNumber($deposit->charge) }}</td>
+                                        <td>{{ formateNumber($deposit->rate) }}</td>
                                         <td>{{ $deposit->status }}</td>
                                         <td>{{ $deposit->admin_feedback }}</td>
-                                        <td>{{ $deposit->created_at }}</td>
+                                        <td>{{ date('d-m-Y', strtotime($deposit->created_at)) }}</td>
 
                                     </tr>
                                 @empty
