@@ -1,16 +1,16 @@
 <header class="header">
     <div class="header__bottom">
-        <div class="container-fluid px-lg-5">
+        <div>
             <nav class="navbar navbar-expand-xl align-items-center p-0">
-                <a class="site-logo site-title" href="<?php echo e(route('home')); ?>"><img
+                <a class="site-logo site-title ms-4" href="<?php echo e(route('home')); ?>"><img
                         src="<?php echo e(asset($activeTemplateTrue . 'images/logo.png')); ?>" alt="logo"></a>
-                <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                <button class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                     type="button" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
                     <span class="menu-toggle"></span>
                 </button>
-                <div class="collapse navbar-collapse mt-lg-0 mt-3" id="navbarSupportedContent">
-                    <ul class="navbar-nav main-menu me-auto">
+                <div class="collapse navbar-collapse mt-lg-0 " id="navbarSupportedContent">
+                    <ul class="navbar-nav main-menu ">
                         <li><a class="<?php echo e(menuActive('home')); ?>" href="<?php echo e(route('home')); ?>"><?php echo app('translator')->get('Home'); ?></a></li>
                         <li><a class="<?php echo e(menuActive('pages', ['about'])); ?>"
                                 href="<?php echo e(route('pages', 'about')); ?>"><?php echo app('translator')->get('About'); ?></a></li>
