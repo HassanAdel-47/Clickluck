@@ -12,6 +12,7 @@ use App\Models\Form;
 use App\Models\Referral;
 use App\Models\Ticket;
 use App\Models\Transaction;
+use App\Models\Winner;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -19,9 +20,11 @@ class UserController extends Controller
     public function home()
     {
         $pageTitle = 'Dashboard';
-        $user      = auth()->user();
-        $tickets   = Ticket::where('user_id', auth()->user()->id)->where('status', Status::UNPUBLISHED)->latest('id')->with('lottery', 'phase')->paginate(getPaginate());
-        return view($this->activeTemplate . 'user.dashboard', compact('pageTitle', 'user', 'tickets'));
+        // $user      = auth()->user();
+        // $tickets   = Ticket::where('user_id', auth()->user()->id)->where('status', Status::UNPUBLISHED)->latest('id')->with('lottery', 'phase')->paginate(getPaginate());
+        // return view($this->activeTemplate . 'user.wins', compact('pageTitle', 'user', 'tickets'));
+        $wins      = Winner::where('user_id', auth()->user()->id)->with('tickets', 'tickets.phase', 'tickets.lottery')->paginate(getPaginate());
+        return view($this->activeTemplate . 'user.lottery.wins', compact('pageTitle', 'wins'));
     }
 
     public function depositHistory(Request $request)

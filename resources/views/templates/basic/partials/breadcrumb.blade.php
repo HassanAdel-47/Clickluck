@@ -3,7 +3,7 @@
     <div class="container">
         <div class="breadcrumb-container row ">
             <div class="col-lg-6 ">
-                <h1 class="breadcrumb-title text-white">{{ __($pageTitle) }}</h1>
+                <h1 class="breadcrumb-title text-white">{{ __('Dashboard') }}</h1>
             </div>
         </div>
     </div>

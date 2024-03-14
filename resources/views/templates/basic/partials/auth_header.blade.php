@@ -53,7 +53,7 @@
 
                         {{-- ********************************** --}}
 
-                            <li class="menu_has_children">
+                            {{-- <li class="menu_has_children">
                                 <a class="{{ menuActive('ticket.*') }}" href="javascript:void(0)">@lang('Support')</a>
                                 <ul class="sub-menu">
                                     <li><a class="{{ menuActive('ticket.open') }}"
@@ -92,18 +92,18 @@
                                     <li><a class="{{ menuActive('user.twofactor') }}"
                                             href="{{ route('user.twofactor') }}">@lang('2FA Security')</a></li>
                                 </ul>
-                            </li>
+                            </li> --}}
                         @endauth
                     </ul>
                     <div class="nav-right">
                         @auth
                             <a class="btn btn-sm btn--danger me-sm-3 me-2 btn--capsule px-3 text-white"
                                 href="{{ route('user.logout') }}">@lang('Logout')</a>
-                        @else
+                        {{-- @else
                             <a class="btn btn-sm btn--base me-sm-3 me-2 btn--capsule px-3"
                                 href="{{ route('user.login') }}">@lang('Login')</a>
                             <a class="fs--14px me-sm-3 me-2 text-white"
-                                href="{{ route('user.register') }}">@lang('Register')</a>
+                                href="{{ route('user.register') }}">@lang('Register')</a> --}}
                         @endauth
                         <select class="language-select langSel">
                             @foreach ($language as $item)
