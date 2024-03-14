@@ -52,23 +52,23 @@
                     <ul>
                         <li class="active">
                             <img src="<?php echo e(asset($activeTemplateTrue . 'images/Cup.svg')); ?>" alt="image">
-                            <a href="/user/dashboard">Win History</a>
+                            <a href="<?php echo e(route('user.wins')); ?>">Win History</a>
                         </li>
                         <li>
                             <img src="<?php echo e(asset($activeTemplateTrue . 'images/Dollar.svg')); ?>" alt="image">
-                            <a href="/user/lottery">Purchase History</a>
+                            <a href="<?php echo e(route('user.transactions')); ?>">Purchase History</a>
                         </li>
                         <li>
                             <img src="<?php echo e(asset($activeTemplateTrue . 'images/ExportDollar.svg')); ?>" alt="image">
-                            <a href="/user/wins">Withdraw History</a>
+                            <a href="<?php echo e(route('user.withdraw.history')); ?>">Withdraw History</a>
                         </li>
                         <li>
                             <img src="<?php echo e(asset($activeTemplateTrue . 'images/ImportDollar.svg')); ?>" alt="image">
-                            <a href="/user/tickets">Deposit History</a>
+                            <a href="<?php echo e(route("user.deposit.history")); ?>">Deposit History</a>
                         </li>
                         <li>
-                            <img src="<?php echo e(asset($activeTemplateTrue . 'images/User.svg')); ?>" alt="image">
-                            <a href="/user/deposit">Profile</a>
+                            <img src="<?php echo e(asset($activeTemplateTrue . 'images/Dollar.svg')); ?>" alt="image">
+                            <a href="<?php echo e(route('user.tickets')); ?>">my tickets</a>
                         </li>
                     </ul>
                     <div class="dashboard__line"></div>
@@ -182,4 +182,5 @@
 
 </body>
 
-</html><?php /**PATH D:\Web Development\Lotto\ClickLuck\ClickLuck\resources\views/templates/basic/layouts/master.blade.php ENDPATH**/ ?>
+</html>
+<?php /**PATH D:\Web Development\Lotto\ClickLuck\ClickLuck\resources\views/templates/basic/layouts/master.blade.php ENDPATH**/ ?>
