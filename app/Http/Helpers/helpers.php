@@ -527,5 +527,5 @@ function getBannerPhase($banner_phase_id)
     $content = Phase::where('id', $banner_phase_id)->first();
     if (!$content)
         return null;
-    return $content->draw_date;
+    return $content;
 }
