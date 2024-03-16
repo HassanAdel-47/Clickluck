@@ -15,7 +15,7 @@
                             <li><a class="{{ menuActive('home') }}" href="{{ route('home') }}">@lang('Home')</a></li>
                             <li><a class="{{ menuActive('user.home') }}"
                                     href="{{ route('user.home') }}">@lang('Dashboard')</a></li>
-                            <li><a class="{{ menuActive('user.lottery') }}"
+                            <li><a class="{{ menuActive(['user.lottery', 'user.lottery.details']) }}"
                                     href="{{ route('user.lottery') }}">@lang('Lotteries')</a></li>
                             <li><a class="{{ menuActive('pages', ['about']) }}"
                                     href="{{ route('pages', 'about') }}">@lang('About')</a></li>
