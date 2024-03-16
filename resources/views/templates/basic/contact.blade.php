@@ -50,7 +50,7 @@ $contact = getContent('contact_us.content', true);
             </div>
             <div class="col-lg-6 ps-lg-5">
                 <div class="contact-wrapper rounded-3">
-                    <form class="contact-form verify-gcaptcha" method="POST" action="">
+                    <form class="contact-form verify-gcaptcha" method="POST" action="/contact">
                         @csrf
                         <div class="contact_us_info row">
                             <div class="col-lg-6 form-group">

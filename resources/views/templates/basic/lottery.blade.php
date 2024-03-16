@@ -15,3 +15,4 @@
 </section>
 @include($activeTemplate . 'sections.cta')
 @endsection
+

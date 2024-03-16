@@ -59,7 +59,6 @@
         </div>
     </div>
 </section>
-
 @push('script')
     <script>
         // var countDownDate = new Date("2024-03-29 00:00:00").getTime();
