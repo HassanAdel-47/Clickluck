@@ -105,12 +105,12 @@
                             <a class="fs--14px me-sm-3 me-2 text-white"
                                 href="{{ route('user.register') }}">@lang('Register')</a> --}}
                         @endauth
-                        <select class="language-select langSel">
-                            @foreach ($language as $item)
-                                <option value="{{ $item->code }}" @if (session('lang') == $item->code) selected @endif>
-                                    {{ __($item->name) }}</option>
-                            @endforeach
-                        </select>
+{{--                        <select class="language-select langSel">--}}
+{{--                            @foreach ($language as $item)--}}
+{{--                                <option value="{{ $item->code }}" @if (session('lang') == $item->code) selected @endif>--}}
+{{--                                    {{ __($item->name) }}</option>--}}
+{{--                            @endforeach--}}
+{{--                        </select>--}}
                     </div>
                 </div>
             </nav>

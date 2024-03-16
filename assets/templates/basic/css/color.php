@@ -42,10 +42,6 @@ background-color: <?php echo $color ?>;
 border-color: <?php echo $color ?>;
 }
 
-.recent-winner-card .amount, .header .main-menu li a:hover, .header .main-menu li a:focus {
-color: <?php echo $color ?>;
-}
-
 
 .btn--base, .bg--base {
 background-color: <?php echo $color ?> !important;
@@ -234,9 +230,6 @@ color: <?php echo $color ?>;
 
 .balance-card {
 background-color: <?php echo $color ?>;
-}
-.dashboard-card .number, .header .main-menu li a.active, .header .main-menu ul li ul li a.active {
-color: <?php echo $color ?> !important;
 }
 
 .dashboard-card .icon {
