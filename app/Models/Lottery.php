@@ -27,6 +27,11 @@ class Lottery extends Model
     {
         return $this->hasMany(WinBonus::class);
     }
+
+    public function getPrizeAttribute()
+    {
+        return $this->bonuses()->where('level', '1')->value('amount');
+    }
     public function scopeActive($query)
     {
         $query->where('status', Status::ACTIVE);
