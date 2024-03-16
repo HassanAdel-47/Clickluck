@@ -47,7 +47,12 @@
                             </p>
                         </div>
                         <a class="btn p-2 btn--base--message wow fadeInUp mt-2" data-wow-duration="0.5s"
-                            data-wow-delay="0.7s" href="{{ route('lottery.details', $phase->lottery->id) }}">
+                            data-wow-delay="0.7s"
+                            @auth
+                                href="{{ route('user.lottery.details', $phase->lottery->id) }}"
+                            @else
+                                href="{{ route('lottery.details', $phase->lottery->id) }}"
+                            @endauth>
                             Buy Ticket ${{ number_format($phase->lottery->price, 2) }}</a>
                         <div class="label__running d-flex justify-content-around align-items-between">
                             <p>Running</p>

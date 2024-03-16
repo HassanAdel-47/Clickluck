@@ -25,8 +25,11 @@ class LotteryController extends Controller
         $phase     = Phase::available()->findOrFail($id);
         $pageTitle = " Details of" . ' ' . $phase->lottery->name;
         $tickets   = Ticket::where('user_id', auth()->user()->id)->where('lottery_id', $phase->lottery_id)->with('phase')->orderByDesc('id')->paginate(getPaginate());
-        $layout    = 'master';
+        $layout    = 'frontend';
+        if(count($tickets)>0)
+        return view($this->activeTemplate . 'user.lottery.machine', compact('pageTitle', 'phase', 'tickets', 'layout'));
         return view($this->activeTemplate . 'user.lottery.details', compact('pageTitle', 'phase', 'tickets', 'layout'));
+
     }
     public function buyTicket(Request $request)
     {
