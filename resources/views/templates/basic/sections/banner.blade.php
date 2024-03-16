@@ -44,15 +44,8 @@
                 @endif
 
                 <div class="d-flex w-100 justify-content-evenly justify-content-lg-between mt-4 mt-lg-0">
-                    @auth
                     <a class="btn btn--base wow fadeInUp mt-4" data-wow-duration="0.5s" data-wow-delay="0.7s"
                         href="{{route("lottery.details",@$banner_phase->id)}}">{{ __(@$banner->data_values->button_name) }}</a>
-
-                        @else
-                        <a class="btn btn--base wow fadeInUp mt-4" data-wow-duration="0.5s" data-wow-delay="0.7s"
-                        href="{{ @$banner->data_values->button_url }}">{{ __(@$banner->data_values->button_name) }}</a>
-
-                    @endauth
 
                 </div>
             </div>
