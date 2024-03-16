@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Frontend;
 use App\Models\GeneralSetting;
 use App\Http\Controllers\Controller;
+use App\Models\Phase;
 use App\Rules\FileTypeValidate;
 use Illuminate\Http\Request;
 
@@ -33,7 +34,7 @@ class FrontendController extends Controller
         $general->active_template = $request->name;
         $general->save();
 
-        $notify[] = ['success', strtoupper($request->name).' template activated successfully'];
+        $notify[] = ['success', strtoupper($request->name) . ' template activated successfully'];
         return back()->withNotify($notify);
     }
 
@@ -41,7 +42,7 @@ class FrontendController extends Controller
     {
         $pageTitle = 'SEO Configuration';
         $seo = Frontend::where('data_keys', 'seo.data')->first();
-        if(!$seo){
+        if (!$seo) {
             $data_values = '{"keywords":[],"description":"","social_title":"","social_description":"","image":null}';
             $data_values = json_decode($data_values, true);
             $frontend = new Frontend();
@@ -60,9 +61,9 @@ class FrontendController extends Controller
         if (!$section) {
             return abort(404);
         }
-        $content = Frontend::where('data_keys', $key . '.content')->orderBy('id','desc')->first();
-        $elements = Frontend::where('data_keys', $key . '.element')->orderBy('id')->orderBy('id','desc')->get();
-        $pageTitle = $section->name ;
+        $content = Frontend::where('data_keys', $key . '.content')->orderBy('id', 'desc')->first();
+        $elements = Frontend::where('data_keys', $key . '.element')->orderBy('id')->orderBy('id', 'desc')->get();
+        $pageTitle = $section->name;
         return view('admin.frontend.index', compact('section', 'content', 'elements', 'key', 'pageTitle'));
     }
 
@@ -87,15 +88,23 @@ class FrontendController extends Controller
         $imgJson = @getPageSections()->$key->$type->images;
         $validation_rule = [];
         $validation_message = [];
+        if ($request->has('related_lottery_phase_id')) {
+            $phase_id = $request->get("related_lottery_phase_id");
+            if ($phase_id != 0 && Phase::find($phase_id) == null) {
+                $notify[] = ['error', keyToTitle('related_lottery_phase_id') . ' does not exist'];
+                return back()->withNotify($notify);
+            }
+
+        }
         foreach ($request->except('_token', 'video') as $input_field => $val) {
             if ($input_field == 'has_image' && $imgJson) {
                 foreach ($imgJson as $imgValKey => $imgJsonVal) {
-                    $validation_rule['image_input.'.$imgValKey] = ['nullable','image',new FileTypeValidate(['jpg','jpeg','png'])];
-                    $validation_message['image_input.'.$imgValKey.'.image'] = keyToTitle($imgValKey).' must be an image';
-                    $validation_message['image_input.'.$imgValKey.'.mimes'] = keyToTitle($imgValKey).' file type not supported';
+                    $validation_rule['image_input.' . $imgValKey] = ['nullable', 'image', new FileTypeValidate(['jpg', 'jpeg', 'png'])];
+                    $validation_message['image_input.' . $imgValKey . '.image'] = keyToTitle($imgValKey) . ' must be an image';
+                    $validation_message['image_input.' . $imgValKey . '.mimes'] = keyToTitle($imgValKey) . ' file type not supported';
                 }
                 continue;
-            }elseif($input_field == 'seo_image'){
+            } elseif ($input_field == 'seo_image') {
                 $validation_rule['image_input'] = ['nullable', 'image', new FileTypeValidate(['jpeg', 'jpg', 'png'])];
                 continue;
             }
@@ -116,19 +125,19 @@ class FrontendController extends Controller
             $inputContentValue['image'] = @$content->data_values->image;
             if ($request->hasFile('image_input')) {
                 try {
-                    $inputContentValue['image'] = fileUploader($request->image_input,getFilePath('seo'), getFileSize('seo'), @$content->data_values->image);
+                    $inputContentValue['image'] = fileUploader($request->image_input, getFilePath('seo'), getFileSize('seo'), @$content->data_values->image);
                 } catch (\Exception $exp) {
                     $notify[] = ['error', 'Couldn\'t upload the image'];
                     return back()->withNotify($notify);
                 }
             }
-        }else{
+        } else {
             if ($imgJson) {
                 foreach ($imgJson as $imgKey => $imgValue) {
                     $imgData = @$request->image_input[$imgKey];
                     if (is_file($imgData)) {
                         try {
-                            $inputContentValue[$imgKey] = $this->storeImage($imgJson,$type,$key,$imgData,$imgKey,@$content->data_values->$imgKey);
+                            $inputContentValue[$imgKey] = $this->storeImage($imgJson, $type, $key, $imgData, $imgKey, @$content->data_values->$imgKey);
                         } catch (\Exception $exp) {
                             $notify[] = ['error', 'Couldn\'t upload the image'];
                             return back()->withNotify($notify);
@@ -166,7 +175,7 @@ class FrontendController extends Controller
 
 
 
-    protected function storeImage($imgJson,$type,$key,$image,$imgKey,$old_image = null)
+    protected function storeImage($imgJson, $type, $key, $image, $imgKey, $old_image = null)
     {
         $path = 'assets/images/frontend/' . $key;
         if ($type == 'element' || $type == 'content') {
@@ -174,7 +183,7 @@ class FrontendController extends Controller
             ->$imgKey->size;
             $thumb = @$imgJson
             ->$imgKey->thumb;
-        }else{
+        } else {
             $path = getFilePath($key);
             $size = getFileSize($key);
             $thumb = @fileManager()->$key()->thumb;

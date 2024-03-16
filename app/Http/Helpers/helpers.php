@@ -5,6 +5,7 @@ use App\Lib\GoogleAuthenticator;
 use App\Models\Extension;
 use App\Models\Frontend;
 use App\Models\GeneralSetting;
+use App\Models\Phase;
 use Carbon\Carbon;
 use App\Lib\Captcha;
 use App\Lib\ClientInfo;
@@ -33,7 +34,8 @@ function slug($string)
 
 function verificationCode($length)
 {
-    if ($length == 0) return 0;
+    if ($length == 0)
+        return 0;
     $min = pow(10, $length - 1);
     $max = (int) ($min - 1) . '9';
     return random_int($min, $max);
@@ -55,7 +57,8 @@ function activeTemplate($asset = false)
 {
     $general = gs();
     $template = $general->active_template;
-    if ($asset) return 'assets/templates/' . $template . '/';
+    if ($asset)
+        return 'assets/templates/' . $template . '/';
     return 'templates.' . $template . '.';
 }
 
@@ -242,19 +245,25 @@ function paginateLinks($data)
 
 function menuActive($routeName, $type = null, $param = null)
 {
-    if ($type == 3) $class = 'side-menu--open';
-    elseif ($type == 2) $class = 'sidebar-submenu__open';
-    else $class = 'active';
+    if ($type == 3)
+        $class = 'side-menu--open';
+    elseif ($type == 2)
+        $class = 'sidebar-submenu__open';
+    else
+        $class = 'active';
 
     if (is_array($routeName)) {
         foreach ($routeName as $key => $value) {
-            if (request()->routeIs($value)) return $class;
+            if (request()->routeIs($value))
+                return $class;
         }
     } elseif (request()->routeIs($routeName)) {
         if ($param) {
             $routeParam = array_values(@request()->route()->parameters ?? []);
-            if (strtolower(@$routeParam[0]) == strtolower($param)) return $class;
-            else return;
+            if (strtolower(@$routeParam[0]) == strtolower($param))
+                return $class;
+            else
+                return;
         }
         return $class;
     }
@@ -439,12 +448,12 @@ function gs()
 function loadFbComment()
 {
     $comment = Extension::where('act', 'fb-comment')->where('status', 1)->first();
-    return  $comment ? $comment->generateScript() : '';
+    return $comment ? $comment->generateScript() : '';
 }
 
 /*
-     * Showing: Ordinal Numbers.
-     */
+ * Showing: Ordinal Numbers.
+ */
 function ordinal($number)
 {
     $ends = array('th', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th');
@@ -457,11 +466,11 @@ function ordinal($number)
 function levelCommission($id, $amount, $commissionType = '')
 {
     $user = $id;
-    $i    = 1;
+    $i = 1;
     $general = gs();
-    $level   = Referral::where('commission_type', $commissionType)->count();
+    $level = Referral::where('commission_type', $commissionType)->count();
     while ($user != "" || $user != "0" || $i < $level) {
-        $bonusTaker   = User::find($user);
+        $bonusTaker = User::find($user);
         $refer = User::find($bonusTaker->ref_by);
         if ($refer == "") {
             break;
@@ -473,43 +482,50 @@ function levelCommission($id, $amount, $commissionType = '')
         $finalCommission = ($amount * $commission->percent) / 100;
 
         $referWallet = User::where('id', $refer->id)->first();
-        $newBalance  = getAmount($referWallet->balance + $finalCommission);
+        $newBalance = getAmount($referWallet->balance + $finalCommission);
         $referWallet->balance = $newBalance;
         $referWallet->save();
         $trx = getTrx();
 
-        $transaction =  new Transaction();
-        $transaction->user_id      = $refer->id;
-        $transaction->amount       = getAmount($finalCommission);
-        $transaction->charge       = $refer->id;
-        $transaction->trx_type     = '+';
-        $transaction->details      = 'Level ' . ordinal($i) . ' referral commission by ' . $refer->username;
-        $transaction->trx          = $trx;
-        $transaction->remark       = 'referral_bonus';
+        $transaction = new Transaction();
+        $transaction->user_id = $refer->id;
+        $transaction->amount = getAmount($finalCommission);
+        $transaction->charge = $refer->id;
+        $transaction->trx_type = '+';
+        $transaction->details = 'Level ' . ordinal($i) . ' referral commission by ' . $refer->username;
+        $transaction->trx = $trx;
+        $transaction->remark = 'referral_bonus';
         $transaction->post_balance = $newBalance;
         $transaction->save();
 
         $commissionLog = new CommissionLog();
-        $commissionLog->to_id           = $refer->id;
-        $commissionLog->from_id         = $id;
-        $commissionLog->level           = $i;
-        $commissionLog->amount          = getAmount($finalCommission);
-        $commissionLog->main_balance    = getAmount($newBalance);
-        $commissionLog->percent         = $commission->percent;
+        $commissionLog->to_id = $refer->id;
+        $commissionLog->from_id = $id;
+        $commissionLog->level = $i;
+        $commissionLog->amount = getAmount($finalCommission);
+        $commissionLog->main_balance = getAmount($newBalance);
+        $commissionLog->percent = $commission->percent;
         $commissionLog->commission_type = $commissionType;
-        $commissionLog->trx             = $trx;
-        $commissionLog->title           = 'Level ' . ordinal($i) . ' referral commission by ' . $bonusTaker->username;
+        $commissionLog->trx = $trx;
+        $commissionLog->title = 'Level ' . ordinal($i) . ' referral commission by ' . $bonusTaker->username;
         $commissionLog->save();
 
         notify($refer, 'REFERRAL_COMMISSION', [
-            'amount'       => getAmount($finalCommission),
+            'amount' => getAmount($finalCommission),
             'post_balance' => getAmount($newBalance),
-            'trx'          => $trx,
-            'level'        => 'level ' . ordinal($i) . ' Referral Commission',
-            'currency'     => $general->cur_text
+            'trx' => $trx,
+            'level' => 'level ' . ordinal($i) . ' Referral Commission',
+            'currency' => $general->cur_text
         ]);
         $user = $refer->id;
         $i++;
     }
     return 0;
+}
+function getBannerPhase($banner_phase_id)
+{
+    $content = Phase::where('id', $banner_phase_id)->first();
+    if (!$content)
+        return null;
+    return $content;
 }
