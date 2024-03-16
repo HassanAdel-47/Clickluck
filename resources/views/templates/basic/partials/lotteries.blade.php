@@ -3,7 +3,7 @@
 <!-- dashboard section start -->
 <section class="pt-100 pb-100 Purchase__history ">
     <div>
-        <div class="row mt-3 me-5">
+        <div class="row ms-2 me-2 lg:mt-3 lg:me-5">
             <div>
                 <div class="w-full d-flex justify-content-start">
                     <p class="Purchase__history__title">Purchase History</p>

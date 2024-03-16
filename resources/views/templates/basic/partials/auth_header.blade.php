@@ -1,16 +1,16 @@
 <header class="header">
     <div class="header__bottom">
-        <div class="container-fluid px-lg-5">
+        <div>
             <nav class="navbar navbar-expand-xl align-items-center p-0">
-                <a class="site-logo site-title" href="{{ route('home') }}"><img
-                        src="{{ asset($activeTemplateTrue . 'images/logo.png') }} " alt="logo"></a>
-                <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                <a class="site-logo site-title ms-4" href="{{ route('home') }}"><img
+                        src="{{ asset($activeTemplateTrue . 'images/logo.png') }}" alt="logo"></a>
+                <button class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                     type="button" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
                     <span class="menu-toggle"></span>
                 </button>
                 <div class="collapse navbar-collapse mt-lg-0 mt-3" id="navbarSupportedContent">
-                    <ul class="navbar-nav main-menu me-auto">
+                    <ul class="navbar-nav main-menu ">
                         @auth
                         <li><a class="{{ menuActive('user.home') }}"
                                 href="{{ route('user.home') }}">@lang('Dashboard')</a></li>
@@ -93,7 +93,7 @@
                         </li>
                         @endauth
                     </ul>
-                    <div class="nav-right">
+                    <div class="nav-right me-4">
                         @auth
                         <a class="btn btn-sm btn--danger me-sm-3 me-2 btn--capsule px-3 text-white"
                             href="{{ route('user.logout') }}">@lang('Logout')</a>

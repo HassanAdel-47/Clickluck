@@ -1,13 +1,13 @@
 <?php $__env->startSection('content'); ?>
 <section class="pt-100 pb-100">
-    <div class="Deposit">
+    <div class="change__password">
         <div class="row justify-content-center">
             <div class="d-flex align-items-center">
                 <a href="/user/deposit" class="me-2"><img
                         src="<?php echo e(asset($activeTemplateTrue . 'images/Back_Arrow.svg')); ?>" alt="image"></a>
-                <p class="Deposit__history__title ml-4">Change Password</p>
+                <p class="change__password__history__title ml-4">Change Password</p>
             </div>
-            <form id="depositForm">
+            <form id="change__passwordForm">
                 <div class="d-flex flex-column justify-content-between w-75 mt-4">
                     <div class="d-flex flex-column w-50 me-4">
                         <label for="oldpassword">Old Password</label>
@@ -20,7 +20,7 @@
                             required>
                     </div>
                 </div>
-                <button class="btn btn--primary mt-5" type="submit" onclick="confirmDeposit()">Change Password</button>
+                <a class="mt-4" href="/ticket">Change Password</a>
             </form>
         </div>
 </section>

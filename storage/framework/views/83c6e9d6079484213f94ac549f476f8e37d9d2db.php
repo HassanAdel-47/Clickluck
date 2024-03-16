@@ -1,56 +1,63 @@
 <?php $__env->startSection('content'); ?>
-<section class="wallet__charged pt-100 pb-100"
-    style="background-image: url('<?php echo e(asset($activeTemplateTrue . 'images/walletCharged.svg')); ?>') ">
-    <div class="w-100 h-100 d-flex align-items-center justify-content-center">
-        <div class="d-flex flex-column align-items-center justify-content-center gap-4 ">
-            <h1>
-                Wallet Charged!
-            </h1>
-            <p>
-                Your Wallet Has Been Charged With $50.00 Successfully
-            </p>
-            <a class="btn btn--primary" href="/">Go To Homepage</a>
+<!-- dashboard section start -->
+<section class="pt-100 pb-100 Win__history ">
+    <div>
+        <div class="row ms-2 me-2 lg:mt-3 lg:me-5">
+            <div>
+                <div class="w-full d-flex justify-content-between">
+                    <p class="Deposit__history__title">My withdraws</p>
+                </div>
+                <div class="pagination_buttons w-full d-flex align-items-center justify-content-between my-3">
+                    <div class="mt-3">
+                        <?php echo e(paginateLinks($withdraws)); ?>
+
+                    </div>
+                </div>
+                <div class="recentTable mt-2">
+                    <table id="dataTable" class="table table-bordered dt-responsive">
+                        <thead>
+                            <tr>
+                                <th>withdraw method</th>
+                                <th>amount</th>
+                                <th>currency</th>
+                                <th>rate</th>
+                                <th>charge</th>
+                                <th>after_charge</th>
+                                <th>withdraw_information</th>
+                                <th>status</th>
+                                <th>admin_feedback</th>
+                                <th>withdraw date</th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $__empty_1 = true; $__currentLoopData = $withdraws; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $withdraw): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                            <tr>
+                                <td><?php echo e($withdraw->method->name); ?></td>
+                                <td><?php echo e($withdraw->amount); ?></td>
+                                <td><?php echo e($withdraw->currency); ?></td>
+                                <td><?php echo e($withdraw->rate); ?></td>
+                                <td><?php echo e($withdraw->charge); ?></td>
+                                <td><?php echo e($withdraw->after_charge); ?></td>
+                                <td><?php echo e($withdraw->withdraw_information); ?></td>
+                                <td><?php echo e($withdraw->status); ?></td>
+                                <td><?php echo e($withdraw->admin_feedback); ?></td>
+                                <td><?php echo e($withdraw->created_at); ?></td>
+                            </tr>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                            <tr>
+                                <td class="rounded-bottom text-center" colspan="100%"> <?php echo e(__($emptyMessage)); ?></td>
+                            </tr>
+                            <?php endif; ?>
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
         </div>
+
     </div>
 </section>
-
 <?php $__env->stopSection(); ?>
-
-<?php $__env->startPush('script'); ?>
-<script>
-    (function ($) {
-        "use strict";
-        $('.detailBtn').on('click', function () {
-            var modal = $('#detailModal');
-            var userData = $(this).data('user_data');
-            var html = ``;
-            userData.forEach(element => {
-                if (element.type != 'file') {
-                    html += `
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <span>${element.name}</span>
-                            <span">${element.value}</span>
-                        </li>`;
-                }
-            });
-            modal.find('.userData').html(html);
-
-            if ($(this).data('admin_feedback') != undefined) {
-                var adminFeedback = `
-                        <div class="my-3">
-                            <strong><?php echo app('translator')->get('Admin Feedback'); ?></strong>
-                            <p>${$(this).data('admin_feedback')}</p>
-                        </div>
-                    `;
-            } else {
-                var adminFeedback = '';
-            }
-
-            modal.find('.feedback').html(adminFeedback);
-
-            modal.modal('show');
-        });
-    })(jQuery);
-</script>
-<?php $__env->stopPush(); ?>
-<?php echo $__env->make($activeTemplate . 'layouts.frontend', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Web Development\Lotto\ClickLuck\ClickLuck\resources\views/templates/basic/user/withdraw/log.blade.php ENDPATH**/ ?>
+<?php echo $__env->make($activeTemplate . 'layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Web Development\Lotto\ClickLuck\ClickLuck\resources\views/templates/basic/user/withdraw/log.blade.php ENDPATH**/ ?>
