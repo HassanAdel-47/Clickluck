@@ -12,23 +12,25 @@
                 <div class="collapse navbar-collapse mt-lg-0 mt-3" id="navbarSupportedContent">
                     <ul class="navbar-nav main-menu ">
                         @auth
-                        <li><a class="{{ menuActive('user.home') }}"
-                                href="{{ route('user.home') }}">@lang('Dashboard')</a></li>
-
-                        <li class="menu_has_children">
+                            <li><a class="{{ menuActive('home') }}" href="{{ route('home') }}">@lang('Home')</a></li>
+                            <li><a class="{{ menuActive('user.home') }}"
+                                    href="{{ route('user.home') }}">@lang('Dashboard')</a></li>
+                            <li><a class="{{ menuActive('user.lottery') }}"
+                                    href="{{ route('user.lottery') }}">@lang('Lotteries')</a></li>
+                            <li><a class="{{ menuActive('pages', ['about']) }}"
+                                    href="{{ route('pages', 'about') }}">@lang('About')</a></li>
+                            <li><a class="{{ menuActive('contact') }}" href="{{ route('contact') }}">@lang('Contact')</a>
+                            </li>
+                            {{-- <li class="menu_has_children">
                             <a class="{{ menuActive(['user.lottery', 'user.buy.lottery', 'user.tickets', 'user.wins']) }}"
                                 href="javascript:void(0)">@lang('Lotteries')</a>
                             <ul class="sub-menu">
                                 <li><a class="{{ menuActive('user.lottery') }}"
                                         href="{{ route('user.lottery') }}">@lang('All Lotteries')</a></li>
-                                <li><a class="{{ menuActive('user.wins') }}"
-                                        href="{{ route('user.wins') }}">@lang('Total Wins')</a></li>
-                                <li><a class="{{ menuActive('user.tickets') }}"
-                                        href="{{ route('user.tickets') }}">@lang('Purchased Tickets')</a></li>
                             </ul>
-                        </li>
+                        </li> --}}
 
-                        <li class="menu_has_children">
+                            {{-- <li class="menu_has_children">
                             <a class="{{ menuActive('user.deposit.*') }}" href="javascript:void(0)">@lang('Deposit')</a>
                             <ul class="sub-menu">
                                 <li><a class="{{ menuActive('user.deposit.index') }}"
@@ -47,66 +49,66 @@
                                 <li><a class="{{ menuActive('user.withdraw.history') }}"
                                         href="{{ route('user.withdraw.history') }}">@lang('Withdraw History')</a></li>
                             </ul>
-                        </li>
+                        </li> --}}
 
-                        <li class="menu_has_children">
-                            <a class="{{ menuActive('ticket.*') }}" href="javascript:void(0)">@lang('Support')</a>
-                            <ul class="sub-menu">
-                                <li><a class="{{ menuActive('ticket.open') }}"
-                                        href="{{ route('ticket.open') }}">@lang('Open Ticket')</a></li>
-                                <li><a class="{{ menuActive('ticket.index') }}"
-                                        href="{{ route('ticket.index') }}">@lang('Support Tickets')</a></li>
-                            </ul>
-                        </li>
+                        {{-- ********************************** --}}
 
-                        @if ($general->deposit_commission || $general->buy_commission || $general->win_commission)
-                        <li class="menu_has_children">
-                            <a class="{{ menuActive(['user.commissions', 'user.referred']) }}"
-                                href="javascript:void(0)">@lang('Referral')</a>
-                            <ul class="sub-menu">
-                                <li><a class="{{ menuActive('user.commissions') }}" href="@if ($general->dc) {{ route('user.commissions', 'all') }}
+                            {{-- <li class="menu_has_children">
+                                <a class="{{ menuActive('ticket.*') }}" href="javascript:void(0)">@lang('Support')</a>
+                                <ul class="sub-menu">
+                                    <li><a class="{{ menuActive('ticket.open') }}"
+                                            href="{{ route('ticket.open') }}">@lang('Open Ticket')</a></li>
+                                    <li><a class="{{ menuActive('ticket.index') }}"
+                                            href="{{ route('ticket.index') }}">@lang('Support Tickets')</a></li>
+                                </ul>
+                            </li>
+
+                            @if ($general->deposit_commission || $general->buy_commission || $general->win_commission)
+                                <li class="menu_has_children">
+                                    <a class="{{ menuActive(['user.commissions', 'user.referred']) }}"
+                                        href="javascript:void(0)">@lang('Referral')</a>
+                                    <ul class="sub-menu">
+                                        <li><a class="{{ menuActive('user.commissions') }}"
+                                                href="@if ($general->dc) {{ route('user.commissions', 'all') }}
                                             @elseif($general->buy_commission) {{ route('user.commissions') }} @else
                                             {{ route('user.commissions') }} @endif ">@lang('Commission')</a>
+                                        </li>
+                                        <li><a class="{{ menuActive('user.referred') }}"
+                                                href="{{ route('user.referred') }}">@lang('Referred Users')</a></li>
+                                    </ul>
                                 </li>
-                                <li><a class="{{ menuActive('user.referred') }}"
-                                        href="{{ route('user.referred') }}">@lang('Referred Users')</a></li>
-                            </ul>
-                        </li>
-                        @endif
+                            @endif
 
-                        <li class="menu_has_children">
-                            <a class="{{ menuActive(['user.profile.setting', 'user.change.password', 'user.twofactor', 'user.transactions']) }}"
-                                href="javascript:void(0)">@lang('Account')</a>
-                            <ul class="sub-menu">
-                                <li><a class="{{ menuActive('user.profile.setting') }}"
-                                        href="{{ route('user.profile.setting') }}">@lang('Profile')</a></li>
-
-                                <li><a class="{{ menuActive('user.transactions') }}"
+                            <li class="menu_has_children">
+                                <a class="{{ menuActive(['user.change.password', 'user.twofactor', 'user.transactions']) }}"
+                                    href="javascript:void(0)">@lang('Account')</a>
+                                <ul class="sub-menu">
+                                    <li><a class="{{ menuActive('user.transactions') }}"
                                         href="{{ route('user.transactions') }}">@lang('Transactions')</a></li>
 
-                                <li><a class="{{ menuActive('user.change.password') }}"
-                                        href="{{ route('user.change.password') }}">@lang('Change Password')</a>
-                                </li>
-                                <li><a class="{{ menuActive('user.twofactor') }}"
-                                        href="{{ route('user.twofactor') }}">@lang('2FA Security')</a></li>
-                            </ul>
-                        </li>
+                                    <li><a class="{{ menuActive('user.change.password') }}"
+                                            href="{{ route('user.change.password') }}">@lang('Change Password')</a>
+                                    </li>
+                                    <li><a class="{{ menuActive('user.twofactor') }}"
+                                            href="{{ route('user.twofactor') }}">@lang('2FA Security')</a></li>
+                                </ul>
+                            </li> --}}
                         @endauth
                     </ul>
                     <div class="nav-right me-4">
                         @auth
-                        <a class="btn btn-sm btn--danger me-sm-3 me-2 btn--capsule px-3 text-white"
-                            href="{{ route('user.logout') }}">@lang('Logout')</a>
-                        @else
-                        <a class="btn btn-sm btn--base me-sm-3 me-2 btn--capsule px-3"
-                            href="{{ route('user.login') }}">@lang('Login')</a>
-                        <a class="fs--14px me-sm-3 me-2 text-white"
-                            href="{{ route('user.register') }}">@lang('Register')</a>
+                            <a class="btn btn-sm btn--danger me-sm-3 me-2 btn--capsule px-3 text-white"
+                                href="{{ route('user.logout') }}">@lang('Logout')</a>
+                        {{-- @else
+                            <a class="btn btn-sm btn--base me-sm-3 me-2 btn--capsule px-3"
+                                href="{{ route('user.login') }}">@lang('Login')</a>
+                            <a class="fs--14px me-sm-3 me-2 text-white"
+                                href="{{ route('user.register') }}">@lang('Register')</a> --}}
                         @endauth
                         <select class="language-select langSel">
                             @foreach ($language as $item)
-                            <option value="{{ $item->code }}" @if (session('lang')==$item->code) selected @endif>
-                                {{ __($item->name) }}</option>
+                                <option value="{{ $item->code }}" @if (session('lang') == $item->code) selected @endif>
+                                    {{ __($item->name) }}</option>
                             @endforeach
                         </select>
                     </div>

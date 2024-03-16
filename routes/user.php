@@ -57,9 +57,9 @@ Route::middleware('auth')->name('user.')->group(function () {
                 Route::get('dashboard', 'home')->name('home');
 
 
-                Route::get('referral/commissions', 'commissions')->name('commissions');
-                // Referred Users
-                Route::get('referral/referred-users', 'referredUsers')->name('referred');
+                // Route::get('referral/commissions', 'commissions')->name('commissions');
+                // // Referred Users
+                // Route::get('referral/referred-users', 'referredUsers')->name('referred');
 
 
                 //KYC

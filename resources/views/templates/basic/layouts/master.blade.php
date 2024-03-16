@@ -56,7 +56,7 @@
                         </li>
                         <li>
                             <img src="{{ asset($activeTemplateTrue . 'images/Dollar.svg') }}" alt="image">
-                            <a href="{{route('user.transactions')}}">Purchase History</a>
+                            <a href="{{route('user.tickets')}}">Purchase History</a>
                         </li>
                         <li>
                             <img src="{{ asset($activeTemplateTrue . 'images/ExportDollar.svg') }}" alt="image">
@@ -67,8 +67,8 @@
                             <a href="{{route("user.deposit.history")}}">Deposit History</a>
                         </li>
                         <li>
-                            <img src="{{ asset($activeTemplateTrue . 'images/Dollar.svg') }}" alt="image">
-                            <a href="{{route('user.tickets')}}">my tickets</a>
+                            <img src="{{ asset($activeTemplateTrue . 'images/user.svg') }}" alt="image">
+                            <a href="{{ route('user.profile.setting') }}">@lang('Profile')</a></a>
                         </li>
                     </ul>
                     <div class="dashboard__line"></div>

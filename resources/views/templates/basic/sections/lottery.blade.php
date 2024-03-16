@@ -101,7 +101,7 @@
         <div class="row mt-4 d-flex justify-content-center align-items-center w-100">
             <div class="col-lg-12 d-flex justify-content-center align-items-center">
                 <a class="btn p-2 btn--base--message wow fadeInUp mt-4" data-wow-duration="0.5s" data-wow-delay="0.7s"
-                    href="{{ @$banner->data_values->button_url }}">View More</a>
+                    href="{{ route('lottery') }}">View More</a>
             </div>
         </div>
 

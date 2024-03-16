@@ -529,3 +529,6 @@ function getBannerPhase($banner_phase_id)
         return null;
     return $content;
 }
+function formateNumber($number){
+    return number_format($number, 2);
+    }
