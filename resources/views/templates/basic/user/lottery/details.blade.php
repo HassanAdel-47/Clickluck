@@ -42,10 +42,10 @@
                                 {{ __($general->cur_sym) }}{{ showAmount(auth()->user()->balance) }}</div>
                             <!-- <div class="middle">
                             </div> -->
-                            <!-- <div class="right">
-                                <button class="btn btn-md btn-outline--base addMore" type="button"><i
+                            <div class="right">
+                                <button class="btn btn-md btn--base addMore" type="button"><i
                                         class="la la-plus"></i> @lang('Add New')</button>
-                            </div> -->
+                            </div>
                         </div>
                         <div class="body-part">
                             <div class="row gy-4" id="tickets">
