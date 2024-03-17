@@ -185,26 +185,6 @@
             "modal": false
         }
     },
-    "blog": {
-        "builder": true,
-        "name": "Blog Section",
-        "content": {
-            "heading": "text",
-            "subheading": "text"
-        },
-        "element": {
-            "images": {
-                "image": {
-                    "size": "728x465",
-                    "thumb": "120x80"
-                }
-            },
-            "title": "text",
-            "seo_description": "textarea",
-            "description_nic": "textarea-nic",
-            "modal": false
-        }
-    },
     "subscribe": {
         "builder": true,
         "name": "Subscribe Section",
