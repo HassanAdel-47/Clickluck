@@ -5321,7 +5321,7 @@ label.required:after {
 
 /* Modal body redesign */
 .modal-content {
-    background-color: #1c1c43 !important;
+    background-color: #1d1b20 !important;
 }
 
 @media screen and (min-width: 767px) {
