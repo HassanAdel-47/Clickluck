@@ -1,229 +1,298 @@
 @extends($activeTemplate . 'layouts.' . $layout)
 @section('content')
-    <section class="pt-100 pb-100">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="lottery-details-header">
-                        <div class="thumb"><img
-                                src="{{ getImage(getFilePath('lottery') . '/' . @$phase->lottery->image, getFileSize('lottery')) }}" alt="image"></div>
-                        <div class="content text-center">
-                            <h3 class="game-name mb-4">{{ __($phase->lottery->name) }}</h3>
-                            <div class="clock" data-clock="{{ showDateTime($phase->draw_date, 'Y/m/d H:i:s') }}" data-title="@lang('The lottery is expired')"></div>
-                        </div>
+<section class="pt-100 pb-100 "
+    style="position:relative; background-color: white; background-image:  url('{{ asset($activeTemplateTrue . 'images/lottaries_details_background.svg')}}');background-size: cover;">
+
+    <div class="lottaries__details__title"
+        style="background-image:  url('{{ asset($activeTemplateTrue . 'images/lottaries_details_breadcrumb.svg')}}');background-size: cover; ">
+    </div>
+    <div class="container lottaries__details">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="lottery-details-header">
+                    <div class="thumb d-flex align-items-center justify-content-center"><img
+                            src="{{ asset($activeTemplateTrue . 'images/lottaries_details.svg') }}" alt="image">
+                        <h3 class="game-name ms-4">{{ __($phase->lottery->name) }}</h3>
+                    </div>
+                    <div class="content text-center">
+                        <div class="clock" data-clock="{{ showDateTime($phase->draw_date, 'Y/m/d H:i:s') }}"
+                            data-title="@lang('The lottery is expired')"></div>
                     </div>
                 </div>
             </div>
-            <div class="row mt-5">
-                <div class="col-lg-12">
+        </div>
+        <div class="row mt-5">
+            <div class="col-lg-12">
 
-                    @if ($phase->available)
-                        @auth
-                            <form class="submit-form" method="post" action="{{ route('user.buy.ticket') }}">
-                                @csrf
-                                <input name="lottery_id" type="hidden" value="{{ $phase->lottery->id }}">
-                                <input name="phase_id" type="hidden" value="{{ $phase->id }}">
+                @if ($phase->available)
+                @auth
+                <form class="submit-form" method="post" action="{{ route('user.buy.ticket') }}">
+                    @csrf
+                    <input name="lottery_id" type="hidden" value="{{ $phase->lottery->id }}">
+                    <input name="phase_id" type="hidden" value="{{ $phase->id }}">
 
-                                <div class="lottery-details-body">
-                                    <div class="top-part">
-                                        <div class="left">
-                                            <h4>@lang('Available Ticket'): {{ __($phase->available) }}</h4>
-                                            <h4 class="mt-2">@lang('Price'):
-                                                {{ __($general->cur_sym) }}{{ __(showAmount($phase->lottery->price)) }}</h4>
-                                        </div>
-                                        <div class="middle">
-                                            <div class="balance">@lang('Balance'):
-                                                {{ __($general->cur_sym) }}{{ showAmount(auth()->user()->balance) }}</div>
-                                        </div>
-                                        <div class="right">
-                                            <button class="btn btn-md btn-outline--base addMore" type="button"><i
-                                                    class="la la-plus"></i> @lang('Add New')</button>
-                                        </div>
-                                    </div>
-                                    <div class="body-part">
-                                        <div class="row gy-4" id="tickets">
-
-                                            <div class="col-xl-4 col-md-6">
-                                                <div class="ticket-card">
-                                                    <div class="ticket-card__header">
-                                                        <h4>@lang('Your Ticket Number')</h4>
-                                                    </div>
-                                                    <div class="ticket-card__body elements">
-                                                        <input class="numVal" name="number[]" type="hidden">
-                                                        <div class="numbers uniqueNumbers mb-4">
-                                                            <span>0</span>
-                                                            <span>0</span>
-                                                            <span>0</span>
-                                                            <span>0</span>
-                                                            <span>0</span>
-                                                            <span>0</span>
-                                                            <span>0</span>
-                                                            <span>0</span>
-                                                            <span>0</span>
-                                                            <span>0</span>
-                                                        </div>
-                                                        <button class="btn btn-md btn--base w-100 generate" type="button">@lang('Generate')</button>
-                                                    </div>
-                                                </div><!-- ticket-card end -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="footer-part gap-3">
-                                        <div class="left">
-                                            <p>@lang('1 Draw with') <span class="qnt">1</span> @lang('ticket') : <span
-                                                    class="qnt">1</span> x {{ getAmount($phase->lottery->price) }}
-                                                {{ __($general->cur_text) }}</p>
-                                            <p class="mt-2">@lang('Total Amount') : <span
-                                                    class="tam">{{ getAmount($phase->lottery->price) }}</span>
-                                                <span>{{ $general->cur_text }}</span>
-                                            </p>
-                                        </div>
-                                        <div class="right">
-                                            @auth
-                                                <button class="btn btn-md btn-outline--base buyBtn" type="button"><i
-                                                        class="la la-shopping-bag"></i> @lang('Buy Now')</button>
-                                            @endauth
-                                        </div>
-                                    </div>
-                                </div><!-- lottery-details-body end -->
-                            </form>
-                        @else
-                            <div class="lottery-details-body">
-                                <div class="top-part">
-                                    <div class="left">
-                                        <h4>@lang('Available Ticket'): {{ __($phase->available) }}</h4>
-                                        <h4 class="mt-2">@lang('Price'):
-                                            {{ __($general->cur_sym) }}{{ __(showAmount($phase->lottery->price)) }}</h4>
-                                    </div>
-                                </div>
-                                <div class="footer-part gap-3">
-                                    <div class="middle">
-                                        <h4>@lang('Please log in to purchase lottery tickets')</h4>
-                                    </div>
-                                    <div class="right">
-                                        <a href="{{ route('user.login') }}"><button class="btn btn-md btn-outline--base" type="button"><i class="la la-user"></i> @lang('Login')</button></a>
-                                    </div>
-                                </div>
+                    <div class="lottery-details-body">
+                        <div class="top-part">
+                            <div class="left">
+                                <h4>@lang('Available Ticket'): {{ __($phase->available) }}</h4>
+                                <h4 class="mt-2">@lang('Price'):
+                                    {{ __($general->cur_sym) }}{{ __(showAmount($phase->lottery->price)) }}</h4>
                             </div>
-                        @endauth
-                    @else
-                        <div class="lottery-details-body">
-                            <div class="top-part">
-                                <div class="w-100">
-                                    <h4> @lang('All Tickets are sold') </h4>
+                            <div class="balance mt-2">@lang('Balance'):
+                                {{ __($general->cur_sym) }}{{ showAmount(auth()->user()->balance) }}</div>
+                            <!-- <div class="middle">
+                            </div> -->
+                            <!-- <div class="right">
+                                <button class="btn btn-md btn-outline--base addMore" type="button"><i
+                                        class="la la-plus"></i> @lang('Add New')</button>
+                            </div> -->
+                        </div>
+                        <div class="body-part">
+                            <div class="row gy-4" id="tickets">
+                                <div class="col-xl-4 col-md-6">
+                                    <div class="ticket-card">
+                                        <div class="ticket-card__header">
+                                            <h4>@lang('Your Ticket Number')</h4>
+                                        </div>
+                                        <div class="ticket-card__body elements">
+                                            <input class="numVal" name="number[]" type="hidden">
+                                            <div class="numbers uniqueNumbers mb-4">
+                                                <span>0</span>
+                                                <span>0</span>
+                                                <span>0</span>
+                                                <span>0</span>
+                                                <span>0</span>
+                                                <span>0</span>
+                                                <span>0</span>
+                                                <span>0</span>
+                                                <span>0</span>
+                                                <span>0</span>
+                                            </div>
+                                            <button class="btn btn-md btn--base w-100 generate"
+                                                type="button">@lang('Generate')</button>
+                                        </div>
+                                    </div><!-- ticket-card end -->
                                 </div>
                             </div>
                         </div>
-                    @endif
-                    <div class="lottery-details-instruction mt-5">
-                        <ul class="nav nav-tabs cumtom--nav-tabs" id="myTab" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link active px-4" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">@lang('Instruction')</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link px-4" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">@lang('Win Bonuses')</button>
-                            </li>
-                            @auth
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link px-4" id="profile-tab" data-bs-toggle="tab" data-bs-target="#history" type="button" role="tab" aria-controls="history" aria-selected="false">@lang('Purchased Tickets')</button>
-                                </li>
-                            @endauth
-                        </ul>
-                        <div class="tab-content mt-4" id="myTabContent">
-                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                <div class="d-block">
-                                    <h3 class="mb-3">@lang('Introduction')</h3>
-                                    @php echo $phase->lottery->instruction @endphp
-                                </div>
+                        <div class="footer-part gap-3">
+                            <div class="left">
+                                <p>@lang('1 Draw with') <span class="qnt">1</span> @lang('ticket') : <span
+                                        class="qnt">1</span> x {{ getAmount($phase->lottery->price) }}
+                                    {{ __($general->cur_text) }}</p>
+                                <p class="mt-2 ">@lang('Total Amount') : <span class="tam yellowText">{{
+                                        getAmount($phase->lottery->price) }}</span>
+                                    <span class="yellowText">{{ $general->cur_text }}</span>
+                                </p>
                             </div>
-                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                <div class="table-responsive--md">
-                                    <table class="level-table custom--table table">
-                                        <thead>
-                                            <tr>
-                                                <th class="text-uppercase">@lang('Winners')</th>
-                                                <th class="text-uppercase">@lang('Win Bonus')</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-
-                                            @foreach ($phase->lottery->bonuses as $bonus)
-                                                <tr>
-                                                    <td class="text-white">@lang('Winner')- {{ $bonus->level }}</td>
-                                                    <td class="text-white">{{ $bonus->amount }}
-                                                        {{ __($general->cur_text) }}
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                        </div>
+                        <div class="right w-100 d-flex align-items-center justify-content-center ">
                             @auth
-                                <div class="tab-pane fade" id="history" role="tabpanel" aria-labelledby="history-tab">
-                                    <div class="table-responsive--md">
-                                        <table class="level-table custom--table table">
-                                            <thead>
-                                                <tr>
-                                                    <th>@lang('S.N.')</th>
-                                                    <th>@lang('Phase Number')</th>
-                                                    <th>@lang('Ticket')</th>
-                                                    <th>@lang('Result')</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @forelse(@$tickets as $ticket)
-                                                    <tr>
-                                                        <td>{{ $tickets->firstItem() + $loop->index }}</td>
-                                                        <td>@lang('Phase ' . $ticket->phase->phase_number)</td>
-                                                        <td> {{ $ticket->ticket_number }}</td>
-                                                        <td>
-                                                            @php
-                                                                echo $ticket->statusBadge;
-                                                            @endphp
-                                                        </td>
-                                                    @empty
-                                                        <td class="text-center rounded-bottom" colspan="100%">{{ __($emptyMessage) }}</td>
-                                                    </tr>
-                                                @endforelse
-                                            </tbody>
-                                        </table>
-                                        <div class="d-flex justify-content-center mt-3">
-                                            @if ($tickets->hasPages())
-                                                {{ paginateLinks($tickets) }}
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
+                            <button class="btn btn-md btn--base buyBtn mb-4" type="button"><i
+                                    class="la la-shopping-bag"></i> @lang('Buy Now')</button>
                             @endauth
-
+                        </div>
+                    </div><!-- lottery-details-body end -->
+                </form>
+                @else
+                <div class="lottery-details-body">
+                    <div class="top-part">
+                        <div class="left">
+                            <h4>@lang('Available Ticket'): {{ __($phase->available) }}</h4>
+                            <h4 class="mt-2">@lang('Price'):
+                                {{ __($general->cur_sym) }}{{ __(showAmount($phase->lottery->price)) }}</h4>
+                        </div>
+                    </div>
+                    <div class="footer-part gap-3">
+                        <div class="middle">
+                            <h4>@lang('Please log in to purchase lottery tickets')</h4>
+                        </div>
+                        <div class="right">
+                            <a href="{{ route('user.login') }}"><button class="btn btn-md btn-outline--base"
+                                    type="button"><i class="la la-user"></i> @lang('Login')</button></a>
                         </div>
                     </div>
                 </div>
-            </div><!-- row end -->
-        </div>
-    </section>
+                @endauth
+                @else
+                <div class="lottery-details-body">
+                    <div class="top-part">
+                        <div class="w-100">
+                            <h4> @lang('All Tickets are sold') </h4>
+                        </div>
+                    </div>
+                </div>
+                @endif
+                <div class="mt-5">
+                    <section
+                        style="background-image:  url('{{ asset($activeTemplateTrue . 'images/LotteriesSection.png')}}') ">
+                        <figure class="tabBlock">
+                            <ul class="tabBlock-tabs" style="position: relative;">
+                                <li class="tabBlock-tab is-active">Instructions</li>
+                                <li class="tabBlock-tab">Win Prizes </li>
+                                <li class="tabBlock-tab">Latest Draw Winners </li>
+                            </ul>
+                            <hr />
+                            <div class="tabBlock-content">
+                                <div class="tabBlock-pane">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias molestiae
+                                        atque quis blanditiis
+                                        eaque
+                                        maiores ducimus optio neque debitis quos dolorum odit unde quibusdam tenetur
+                                        quaerat magni eius quod
+                                        tempore.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum
+                                        dolor sit amet,
+                                        consectetur adipisicing elit. Molestias molestiae atque quis blanditiis eaque
+                                        maiores ducimus optio neque debitis quos dolorum odit unde quibusdam tenetur
+                                        quaerat magni eius quod
+                                        tempore.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias
+                                        molestiae atque quis
+                                        blanditiis eaque maiores ducimus optio neque debitis quos dolorum odit unde
+                                        quibusdam tenetur
+                                        quaerat
+                                        magni eius quod tempore.</p>
 
-    <!-- Modal -->
-    @include($activeTemplate . 'partials.ticket_confirmation_modal')
+                                </div>
+                                <div class="tabBlock-pane">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias molestiae
+                                        atque quis blanditiis
+                                        eaque
+                                        maiores ducimus optio neque debitis quos dolorum odit unde quibusdam tenetur
+                                        quaerat magni eius quod
+                                        tempore.</p>
+                                </div>
+                                <div class="tabBlock-pane">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias molestiae
+                                        atque quis blanditiis
+                                        eaque
+                                        maiores ducimus optio neque debitis quos dolorum odit unde quibusdam tenetur
+                                        quaerat magni eius quod
+                                        tempore.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias
+                                        molestiae atque quis
+                                        blanditiis eaque maiores ducimus optio neque debitis quos dolorum odit unde
+                                        quibusdam tenetur
+                                        quaerat
+                                        magni eius quod tempore.</p>
+                                </div>
+                            </div>
+                        </figure>
 
-    <!-- lottery details section end -->
+                    </section>
+                    <!-- <ul class="nav nav-tabs cumtom--nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active px-4" id="home-tab" data-bs-toggle="tab"
+                                data-bs-target="#home" type="button" role="tab" aria-controls="home"
+                                aria-selected="true">@lang('Instruction')</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link px-4" id="profile-tab" data-bs-toggle="tab"
+                                data-bs-target="#profile" type="button" role="tab" aria-controls="profile"
+                                aria-selected="false">@lang('Win Bonuses')</button>
+                        </li>
+                        @auth
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link px-4" id="profile-tab" data-bs-toggle="tab"
+                                data-bs-target="#history" type="button" role="tab" aria-controls="history"
+                                aria-selected="false">@lang('Purchased Tickets')</button>
+                        </li>
+                        @endauth
+                    </ul>
+                    <div class="tab-content mt-4" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="d-block">
+                                <h3 class="mb-3">@lang('Introduction')</h3>
+                                @php echo $phase->lottery->instruction @endphp
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            <div class="table-responsive--md">
+                                <table class="level-table custom--table table">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-uppercase">@lang('Winners')</th>
+                                            <th class="text-uppercase">@lang('Win Bonus')</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        @foreach ($phase->lottery->bonuses as $bonus)
+                                        <tr>
+                                            <td class="text-white">@lang('Winner')- {{ $bonus->level }}</td>
+                                            <td class="text-white">{{ $bonus->amount }}
+                                                {{ __($general->cur_text) }}
+                                            </td>
+                                        </tr>
+                                        @endforeach
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        @auth
+                        <div class="tab-pane fade" id="history" role="tabpanel" aria-labelledby="history-tab">
+                            <div class="table-responsive--md">
+                                <table class="level-table custom--table table">
+                                    <thead>
+                                        <tr>
+                                            <th>@lang('S.N.')</th>
+                                            <th>@lang('Phase Number')</th>
+                                            <th>@lang('Ticket')</th>
+                                            <th>@lang('Result')</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse(@$tickets as $ticket)
+                                        <tr>
+                                            <td>{{ $tickets->firstItem() + $loop->index }}</td>
+                                            <td>@lang('Phase ' . $ticket->phase->phase_number)</td>
+                                            <td> {{ $ticket->ticket_number }}</td>
+                                            <td>
+                                                @php
+                                                echo $ticket->statusBadge;
+                                                @endphp
+                                            </td>
+                                            @empty
+                                            <td class="text-center rounded-bottom" colspan="100%">{{ __($emptyMessage)
+                                                }}</td>
+                                        </tr>
+                                        @endforelse
+                                    </tbody>
+                                </table>
+                                <div class="d-flex justify-content-center mt-3">
+                                    @if ($tickets->hasPages())
+                                    {{ paginateLinks($tickets) }}
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        @endauth
+
+                    </div> -->
+                </div>
+            </div>
+        </div><!-- row end -->
+    </div>
+</section>
+
+<!-- Modal -->
+@include($activeTemplate . 'partials.ticket_confirmation_modal')
+
+<!-- lottery details section end -->
 @endsection
 
 @push('script')
-    <script type="text/javascript">
-        (function($) {
-            "use strict";
-            $(window).on('load', function() {
-                var element = $('.elements').length;
-                addMoreBtn(element);
-            });
+<script type="text/javascript">
+    (function ($) {
+        "use strict";
+        $(window).on('load', function () {
+            var element = $('.elements').length;
+            addMoreBtn(element);
+        });
 
-            $('.addMore').click(function() {
-                var element = $('.elements').length + 1
+        $('.addMore').click(function () {
+            var element = $('.elements').length + 1
 
-                var html = `
+            var html = `
                         <div class="col-xl-4 col-md-6 elem">
                             <div class="ticket-card">
                                 <button type="button" class="ticket-card-del removeBtn"><i class="las la-times"></i></button>
@@ -249,94 +318,95 @@
                             </div>
                         </div>
                 	`;
-                $('#tickets').append(html);
-                $('.qnt').html(element);
-                $('.tam').html(element * {{ $phase->lottery->price }});
-                $('input[name=ticket_quantity]').val(element);
-                $('input[name=total_price]').val(element * {{ $phase->lottery->price }});
-                randomTicketGenerate();
-                remove();
-                addMoreBtn(element);
+            $('#tickets').append(html);
+            $('.qnt').html(element);
+            $('.tam').html(element * {{ $phase-> lottery -> price }});
+    $('input[name=ticket_quantity]').val(element);
+    $('input[name=total_price]').val(element * {{ $phase-> lottery -> price }});
+    randomTicketGenerate();
+    remove();
+    addMoreBtn(element);
             });
 
-            function remove() {
-                $('.removeBtn').click(function() {
-                    $(this).parents('.elem').remove();
-                    var elem = $('.elements').length;
-                    addMoreBtn(elem);
-                    $('.qnt').html(elem);
-                    $('.tam').html(elem * {{ $phase->lottery->price }});
-                    $('input[name=ticket_quantity]').val(elem);
-                    $('input[name=total_price]').val(elem * {{ $phase->lottery->price }});
+    function remove() {
+        $('.removeBtn').click(function () {
+            $(this).parents('.elem').remove();
+            var elem = $('.elements').length;
+            addMoreBtn(elem);
+            $('.qnt').html(elem);
+            $('.tam').html(elem * {{ $phase-> lottery -> price }});
+    $('input[name=ticket_quantity]').val(elem);
+    $('input[name=total_price]').val(elem * {{ $phase-> lottery -> price }});
                 });
             }
 
-            function addMoreBtn(count) {
-                if (count >= {{ $phase->available }}) {
-                    $('.addMore').addClass('d-none');
-                } else {
-                    $('.addMore').removeClass('d-none');
-                }
+    function addMoreBtn(count) {
+        if (count >= {{ $phase -> available }
+    }) {
+        $('.addMore').addClass('d-none');
+    } else {
+        $('.addMore').removeClass('d-none');
+    }
             }
 
-            function randomTicketGenerate() {
-                $('.generate').click(function() {
-                    var randomNum = Math.floor(1000000000 + Math.random() * 9000000000);
-                    var array = randomNum.toString().split('');
-                    var newArray = [];
+    function randomTicketGenerate() {
+        $('.generate').click(function () {
+            var randomNum = Math.floor(1000000000 + Math.random() * 9000000000);
+            var array = randomNum.toString().split('');
+            var newArray = [];
 
-                    $.each(array, function(index, value) {
-                        newArray[index] = `<span>${value}</span>`;
-                    });
+            $.each(array, function (index, value) {
+                newArray[index] = `<span>${value}</span>`;
+            });
 
-                    $(this).parents('.elements').children('.numbers').html(newArray);
-                    $(this).parents('.elements').children('.numbers').addClass('active');
-                    $(this).parents('.elements').children('.numbers').removeClass('op-0-3');
-                    $(this).parents('.elements').children('.numVal').val(randomNum);
-                });
+            $(this).parents('.elements').children('.numbers').html(newArray);
+            $(this).parents('.elements').children('.numbers').addClass('active');
+            $(this).parents('.elements').children('.numbers').removeClass('op-0-3');
+            $(this).parents('.elements').children('.numVal').val(randomNum);
+        });
+    }
+
+    $('.generate').click(function () {
+        var tendigitrandom = Math.floor(1000000000 + Math.random() * 9000000000);
+        var array = tendigitrandom.toString().split('');
+        var newArray = [];
+
+        $.each(array, function (index, value) {
+            newArray[index] = `<span>${value}</span>`;
+        });
+
+        $(this).parents('.elements').children('.numbers').html(newArray);
+
+        $(this).parents('.elements').children('.numbers').addClass('active');
+        $(this).parents('.elements').children('.numbers').removeClass('op-0-3');
+        $(this).parents('.elements').children('.numVal').val(tendigitrandom);
+    });
+
+
+    $('.buyBtn').on('click', function () {
+        let emptyValueCheck = false;
+        $.each($('#tickets').find('.numVal'), function (i, val) {
+            if (!val.value) {
+                emptyValueCheck = true;
             }
+        });
+        if (emptyValueCheck) {
+            notify('error', 'Ticket number field is required!')
+            return;
+        } else {
+            $('.submit-form').find('.buyBtn').html(
+                '<i class="la la-shopping-bag fa-spin"></i> Buy Now');
 
-            $('.generate').click(function() {
-                var tendigitrandom = Math.floor(1000000000 + Math.random() * 9000000000);
-                var array = tendigitrandom.toString().split('');
-                var newArray = [];
+            var modal = $('#exampleModal');
+            modal.modal('show');
+            $('.buyTicketConfirmation').on('click', function () {
+                $('.submit-form').submit();
+                modal.modal('show');
+            })
 
-                $.each(array, function(index, value) {
-                    newArray[index] = `<span>${value}</span>`;
-                });
+        }
 
-                $(this).parents('.elements').children('.numbers').html(newArray);
-
-                $(this).parents('.elements').children('.numbers').addClass('active');
-                $(this).parents('.elements').children('.numbers').removeClass('op-0-3');
-                $(this).parents('.elements').children('.numVal').val(tendigitrandom);
-            });
-
-
-            $('.buyBtn').on('click', function() {
-                let emptyValueCheck = false;
-                $.each($('#tickets').find('.numVal'), function(i, val) {
-                    if (!val.value) {
-                        emptyValueCheck = true;
-                    }
-                });
-                if (emptyValueCheck) {
-                    notify('error', 'Ticket number field is required!')
-                    return;
-                } else {
-                    $('.submit-form').find('.buyBtn').html(
-                        '<i class="la la-shopping-bag fa-spin"></i> Buy Now');
-
-                    var modal = $('#exampleModal');
-                    modal.modal('show');
-                    $('.buyTicketConfirmation').on('click', function() {
-                        $('.submit-form').submit();
-                        modal.modal('show');
-                    })
-
-                }
-
-            });
-        })(jQuery);
-    </script>
+    });
+        }) (jQuery);
+</script>
 @endpush
