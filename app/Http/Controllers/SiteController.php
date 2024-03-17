@@ -27,8 +27,14 @@ class SiteController extends Controller
         }
         $pageTitle = 'Home';
         $sections = Page::where('tempname', $this->activeTemplate)->where('slug', '/')->first();
-        $phases = Phase::available()->latest('draw_date')->with(['lottery'])->paginate(getPaginate());
-        return view($this->activeTemplate . 'home', compact('pageTitle', 'sections','phases'));
+        $phases = Phase::available()->latest('draw_date')->with([
+            'lottery',
+            'lottery.bonuses' => function ($query) {
+                $query->select('lottery_id', 'amount')
+                    ->where('level', '1');
+            }
+        ])->paginate(getPaginate());
+        return view($this->activeTemplate . 'home', compact('pageTitle', 'sections', 'phases'));
     }
 
     public function pages($slug)
@@ -43,7 +49,7 @@ class SiteController extends Controller
     public function contact()
     {
         $pageTitle = "Contact Us";
-        $sections  = Page::where('tempname', $this->activeTemplate)->where('slug', 'contact')->first();
+        $sections = Page::where('tempname', $this->activeTemplate)->where('slug', 'contact')->first();
         return view($this->activeTemplate . 'contact', compact('pageTitle', 'sections'));
     }
 
@@ -102,7 +108,8 @@ class SiteController extends Controller
     public function changeLanguage($lang = null)
     {
         $language = Language::where('code', $lang)->first();
-        if (!$language) $lang = 'en';
+        if (!$language)
+            $lang = 'en';
         session()->put('lang', $lang);
         return back();
     }
@@ -110,25 +117,25 @@ class SiteController extends Controller
     public function blogs()
     {
         $pageTitle = 'Blogs';
-        $blogs     = Frontend::where('data_keys', 'blog.element')->orderBy('id')->paginate(getPaginate());
-        $sections  = Page::where('tempname', $this->activeTemplate)->where('slug', 'blog')->first();
+        $blogs = Frontend::where('data_keys', 'blog.element')->orderBy('id')->paginate(getPaginate());
+        $sections = Page::where('tempname', $this->activeTemplate)->where('slug', 'blog')->first();
         return view($this->activeTemplate . 'blog', compact('pageTitle', 'blogs', 'sections'));
     }
 
 
     public function blogDetails($slug, $id)
     {
-        $blog        = Frontend::where('id', $id)->where('data_keys', 'blog.element')->firstOrFail();
+        $blog = Frontend::where('id', $id)->where('data_keys', 'blog.element')->firstOrFail();
         $recentBlogs = Frontend::where('id', '!=', $id)->where('data_keys', 'blog.element')->orderBy('id')->take(5)->get();
-        $pageTitle   = "Blog Details";
+        $pageTitle = "Blog Details";
 
-        $customTitle          = $blog->data_values->title;
-        $seoContents['keywords']           = $blog->meta_keywords ?? [];
-        $seoContents['social_title']       = $blog->data_values->title;
-        $seoContents['description']        = strLimit(strip_tags(@$blog->data_values->seo_description), 150);
+        $customTitle = $blog->data_values->title;
+        $seoContents['keywords'] = $blog->meta_keywords ?? [];
+        $seoContents['social_title'] = $blog->data_values->title;
+        $seoContents['description'] = strLimit(strip_tags(@$blog->data_values->seo_description), 150);
         $seoContents['social_description'] = strLimit(strip_tags(@$blog->data_values->seo_description), 150);
-        $seoContents['image']              = getImage('assets/images/frontend/blog/' . @$blog->data_values->image, '728x465');
-        $seoContents['image_size']         = '728x465';
+        $seoContents['image'] = getImage('assets/images/frontend/blog/' . @$blog->data_values->image, '728x465');
+        $seoContents['image_size'] = '728x465';
         return view($this->activeTemplate . 'blog_details', compact('blog', 'pageTitle', 'recentBlogs', 'seoContents', 'customTitle'));
     }
 
@@ -161,15 +168,15 @@ class SiteController extends Controller
             $fontSize = 30;
         }
 
-        $image     = imagecreatetruecolor($imgWidth, $imgHeight);
+        $image = imagecreatetruecolor($imgWidth, $imgHeight);
         $colorFill = imagecolorallocate($image, 100, 100, 100);
-        $bgFill    = imagecolorallocate($image, 175, 175, 175);
+        $bgFill = imagecolorallocate($image, 175, 175, 175);
         imagefill($image, 0, 0, $bgFill);
         $textBox = imagettfbbox($fontSize, 0, $fontFile, $text);
-        $textWidth  = abs($textBox[4] - $textBox[0]);
+        $textWidth = abs($textBox[4] - $textBox[0]);
         $textHeight = abs($textBox[5] - $textBox[1]);
-        $textX      = ($imgWidth - $textWidth) / 2;
-        $textY      = ($imgHeight + $textHeight) / 2;
+        $textX = ($imgWidth - $textWidth) / 2;
+        $textY = ($imgHeight + $textHeight) / 2;
         header('Content-Type: image/jpeg');
         imagettftext($image, $fontSize, 0, $textX, $textY, $colorFill, $fontFile, $text);
         imagejpeg($image);
@@ -212,21 +219,26 @@ class SiteController extends Controller
     public function lottery()
     {
         $pageTitle = "All Lotteries";
-        $phases = Phase::available()
-            ->latest('draw_date')
-            ->with('lottery')
-            ->paginate(getPaginate());
-        $sections  = Page::where('tempname', $this->activeTemplate)->where('slug', 'lotteries')->first();
+        $phases = Phase::available()->latest('draw_date')->with(
+            [
+                'lottery',
+                'lottery.bonuses' => function ($query) {
+                    $query->select('lottery_id', 'amount')
+                        ->where('level', '1');
+                }
+            ]
+        )->paginate(getPaginate());
+        $sections = Page::where('tempname', $this->activeTemplate)->where('slug', 'lotteries')->first();
         return view($this->activeTemplate . 'lottery', compact('pageTitle', 'phases', 'sections'));
     }
 
     public function lotteryDetails($id)
     {
-        $phase     = Phase::available()->findOrFail($id);
+        $phase = Phase::available()->findOrFail($id);
         $pageTitle = " Details of" . ' ' . $phase->lottery->name;
-        $tickets   = Ticket::where('user_id', auth()->id())->where('lottery_id', $phase->lottery_id)->with('phase')->orderByDesc('id')->paginate(getPaginate());
-        $layout    = 'frontend';
+        $tickets = Ticket::where('user_id', auth()->id())->where('lottery_id', $phase->lottery_id)->with('phase')->orderByDesc('id')->paginate(getPaginate());
+        $layout = 'frontend';
         // return view($this->activeTemplate . 'user.lottery.machine', compact('pageTitle', 'phase', 'tickets', 'layout'));
-       return view($this->activeTemplate . 'user.lottery.details', compact('pageTitle', 'phase', 'tickets', 'layout'));
+        return view($this->activeTemplate . 'user.lottery.details', compact('pageTitle', 'phase', 'tickets', 'layout'));
     }
 }

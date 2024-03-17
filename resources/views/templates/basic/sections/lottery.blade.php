@@ -18,7 +18,7 @@
 
                         </div>
                         <h5 class="mt-2">
-                            ${{ $phase->lottery->prize }} Prize
+                            ${{ $phase->lottery->bonuses->first()->amount }} Prize
                         </h5>
                         <div class=" mt-2 d-flex justify-content-around align-items-between w-100">
                             <p>
