@@ -18,7 +18,7 @@
 
                         </div>
                         <h5 class="mt-2">
-                            ${{ $phase->lottery->prize }} Prize
+                            ${{ $phase->lottery->bonuses->first()->amount }} Prize
                         </h5>
                         <div class=" mt-2 d-flex justify-content-around align-items-between w-100">
                             <p>
@@ -47,7 +47,7 @@
                             </p>
                         </div>
                         <a class="btn p-2 btn--base--message wow fadeInUp mt-2" data-wow-duration="0.5s"
-                            data-wow-delay="0.7s" href="{{ route('lottery.details', $phase->lottery->id) }}">
+                            data-wow-delay="0.7s" href="{{ route('lottery.details', $phase->id) }}">
                             Buy Ticket ${{ number_format($phase->lottery->price, 2) }}</a>
                         <div class="label__running d-flex justify-content-around align-items-between">
                             <p>Running</p>
