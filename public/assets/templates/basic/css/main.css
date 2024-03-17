@@ -4117,8 +4117,8 @@ header.header {
 }
 
 .ticket-card__body .numbers.active span {
-    color: #37f5f9;
-    text-shadow: 0 2px 5px #37f5f9;
+    color: #fbb125;
+    text-shadow: 0 2px 5px #fbb125;
 }
 
 @media (max-width: 575px) {

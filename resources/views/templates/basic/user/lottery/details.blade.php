@@ -341,8 +341,7 @@
             }
 
     function addMoreBtn(count) {
-        if (count >= {{ $phase -> available }
-    }) {
+        if (count >= {{ $phase -> available }}) {
         $('.addMore').addClass('d-none');
     } else {
         $('.addMore').removeClass('d-none');
