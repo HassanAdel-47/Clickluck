@@ -16,7 +16,7 @@ class LotteryController extends Controller
     public function lottery()
     {
         $pageTitle = "All Lotteries";
-        $phases = Phase::available()->latest('draw_date')->with(['lottery'])->paginate(getPaginate());
+        $phases = Phase::available()->latest('draw_date')->with(['lottery','lottery.bonuses'])->paginate(getPaginate());
         return view($this->activeTemplate . 'user.lottery.index', compact('pageTitle', 'phases'));
     }
 

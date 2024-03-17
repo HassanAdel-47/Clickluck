@@ -214,7 +214,7 @@ class SiteController extends Controller
         $pageTitle = "All Lotteries";
         $phases = Phase::available()
             ->latest('draw_date')
-            ->with('lottery')
+            ->with(['lottery','lottery.bonuses'])
             ->paginate(getPaginate());
         $sections  = Page::where('tempname', $this->activeTemplate)->where('slug', 'lotteries')->first();
         return view($this->activeTemplate . 'lottery', compact('pageTitle', 'phases', 'sections'));
