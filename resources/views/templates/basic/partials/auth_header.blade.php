@@ -13,7 +13,9 @@
                     <ul class="navbar-nav main-menu ">
                         @auth
                             <li><a class="{{ menuActive('home') }}" href="{{ route('home') }}">@lang('Home')</a></li>
-                            <li><a class="{{ menuActive('user.home') }}"
+                            <li><a class="{{ menuActive(['user.home',
+                            'user.deposit.*', 'user.tickets','user.wins','user.profile.setting',
+                            'user.withdraw', 'user.withdraw.history' ]) }}"
                                     href="{{ route('user.home') }}">@lang('Dashboard')</a></li>
                             <li><a class="{{ menuActive(['user.lottery', 'user.lottery.details']) }}"
                                     href="{{ route('user.lottery') }}">@lang('Lotteries')</a></li>
