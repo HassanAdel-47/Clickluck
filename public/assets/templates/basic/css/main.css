@@ -5483,13 +5483,13 @@ body.modal-open {
 .machineInfo {
     width: 60%;
 }
+}
 
 @media(min-width:2200px){
     .machineInfo {
         width: 40%;
     }
 }
-
 
 .machineInfo span {
     color: #fbb125;
