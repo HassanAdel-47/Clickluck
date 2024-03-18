@@ -27,7 +27,8 @@
                                         <td>
                                             <div class="customer-details d-block">
                                                 <a class="thumb" href="javascript:void(0)">
-                                                    <img src="{{ getImage(getFilePath('lottery') . '/' . @$phase->lottery->image, getFileSize('lottery')) }}" alt="image">
+                                                    <img src="{{ getImage(getFilePath('lottery') . '/' . @$phase->lottery->image, getFileSize('lottery')) }}"
+                                                        alt="image">
                                                 </a>
                                             </div>
                                         </td>
@@ -54,15 +55,31 @@
                                         </td>
                                         <td> @php echo $phase->statusBadge @endphp </td>
                                         <td>
-                                            <button class="btn btn-sm btn-outline--primary @if ($phase->draw_status == Status::RUNNING) cuModalBtn @endif" data-resource="{{ $phase }}" data-modal_title="@lang('Edit Lottery Phase')" type="button" @if ($phase->draw_status == Status::COMPLETE) disabled @endif>
+                                            <button
+                                                class="btn btn-sm btn-outline--info
+                                            @if ($phase->draw_status == Status::RUNNING) winModalBtn @endif"
+                                                data-resource="{{ $phase }}"
+                                                data-url="{{ route('admin.lottery.phase.winner', $phase) }}"
+                                                data-modal_title="@lang('Set Phase Winners')" type="button"
+                                                @if ($phase->draw_status == Status::COMPLETE) disabled @endif>
+                                                <i class=""></i>@lang('Set Winners')
+                                            </button>
+                                            <button
+                                                class="btn btn-sm btn-outline--primary @if ($phase->draw_status == Status::RUNNING) cuModalBtn @endif"
+                                                data-resource="{{ $phase }}" data-modal_title="@lang('Edit Lottery Phase')"
+                                                type="button" @if ($phase->draw_status == Status::COMPLETE) disabled @endif>
                                                 <i class="la la-pencil"></i>@lang('Edit')
                                             </button>
                                             @if ($phase->status == Status::ACTIVE)
-                                                <button class="btn btn-sm btn-outline--danger ms-1 confirmationBtn" data-id="{{ $phase->id }}" data-status="{{ $phase->status }}" @if ($phase->draw_status == Status::COMPLETE) disabled @endif>
+                                                <button class="btn btn-sm btn-outline--danger ms-1 confirmationBtn"
+                                                    data-id="{{ $phase->id }}" data-status="{{ $phase->status }}"
+                                                    @if ($phase->draw_status == Status::COMPLETE) disabled @endif>
                                                     <i class="la la-eye-slash"></i> @lang('Inactive')
                                                 </button>
                                             @else
-                                                <button class="btn btn-sm btn-outline--success ms-1 confirmationBtn" data-id="{{ $phase->id }}" data-status="{{ $phase->status }}" @if ($phase->draw_status == Status::COMPLETE) disabled @endif>
+                                                <button class="btn btn-sm btn-outline--success ms-1 confirmationBtn"
+                                                    data-id="{{ $phase->id }}" data-status="{{ $phase->status }}"
+                                                    @if ($phase->draw_status == Status::COMPLETE) disabled @endif>
                                                     <i class="la la-eye"></i> @lang('Active')
                                                 </button>
                                             @endif
@@ -108,7 +125,8 @@
                                 <select class="form-control" name="lottery_id" required>
                                     <option value="" disabled selected>@lang('Select One')</option>
                                     @foreach ($lotteries as $lottery)
-                                        <option data-running="{{ $lottery->isRunning }}" value="{{ $lottery->id }}">{{ $lottery->name }}</option>
+                                        <option data-running="{{ $lottery->isRunning }}" value="{{ $lottery->id }}">
+                                            {{ $lottery->name }}</option>
                                     @endforeach
                                 </select>
                             @endif
@@ -116,20 +134,25 @@
 
                         <div class="form-group">
                             <label>@lang('Start Date')</label>
-                            <input class="modal-datepicker form-control bg--white" name="start_date" data-language="en" data-date-format="yyyy-mm-dd" type="text" value="{{ date('Y-m-d') }}" autocomplete="off" required>
+                            <input class="modal-datepicker form-control bg--white" name="start_date" data-language="en"
+                                data-date-format="yyyy-mm-dd" type="text" value="{{ date('Y-m-d') }}" autocomplete="off"
+                                required>
                             <small class="text-muted text--small"> <i class="la la-info-circle"></i>
                                 @lang('Year-Month-Date')</small>
                         </div>
                         <div class="form-group">
                             <label>@lang('Draw Date')</label>
-                            <input class="datepicker-here form-control bg--white" name="draw_date" data-language="en" data-date-format="yyyy-mm-dd" type="text" value="{{ date('Y-m-d') }}" autocomplete="off" required>
+                            <input class="datepicker-here form-control bg--white" name="draw_date" data-language="en"
+                                data-date-format="yyyy-mm-dd" type="text" value="{{ date('Y-m-d') }}" autocomplete="off"
+                                required>
                             <small class="text-muted text--small"> <i class="la la-info-circle"></i>
                                 @lang('Year-Month-Date')</small>
                         </div>
 
                         <div class="form-group">
                             <label>@lang('Quantity')</label>
-                            <input class="form-control" name="quantity" type="number" step="any" autocomplete="off" required>
+                            <input class="form-control" name="quantity" type="number" step="any" autocomplete="off"
+                                required>
                         </div>
                         <div class="form-group">
                             <label>@lang('Draw Type')</label>
@@ -149,7 +172,61 @@
         </div>
     </div>
 
-    <div class="modal fade" id="confirmationModal" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true" tabindex="-1">
+
+    <div class="modal fade" id="winModal" role="dialog" tabindex="-1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><span class="type"></span> <span>@lang('Set Winners')</span></h5>
+                    <button class="close" data-bs-dismiss="modal" type="button" aria-label="Close">
+                        <i class="las la-times"></i>
+                    </button>
+                </div>
+                <form method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>@lang('Lottery')</label>
+                            <input class="form-control" name="phase_id" type="text"
+                                value="{{ $phase->lottery->name }}" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label>@lang('Phase number')</label>
+
+                            <input class="form-control" type="text" value="{{ $phase->phase_number }}" disabled>
+
+                        </div>
+                        <div class="form-group winners">
+                        </div>
+                        <div class="form-group">
+                            <label>@lang('Winning Level')</label>
+                            <select class="form-control" name="level" required>
+                                <option value="" disabled selected>@lang('Select One')</option>
+                                @for ($i = 1; $i <= $phase->lottery->bonuses->count(); $i++)
+                                    <option value="{{ $i }}">
+                                        {{ $i }}</option>
+                                @endfor
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>@lang('winner ticket number')</label>
+
+                            <input class="form-control" name="ticket_number" type="text"
+                                placeholder="enter the winning ticket" required>
+
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button class="btn btn--primary h-45 w-100 actionBtn" type="submit">@lang('Submit')</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="confirmationModal" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true"
+        tabindex="-1">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -181,7 +258,8 @@
         <x-back route="{{ route('admin.lottery.index') }}" />
     @endif
 
-    <button class="btn btn-sm btn-outline--primary float-sm-end cuModalBtn" data-modal_title="@lang('Add Lottery Phase')" type="button" @if (@$isRunning) disabled @endif>
+    <button class="btn btn-sm btn-outline--primary float-sm-end cuModalBtn" data-modal_title="@lang('Add Lottery Phase')"
+        type="button" @if (@$isRunning) disabled @endif>
         <i class="las la-plus"></i>@lang('Add new')
     </button>
 @endpush
@@ -220,6 +298,25 @@
                 modal.modal('show')
 
             });
-        })(jQuery)
+            $(document).ready(function() {
+                $('.winModalBtn').on('click', function() {
+                    var phase = $(this).data('resource');
+                    var modal = $('#winModal');
+                    var url = $(this).data('url');
+                    modal.find('[name="phase_id"]').val(phase.lottery.name);
+                    modal.find('[name="phase_number"]').val(phase.phase_number);
+                    modal.find('form').attr('action', url);
+                    var winnersHtml = '<div><label>@lang('winners')</label></div>';
+                    $.each(phase.winners, function(index, winner) {
+                        winnersHtml += '<div>level: ' + winner.level +
+                            ' <input class="form-control" type="text" value="' + winner
+                            .ticket_number + '" disabled></div>';
+                    });
+                    modal.find('.winners').html(winnersHtml);
+                    // Show modal
+                    modal.modal('show');
+                });
+            });
+        })(jQuery);
     </script>
 @endpush
