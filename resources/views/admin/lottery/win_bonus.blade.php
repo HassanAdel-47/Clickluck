@@ -21,7 +21,9 @@
                                 @foreach ($lottery->bonuses as $key => $p)
                                     <tr>
                                         <td>@lang('Winner#') {{ $p->level }}</td>
-                                        <td>{{ $p->amount }} {{ __($general->cur_text) }}</td>
+                                        <td>{{ $p->prize }} {{
+                                            is_numeric($p->prize)?
+                                            __($general->cur_text):"" }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -136,9 +138,16 @@
                         html += `
                     <div class="input-group mb-3">
                         <span class="input-group-text justify-content-center"> <span class="level-index">@lang('Winner Level') ${i}</span></span>
-                        <input name="amount[]" class="form-control col-5" type="number" step="any" required placeholder="@lang('Won Bonus Amount, By') {{ $general->cur_text }}" >
+                        <input name="prizes[]" class="form-control col-5" type="text" required placeholder="@lang('win Bonus Prize, By') {{ $general->cur_text }} if it is money" >
                         <button class="btn btn--danger input-group-text border-0 deleteBtn" type="button"><i class=\'la la-times\'></i></button>
-                    </div>`
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <textarea rows="3" class="form-control border-radius-5 nicEdit"
+                        name="descriptions[]"
+                        placeholder="@lang('add description')"></textarea>
+                        </div>
+                    `
                     }
 
                     parent.find('.winBonusLevelAmount').html(html);
