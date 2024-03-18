@@ -5466,17 +5466,30 @@ body.modal-open {
 
 .machineInfo {
     background-color: #1d1b20;
-    height: 50px;
+    height: 10%;
     position: relative;
-    width: 50rem;
+    width: 80%;
     bottom: -30rem;
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: auto;
     margin-left: auto;
+    margin-right: auto;
+    padding: 1rem;
 }
+
+@media(min-width:1400px){
+.machineInfo {
+    width: 60%;
+}
+
+@media(min-width:2200px){
+    .machineInfo {
+        width: 40%;
+    }
+}
+
 
 .machineInfo span {
     color: #fbb125;
@@ -5821,30 +5834,5 @@ body.modal-open {
     .container-xl,
     .container-xxl {
         max-width: calc(100vw - 100px) !important;
-    }
-}
-.machineInfo {
-    background-color: #1d1b20;
-    height: 10%;
-    position: relative;
-    width: 80%;
-    bottom: -30rem;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 1rem;
-}
-
-@media(min-width:1400px){
-.machineInfo {
-    width: 60%;
-}
-
-@media(min-width:2200px){
-    .machineInfo {
-        width: 40%;
     }
 }
