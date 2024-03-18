@@ -5,7 +5,7 @@ $contact = getContent('contact_us.content', true);
 @section('content')
 <section class="contact__page">
     <div class="contact__title"
-        style="background-image:  url('{{ asset($activeTemplateTrue . 'images/contact.jpg')}}');background-size: cover; ">
+        style="background-image:  url('{{ asset($activeTemplateTrue . 'images/contact.jpg')}}') ">
 
         <h1>Contact Us</h1>
     </div>

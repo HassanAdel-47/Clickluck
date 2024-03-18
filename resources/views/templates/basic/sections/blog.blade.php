@@ -47,3 +47,4 @@ $elements = getContent('blog.element', false, null, true);
     </figure>
 
 </section>
+
