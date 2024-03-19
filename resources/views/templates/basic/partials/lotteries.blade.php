@@ -18,7 +18,9 @@
 
                         </div>
                         <h5 class="mt-2">
-                            ${{ $phase->lottery->bonuses->first()->amount }} Prize
+                            {{ (is_numeric($phase->lottery->bonuses->first()->prize))?
+                                "$".$phase->lottery->bonuses->first()->prize:
+                                $phase->lottery->bonuses->first()->prize }} Prize
                         </h5>
                         <div class=" mt-2 d-flex justify-content-around align-items-between w-100">
                             <p>

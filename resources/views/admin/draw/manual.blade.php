@@ -37,7 +37,7 @@
                             <li class="list-group-item">@lang('Total Sell Amount'): <strong>{{ getAmount($tickets->sum('total_price')) }} {{ $general->cur_text }}</strong></li>
 
                             <li class="list-group-item">@lang('Winner'): <strong> {{ $phase->lottery->bonuses->count() }} @lang('Persons')</strong></li>
-                            <li class="list-group-item">@lang('Win Bonus Amount'): <strong>{{ $phase->lottery->bonuses->sum('amount') }} {{ $general->cur_text }}</strong></li>
+                            {{-- <li class="list-group-item">@lang('Win Bonus Amount'): <strong>{{ $phase->lottery->bonuses->sum('amount') }} {{ $general->cur_text }}</strong></li> --}}
                         </ul>
                     @else
                         <h4 class="text-center">@lang('Please select a lottery')</h4>
@@ -152,7 +152,7 @@
                     totalSoldTicket.push($(this).find('.selectedLevel').text());
                     $(this).find('.selectedLevel').text('');
                     $(this).find('.winAmount').text('');
-                    totalBonus -= parseFloat(bonuses[totalSoldTicket[totalSoldTicket.length - 1] - 1].amount);
+                    totalBonus -= parseFloat(bonuses[totalSoldTicket[totalSoldTicket.length - 1] - 1].prize);
                     $(this).find('.input-fields').html('');
                 } else {
                     if (level < TotalBonusLavel) {
@@ -164,14 +164,14 @@
                         }
                         if (totalSoldTicket.length > 0) {
                             var mnsVal = totalSoldTicket[0];
-                            userWinAmount = bonuses[mnsVal - 1].amount;
+                            userWinAmount = bonuses[mnsVal - 1].prize;
                             $(this).find('.selectedLevel').text(mnsVal);
                             $(this).find('.selectedLevel').attr('data-level', mnsVal);
                             $(this).find('.winAmount').text(userWinAmount + ' {{ $general->cur_text }}');
                             totalSoldTicket.shift();
                             var html = `<input type="hidden" name="number[${mnsVal}]"  value="${$(this).find('.ticket-number').text()}">`
                         } else {
-                            userWinAmount = bonuses[level - 1].amount;
+                            userWinAmount = bonuses[level - 1].prize;
                             $(this).find('.selectedLevel').text(level);
                             $(this).find('.selectedLevel').attr('data-level', level);
                             $(this).find('.winAmount').text(userWinAmount + ' {{ $general->cur_text }}');

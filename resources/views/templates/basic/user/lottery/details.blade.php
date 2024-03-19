@@ -218,7 +218,7 @@
                                         @foreach ($phase->lottery->bonuses as $bonus)
                                         <tr>
                                             <td class="text-white">@lang('Winner')- {{ $bonus->level }}</td>
-                                            <td class="text-white">{{ $bonus->amount }}
+                                            <td class="text-white">{{ $bonus->prize }}
                                                 {{ __($general->cur_text) }}
                                             </td>
                                         </tr>
