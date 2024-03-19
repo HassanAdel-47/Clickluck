@@ -119,6 +119,13 @@
     font-family: "Helvetica Neue", sans-serif;
     line-height: 2em;
 }
+@media (max-width:720px) {
+    .odometer.odometer-auto-theme,
+    .odometer.odometer-theme-default {
+    line-height: 2.3em !important;
+}
+
+}
 .odometer.odometer-auto-theme .odometer-value,
 .odometer.odometer-theme-default .odometer-value {
     text-align: center;
