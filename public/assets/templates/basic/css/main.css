@@ -2916,6 +2916,13 @@ header.header {
   background-size: cover;
   z-index: 1;
 }
+@media (min-width: 1440px) {
+  .hero {
+    background-size: contain;
+    background-position: top;
+  }
+}
+
 @media (min-width: 2000px) {
   .hero {
     padding-top: 17rem;
