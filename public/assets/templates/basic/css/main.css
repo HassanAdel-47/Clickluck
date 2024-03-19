@@ -3868,19 +3868,19 @@ header.header {
 
 .lottery-details-header {
     padding: 2.5rem;
-    background-color: #1d1b20;
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
+    background-color: #20204e;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
     text-align: center;
     position: relative;
-    border: 1px solid #fbb125;
-    border-top-width: 1px;
-    border-top-style: solid;
-    border-top-color: rgb(251, 177, 37);
-    border-top: navajowhite;
+    animation: shadowGlow 2s infinite ease;
+    --shadow-1: rgba(55, 245, 249, 0.25);
+    --shadow-2: rgba(55, 245, 249, 0.35);
+    --shadow-3: rgba(55, 245, 249, 0.45);
+    box-shadow: 0 0 15px;
 }
 
 .lottery-details-header .thumb {
@@ -3911,9 +3911,8 @@ header.header {
 .lottery-details-header .content .clock > div {
     width: calc(25% - 20px);
     padding: 1.875rem 1.25rem;
-    background-color: #1d1b20;
-    box-shadow: inset 0 0 10px #fbb125;
-    box-shadow: 0 0 10px #fbb125;
+    background-color: #19193c;
+    box-shadow: inset 0 0 10px rgba(55, 245, 249, 0.85);
 }
 
 @media (max-width: 767px) {
@@ -3934,12 +3933,7 @@ header.header {
     font-family: "Exo 2", sans-serif;
     font-weight: 700;
     font-size: 36px;
-    color: #fbb125;
-}
-
-.lottaries__details {
-    position: relative;
-    top: 7rem;
+    color: #37f5f9;
 }
 
 @media (max-width: 767px) {
@@ -3976,7 +3970,7 @@ header.header {
 }
 
 .lottery-details-body {
-    background-color: #1d1b20;
+    background-color: #20204e;
     border-radius: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -4017,10 +4011,10 @@ header.header {
     }
 }
 
-.lottery-details-body .top-part .balance {
+.lottery-details-body .top-part .middle .balance {
     font-family: "Exo 2", sans-serif;
     font-size: 32px;
-    color: #fbb125;
+    color: #37f5f9;
 }
 
 @media (max-width: 991px) {
@@ -4055,19 +4049,17 @@ header.header {
     flex-wrap: wrap;
     justify-content: space-between;
 }
-.lottery-details-body .footer-part .yellowText {
-    color: #fbb125;
-}
+
 .ticket-card {
     text-align: center;
-    background-color: transparent;
+    background-color: #19193c;
     border-radius: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
     position: relative;
-    border: 1px dashed #fbb125;
+    border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .ticket-card .ticket-card-del {
@@ -4076,7 +4068,7 @@ header.header {
     right: -10px;
     width: 35px;
     height: 35px;
-    background-color: #fbb125;
+    background-color: #37f5f9;
     color: #131340;
     border-radius: 50%;
     -webkit-border-radius: 50%;
@@ -4117,8 +4109,8 @@ header.header {
 }
 
 .ticket-card__body .numbers.active span {
-    color: #fbb125;
-    text-shadow: 0 2px 5px #fbb125;
+    color: #37f5f9;
+    text-shadow: 0 2px 5px #37f5f9;
 }
 
 @media (max-width: 575px) {
@@ -5321,7 +5313,7 @@ label.required:after {
 
 /* Modal body redesign */
 .modal-content {
-    background-color: #1d1b20 !important;
+    background-color: #1c1c43 !important;
 }
 
 @media screen and (min-width: 767px) {
@@ -5491,12 +5483,12 @@ body.modal-open {
 .machineInfo {
     width: 60%;
 }
+}
 
 @media(min-width:2200px){
     .machineInfo {
         width: 40%;
     }
-
 }
 
 .machineInfo span {
@@ -5629,23 +5621,15 @@ body.modal-open {
     background-color: white;
     position: relative;
 }
-.lottaries__details__title,
 .contact__page .contact__title {
     height: 25rem;
     display: flex;
     align-items: center;
 }
-
 .contact__page .contact__title h1 {
     margin-left: 3rem;
     font-size: 4rem;
     color: #ffb125;
-}
-
-.lottaries__details__title {
-    position: absolute;
-    width: 100%;
-    top: 0;
 }
 
 .contact_page_container {
