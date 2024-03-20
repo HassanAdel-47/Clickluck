@@ -43,6 +43,19 @@ class Phase extends Model
                 $lottery->active()->whereHas('bonuses');
             });
     }
+
+    public function scopeRunningAndComming($query)
+    {
+        $query->active()
+            ->where('draw_status', Status::RUNNING)
+            ->where('start_date', '<=', now())
+            ->where('draw_date', '>=', now())
+            ->orWhere('start_date', '>', now())
+            ->whereHas('lottery', function ($lottery) {
+                $lottery->active()->whereHas('bonuses');
+            });
+    }
+
     public function scopeWaitingForManualDraw($query)
     {
         $query->where('draw_type', Status::MANUAL)
