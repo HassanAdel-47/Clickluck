@@ -1,6 +1,6 @@
 @php
     $banner = getContent('banner.content', true);
-    $banner_phase= getBannerPhase($banner->data_values->related_lottery_phase_id);
+    $banner_phase = getBannerPhase($banner->data_values->related_lottery_phase_id);
 @endphp
 <section class="hero bg_img" style="background-image: url('{{ asset($activeTemplateTrue . 'images/banner-bg.png') }}'); ">
     <div class="blackLayout"></div>
@@ -41,13 +41,20 @@
                             <p class="mt-2 hero__square__text">Seconds</p>
                         </div>
                     </div>
+
+                    <div class="d-flex w-100 justify-content-evenly justify-content-lg-between mt-4 mt-lg-0">
+                        <a class="btn btn--base wow fadeInUp mt-4" data-wow-duration="0.5s" data-wow-delay="0.7s"
+                            href="{{ route('lottery.machine', @$banner_phase->id) }}">{{ __(@$banner->data_values->button_name) }}</a>
+
+                    </div>
+                @else
+                    <div class="d-flex w-100 justify-content-evenly justify-content-lg-between mt-4 mt-lg-0">
+                        <a class="btn btn--base wow fadeInUp mt-4" data-wow-duration="0.5s" data-wow-delay="0.7s"
+                            href="{{ route('lottery') }}">{{ __(@$banner->data_values->button_name) }}</a>
+
+                    </div>
                 @endif
 
-                <div class="d-flex w-100 justify-content-evenly justify-content-lg-between mt-4 mt-lg-0">
-                    <a class="btn btn--base wow fadeInUp mt-4" data-wow-duration="0.5s" data-wow-delay="0.7s"
-                        href="{{route("lottery.details",@$banner_phase->id)}}">{{ __(@$banner->data_values->button_name) }}</a>
-
-                </div>
             </div>
         </div>
     </div>

@@ -238,7 +238,15 @@ class SiteController extends Controller
         $pageTitle = " Details of" . ' ' . $phase->lottery->name;
         $tickets = Ticket::where('user_id', auth()->id())->where('lottery_id', $phase->lottery_id)->with('phase')->orderByDesc('id')->paginate(getPaginate());
         $layout = 'frontend';
-        // return view($this->activeTemplate . 'user.lottery.machine', compact('pageTitle', 'phase', 'tickets', 'layout'));
         return view($this->activeTemplate . 'user.lottery.details', compact('pageTitle', 'phase', 'tickets', 'layout'));
+    }
+
+    public function lotteryMachine($id)
+    {
+        $phase = Phase::available()->findOrFail($id);
+        $pageTitle = 'phase '. $phase->phase_number.' '. $phase->lottery->name;
+        $tickets = Ticket::where('user_id', auth()->id())->where('lottery_id', $phase->lottery_id)->with('phase')->orderByDesc('id')->paginate(getPaginate());
+        $layout = 'frontend';
+        return view($this->activeTemplate . 'user.lottery.machine', compact('pageTitle', 'phase', 'tickets', 'layout'));
     }
 }

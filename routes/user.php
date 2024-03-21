@@ -49,6 +49,7 @@ Route::middleware('auth')->name('user.')->group(function () {
                 //lotteries
                 Route::get('lottery', 'lottery')->name('lottery');
                 Route::get('lottery/details/{id}', 'lotteryDetails')->name('lottery.details');
+                Route::get('lottery/machine/{id}', 'lotteryMachine')->name('lottery.machine');
                 Route::post('buy-ticket', 'buyTicket')->name('buy.ticket');
                 Route::get('tickets', 'tickets')->name('tickets');
                 Route::get('wins', 'wins')->name('wins');
