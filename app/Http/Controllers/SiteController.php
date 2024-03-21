@@ -249,4 +249,13 @@ class SiteController extends Controller
         $layout = 'frontend';
         return view($this->activeTemplate . 'user.lottery.machine', compact('pageTitle', 'phase', 'tickets', 'layout'));
     }
+
+
+    public function toggleStatus($id)
+    {
+        $phase = Phase::available()->findOrFail($id);
+        $phase->update(['draw_status'=>Status::COMPLETE]);
+        $notify[] = ['info', 'this phase closed!'];
+        return redirect()->back()->withNotify($notify);
+    }
 }

@@ -524,7 +524,7 @@ function levelCommission($id, $amount, $commissionType = '')
 }
 function getBannerPhase($banner_phase_id)
 {
-    $content = Phase::where('id', $banner_phase_id)->first();
+    $content = Phase::available()->where('id', $banner_phase_id)->first();
     if (!$content)
         return null;
     return $content;
