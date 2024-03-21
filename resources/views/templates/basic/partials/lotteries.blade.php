@@ -18,7 +18,9 @@
 
                         </div>
                         <h5 class="mt-2">
-                            ${{ $phase->lottery->bonuses->first()->amount }} Prize
+                            {{ (is_numeric($phase->lottery->bonuses->first()->prize))?
+                                "$".$phase->lottery->bonuses->first()->prize:
+                                $phase->lottery->bonuses->first()->prize }} Prize
                         </h5>
                         <div class=" mt-2 d-flex justify-content-around align-items-between w-100">
                             <p>
@@ -47,16 +49,25 @@
                             </p>
                         </div>
                         <a class="btn p-2 btn--base--message wow fadeInUp mt-2" data-wow-duration="0.5s"
-                            data-wow-delay="0.7s"
-                            @auth
-                                href="{{ route('user.lottery.details', $phase->id) }}"
-                            @else
-                                href="{{ route('lottery.details', $phase->id) }}"
-                            @endauth>
-                            Buy Ticket ${{ number_format($phase->lottery->price, 2) }}</a>
-                        <div class="label__running d-flex justify-content-around align-items-between">
-                            <p>Running</p>
-                        </div>
+                        data-wow-delay="0.7s"
+                        @auth
+                        href="{{ route('user.lottery.details', $phase->id) }}"
+                    @else
+                        href="{{ route('lottery.details', $phase->id) }}" @endauth>
+                        Buy Ticket ${{ number_format($phase->lottery->price, 2) }}</a>
+                        @if ($phase->start_date > Carbon\Carbon::now())
+                            <div class="label__coming d-flex justify-content-around align-items-between">
+                                <p>
+                                    @lang('Coming')
+                                </p>
+                            </div>
+                        @else
+                            <div class="label__running d-flex justify-content-around align-items-between">
+                                <p>
+                                    @lang('Running')
+                                </p>
+                            </div>
+                        @endif
                     </div>
                 </div>
             @empty

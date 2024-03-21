@@ -30,7 +30,7 @@ class SiteController extends Controller
         $phases = Phase::available()->latest('draw_date')->with([
             'lottery',
             'lottery.bonuses' => function ($query) {
-                $query->select('lottery_id', 'amount')
+                $query->select('lottery_id', 'prize')
                     ->where('level', '1');
             }
         ])->paginate(getPaginate());
@@ -114,33 +114,6 @@ class SiteController extends Controller
         return back();
     }
 
-    public function blogs()
-    {
-        $pageTitle = 'Blogs';
-        $blogs = Frontend::where('data_keys', 'blog.element')->orderBy('id')->paginate(getPaginate());
-        $sections = Page::where('tempname', $this->activeTemplate)->where('slug', 'blog')->first();
-        return view($this->activeTemplate . 'blog', compact('pageTitle', 'blogs', 'sections'));
-    }
-
-
-    public function blogDetails($slug, $id)
-    {
-        $blog = Frontend::where('id', $id)->where('data_keys', 'blog.element')->firstOrFail();
-        $recentBlogs = Frontend::where('id', '!=', $id)->where('data_keys', 'blog.element')->orderBy('id')->take(5)->get();
-        $pageTitle = "Blog Details";
-
-        $customTitle = $blog->data_values->title;
-        $seoContents['keywords'] = $blog->meta_keywords ?? [];
-        $seoContents['social_title'] = $blog->data_values->title;
-        $seoContents['description'] = strLimit(strip_tags(@$blog->data_values->seo_description), 150);
-        $seoContents['social_description'] = strLimit(strip_tags(@$blog->data_values->seo_description), 150);
-        $seoContents['image'] = getImage('assets/images/frontend/blog/' . @$blog->data_values->image, '728x465');
-        $seoContents['image_size'] = '728x465';
-        return view($this->activeTemplate . 'blog_details', compact('blog', 'pageTitle', 'recentBlogs', 'seoContents', 'customTitle'));
-    }
-
-
-
     public function cookieAccept()
     {
         $general = gs();
@@ -219,11 +192,11 @@ class SiteController extends Controller
     public function lottery()
     {
         $pageTitle = "All Lotteries";
-        $phases = Phase::available()->latest('draw_date')->with(
+        $phases = Phase::runningAndComming()->latest('draw_date')->with(
             [
                 'lottery',
                 'lottery.bonuses' => function ($query) {
-                    $query->select('lottery_id', 'amount')
+                    $query->select('lottery_id', 'prize')
                         ->where('level', '1');
                 }
             ]

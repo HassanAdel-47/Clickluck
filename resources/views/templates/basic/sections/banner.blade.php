@@ -14,7 +14,7 @@
                     data-wow-delay="0.5s">
                     {{ __(@$banner->data_values->subheading) }}</p>
 
-                @if (@$banner_phase != null)
+                @if (@$banner_phase != null )
                     <div class="d-flex gap-4 my-5 my-lg-4 justify-content-center justify-content-lg-start">
                         <div class="hero__square ">
                             <div class="hero__square__inner d-flex justify-content-center align-items-center">
@@ -54,7 +54,6 @@
 
                     </div>
                 @endif
-
             </div>
         </div>
     </div>

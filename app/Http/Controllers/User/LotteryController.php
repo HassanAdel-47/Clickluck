@@ -16,10 +16,10 @@ class LotteryController extends Controller
     public function lottery()
     {
         $pageTitle = "All Lotteries";
-        $phases = Phase::available()->latest('draw_date')->with([
+        $phases = Phase::runningAndComming()->latest('draw_date')->with([
             'lottery',
             'lottery.bonuses' => function ($query) {
-                $query->select('lottery_id', 'amount')
+                $query->select('lottery_id', 'prize')
                     ->where('level', '1');
             }
         ])->paginate(getPaginate());
