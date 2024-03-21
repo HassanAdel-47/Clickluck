@@ -524,9 +524,12 @@ function levelCommission($id, $amount, $commissionType = '')
 }
 function getBannerPhase($banner_phase_id)
 {
-    $content = Phase::where('id', $banner_phase_id)->first();
-    if (!$content)
+    if ($banner_phase_id == null || $banner_phase_id == 0) {
         return null;
+    }
+
+    $content = Phase::findOrFail($banner_phase_id);
+
     return $content;
 }
 function formateNumber($number){
