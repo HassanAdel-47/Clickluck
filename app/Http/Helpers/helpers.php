@@ -527,8 +527,6 @@ function getBannerPhase($banner_phase_id)
     $content = Phase::available()->where('id', $banner_phase_id)->first();
     if (!$content)
         return null;
-    }
-
     $content = Phase::findOrFail($banner_phase_id);
 
     return $content;
