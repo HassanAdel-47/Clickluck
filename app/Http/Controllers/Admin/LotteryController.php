@@ -106,19 +106,25 @@ class LotteryController extends Controller
 
     public function bonus(Request $request)
     {
+
+        $purifier = new HTMLPurifier();
         $this->validate($request, [
-            'level.*' => 'required|integer|min:1',
-            'amount' => 'array',
-            'amount.*' => 'required|numeric',
+            'level.*'    => 'required|integer|min:1',
+            'prizes'     => 'array',
+            'prizes.*'   => 'required',
+            'descriptions'     => 'array',
+            'descriptions.*' =>'nullable',
             'lottery_id' => 'required|exists:lotteries,id',
         ]);
         WinBonus::where('lottery_id', $request->lottery_id)->delete();
 
         $winBonuses = [];
-        foreach ($request->amount as $key => $amount) {
-            $winBonus = [];
-            $winBonus['level'] = $key + 1;
-            $winBonus['amount'] = $amount;
+        foreach ($request->prizes as $key => $prize) {
+            $winBonus     = [];
+            $winBonus['level']      = $key + 1;
+            $winBonus['prize']     = $prize;
+            $description = $purifier->purify($request->descriptions[$key] ?? '');
+            $winBonus['description'] = $description;
             $winBonus['lottery_id'] = $request->lottery_id;
             $winBonus['status'] = Status::ENABLE;
             $winBonus['created_at'] = now();

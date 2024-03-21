@@ -30,7 +30,7 @@ class SiteController extends Controller
         $phases = Phase::available()->latest('draw_date')->with([
             'lottery',
             'lottery.bonuses' => function ($query) {
-                $query->select('lottery_id', 'amount')
+                $query->select('lottery_id', 'prize')
                     ->where('level', '1');
             }
         ])->paginate(getPaginate());
@@ -196,7 +196,7 @@ class SiteController extends Controller
             [
                 'lottery',
                 'lottery.bonuses' => function ($query) {
-                    $query->select('lottery_id', 'amount')
+                    $query->select('lottery_id', 'prize')
                         ->where('level', '1');
                 }
             ]
