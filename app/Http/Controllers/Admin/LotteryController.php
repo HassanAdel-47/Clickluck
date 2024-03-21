@@ -6,8 +6,11 @@ use App\Constants\Status;
 use App\Models\Lottery;
 use App\Http\Controllers\Controller;
 use App\Models\Phase;
+use App\Models\Ticket;
 use App\Models\WinBonus;
+use App\Models\Winner;
 use App\Rules\FileTypeValidate;
+use App\Rules\TicketBelongToPhase;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use HTMLPurifier;
@@ -48,12 +51,13 @@ class LotteryController extends Controller
     protected function validation($request, $id = 0)
     {
         $imgValidation = 'required';
-        if ($id) $imgValidation = 'nullable';
+        if ($id)
+            $imgValidation = 'nullable';
         $request->validate([
-            'name'        => 'required',
-            'price'       => 'required|numeric|gt:0',
+            'name' => 'required',
+            'price' => 'required|numeric|gt:0',
             'instruction' => 'required',
-            'image'       => [$imgValidation, new FileTypeValidate(['jpg', 'jpeg', 'png'])],
+            'image' => [$imgValidation, new FileTypeValidate(['jpg', 'jpeg', 'png'])],
         ]);
     }
 
@@ -73,10 +77,10 @@ class LotteryController extends Controller
         } else {
             $filename = $lottery->image;
         }
-        $lottery->image  = $filename;
+        $lottery->image = $filename;
 
-        $lottery->name       = $request->name;
-        $lottery->price       = $request->price;
+        $lottery->name = $request->name;
+        $lottery->price = $request->price;
         $lottery->instruction = $instruction;
         $lottery->save();
     }
@@ -103,23 +107,23 @@ class LotteryController extends Controller
     public function bonus(Request $request)
     {
         $this->validate($request, [
-            'level.*'    => 'required|integer|min:1',
-            'amount'     => 'array',
-            'amount.*'   => 'required|numeric',
+            'level.*' => 'required|integer|min:1',
+            'amount' => 'array',
+            'amount.*' => 'required|numeric',
             'lottery_id' => 'required|exists:lotteries,id',
         ]);
         WinBonus::where('lottery_id', $request->lottery_id)->delete();
 
         $winBonuses = [];
         foreach ($request->amount as $key => $amount) {
-            $winBonus     = [];
-            $winBonus['level']      = $key + 1;
-            $winBonus['amount']     = $amount;
+            $winBonus = [];
+            $winBonus['level'] = $key + 1;
+            $winBonus['amount'] = $amount;
             $winBonus['lottery_id'] = $request->lottery_id;
-            $winBonus['status']     = Status::ENABLE;
+            $winBonus['status'] = Status::ENABLE;
             $winBonus['created_at'] = now();
             $winBonus['updated_at'] = now();
-            $winBonuses[]             = $winBonus;
+            $winBonuses[] = $winBonus;
         }
         WinBonus::insert($winBonuses);
         $notify[] = ['success', 'Win bonus set Successfully'];
@@ -129,10 +133,12 @@ class LotteryController extends Controller
     public function phases()
     {
         $pageTitle = "Lottery Phases";
-        $lotteries = Lottery::withCount(['phase as isRunning' => function ($q) {
-            return $q->where('draw_status', Status::RUNNING);
-        }])->get();
-        $phases = Phase::with('lottery')->searchable(['lottery:name'])->dateFilter('start_date')->orderBy('id', 'desc')->paginate(getPaginate());
+        $lotteries = Lottery::withCount([
+            'phase as isRunning' => function ($q) {
+                return $q->where('draw_status', Status::RUNNING);
+            }
+        ])->get();
+        $phases = Phase::with(['lottery', 'lottery.bonuses', 'winners'])->searchable(['lottery:name'])->dateFilter('start_date')->orderBy('id', 'desc')->paginate(getPaginate());
         return view('admin.lottery.phases', compact('pageTitle', 'lotteries', 'phases'));
     }
 
@@ -141,12 +147,12 @@ class LotteryController extends Controller
         $request->validate([
             'lottery_id' => 'required',
             'start_date' => 'required',
-            'draw_date'  => 'required|after:today|after:start_date',
-            'quantity'   => 'required|integer|min:1',
-            'draw_type'  => 'required',
+            'draw_date' => 'required|after:today|after:start_date',
+            'quantity' => 'required|integer|min:1',
+            'draw_type' => 'required',
         ]);
         if ($id) {
-            $phase      = Phase::findOrFail($id);
+            $phase = Phase::findOrFail($id);
             $notification = 'Lottery phase updated successfully';
             if ($request->quantity < $phase->sold) {
                 $notify[] = ['error', 'Quantity must be greater than sold ticket'];
@@ -166,17 +172,17 @@ class LotteryController extends Controller
             $notify[] = ['error', 'Create lottery bonus first'];
             return back()->withNotify($notify);
         }
-        $startDate           = Carbon::parse($request->start_date)->toDateTimeString();
-        $drawDate            = Carbon::parse($request->draw_date)->toDateTimeString();
-        $phase->lottery_id   = $request->lottery_id;
+        $startDate = Carbon::parse($request->start_date)->toDateTimeString();
+        $drawDate = Carbon::parse($request->draw_date)->toDateTimeString();
+        $phase->lottery_id = $request->lottery_id;
         $phase->phase_number = $lottery->phase_count + 1;
-        $phase->start_date   = $startDate;
-        $phase->draw_date    = $drawDate;
-        $phase->quantity     = $request->quantity;
-        $phase->available    = $request->quantity - $phase->sold;
-        $phase->draw_type    = $request->draw_type;
+        $phase->start_date = $startDate;
+        $phase->draw_date = $drawDate;
+        $phase->quantity = $request->quantity;
+        $phase->available = $request->quantity - $phase->sold;
+        $phase->draw_type = $request->draw_type;
         $phase->save();
-        $notify[]           = ['success', $notification];
+        $notify[] = ['success', $notification];
         return back()->withNotify($notify);
     }
 
@@ -187,13 +193,45 @@ class LotteryController extends Controller
 
     public function lotteryPhase($lottery_id)
     {
-        $lottery       = Lottery::withCount(['phase as isRunning' => function ($q) {
-            return $q->where('draw_status', Status::RUNNING);
-        }])->findOrFail($lottery_id);
-        $phases        = Phase::where('lottery_id', $lottery_id)->dateFilter('start_date')->with('lottery')->latest('id')->paginate(getPaginate());
-        $pageTitle     = "Lottery Phase: " . $lottery->name;
-        $lotteries     = Lottery::orderBy('name')->get();
-        $isRunning  = $lottery->isRunning;
+        $lottery = Lottery::withCount([
+            'phase as isRunning' => function ($q) {
+                return $q->where('draw_status', Status::RUNNING);
+            }
+        ])->findOrFail($lottery_id);
+        $phases = Phase::where('lottery_id', $lottery_id)->dateFilter('start_date')->with('lottery')->latest('id')->paginate(getPaginate());
+        $pageTitle = "Lottery Phase: " . $lottery->name;
+        $lotteries = Lottery::orderBy('name')->get();
+        $isRunning = $lottery->isRunning;
         return view('admin.lottery.phases', compact('pageTitle', 'lottery', 'phases', 'lotteries', 'isRunning'));
+    }
+
+    public function addWinner(Request $request, Phase $phase)
+    {
+        $validated = $request->validate(
+            [
+                'level' => 'min:1,max:' . $phase->lottery->bonuses->count(),
+                'ticket_number' => [
+                    'exists:tickets,ticket_number',
+                    new TicketBelongToPhase($phase->id)
+                ],
+            ]
+        );
+        $ticket = Ticket::where('ticket_number', $validated['ticket_number'])
+            ->where('phase_id', $phase->id)
+            ->first();
+        $validated['phase_id'] = $phase->id;
+        $validated['ticket_id'] = $ticket->id;
+        $validated['user_id'] = $ticket->user->id;
+        $validated['win_bonus'] = $phase->lottery->bonuses->where('level', $validated['level'])->value('amount');
+        $winner = Winner::where("level", $validated['level'])->where("phase_id", $validated['phase_id'])->first();
+        if (empty ($winner)) {
+            $notify[] = ['success', 'winner added successfully'];
+            Winner::create($validated);
+        } else {
+            $notify[] = ['success', 'winner updated successfully'];
+            $winner->update($validated);
+        }
+        return redirect()->back()->withNotify($notify);
+
     }
 }
