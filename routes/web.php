@@ -29,7 +29,8 @@ Route::controller('SiteController')->group(function () {
 
 
     Route::get('lottery', 'SiteController@lottery')->name('lottery');
-    Route::get('details/{id}', 'SiteController@lotteryDetails')->name('lottery.details');
+    Route::get('lottery/details/{id}', 'SiteController@lotteryDetails')->name('lottery.details');
+    Route::get('lottery/machine/{id}', 'lotteryMachine')->name('lottery.machine');
     Route::post('subscribe', 'SiteController@subscribe')->name('subscribe');
 
 
