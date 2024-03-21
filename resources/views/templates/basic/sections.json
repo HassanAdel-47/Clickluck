@@ -44,10 +44,6 @@
     "counter": {
         "builder": true,
         "name": "Counter Section",
-        "content": {
-            "heading": "text",
-            "sub_heading": "text"
-        },
         "element": {
             "icon": "icon",
             "title": "text",

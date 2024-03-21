@@ -15,10 +15,15 @@ class FrontendController extends Controller
     public function templates()
     {
         $pageTitle = 'Templates';
-            $template['name'] = 'basic';
-            $template['image'] = asset('assets/templates/basic/images/About.png');
+        $temPaths = array_filter(glob('core/resources/views/templates/*'), 'is_dir');
+        foreach ($temPaths as $key => $temp) {
+            $arr = explode('/', $temp);
+            $tempname = end($arr);
+            $templates[$key]['name'] = $tempname;
+            $templates[$key]['image'] = asset($temp) . '/preview.jpg';
+        }
         $extra_templates = json_decode(getTemplates(), true);
-        return view('admin.frontend.templates', compact('pageTitle', 'template', 'extra_templates'));
+        return view('admin.frontend.templates', compact('pageTitle', 'templates', 'extra_templates'));
 
     }
 
