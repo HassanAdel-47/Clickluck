@@ -127,6 +127,15 @@ Route::namespace('Api')->name('api.')->group(function(){
                     Route::post('deposit/manual', 'manualDepositUpdate')->name('deposit.manual.update');
                 });
 
+                //lotteries
+                Route::controller('LotteryController')->group(function () {
+                    Route::get('lottery', 'lottery')->name('lottery');
+                    Route::get('lottery/details/{id}', 'lotteryDetails')->name('lottery.details');
+                    Route::get('lottery/machine/{id}', 'lotteryMachine')->name('lottery.machine');
+                    Route::post('buy-ticket', 'buyTicket')->name('buy.ticket');
+                    Route::get('tickets', 'tickets')->name('tickets');
+                    Route::get('wins', 'wins')->name('wins');
+                });
             });
         });
 
