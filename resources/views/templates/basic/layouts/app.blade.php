@@ -31,8 +31,12 @@
 
     <!-- preloader -->
     <div class="preloader">
-        <div class="preloader-container">
-            <span class="animated-preloader"></span>
+        <div class="preloader-container ">
+            <img src="{{ asset($activeTemplateTrue . 'images/logo.png')}}" alt="Logo">
+            <p>loading...</p>
+            <div class="preloader__progress">
+                <div class="preloader__progress-value"></div>
+            </div>
         </div>
     </div>
     @yield('panel')
@@ -117,6 +121,8 @@
             });
 
         })(jQuery);
+
+
     </script>
 
 </body>

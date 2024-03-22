@@ -13,9 +13,9 @@
   text-align: center;
   font-size: 14px;
   cursor: pointer;
-  -webkit-transition: all .3s;
-  -o-transition: all .3s;
-  transition: all .3s;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 .copied::after {
@@ -66,8 +66,8 @@
   bottom: 15px;
   left: 15px;
   z-index: 999999;
-  transition: all .5s;
-  background: #131340;
+  transition: all 0.5s;
+  background: #1d1b20;
   border-radius: 5px;
 }
 
@@ -108,7 +108,6 @@
   color: #363636;
 }
 
-
 @media (max-width: 767px) {
   .cookies-card {
     width: 100%;
@@ -118,9 +117,6 @@
     padding: 15px;
   }
 }
-
-
-
 
 .hover-input-popup {
   position: relative;
@@ -154,7 +150,7 @@
 
 .input-popup::after {
   position: absolute;
-  content: '';
+  content: "";
   bottom: -19px;
   left: 50%;
   margin-left: -5px;
@@ -173,8 +169,8 @@
 
 .input-popup p::before {
   position: absolute;
-  content: '';
-  font-family: 'Line Awesome Free';
+  content: "";
+  font-family: "Line Awesome Free";
   font-weight: 900;
   left: 0;
   top: 4px;
@@ -196,13 +192,11 @@
   color: #28c76f;
 }
 
-
-
 .show-filter {
   display: none;
 }
 
-@media(max-width:767px) {
+@media (max-width: 767px) {
   .responsive-filter-card {
     display: none;
     transition: none;

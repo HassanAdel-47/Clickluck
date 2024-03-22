@@ -1459,7 +1459,7 @@ body,
   top: 0;
   left: 0;
   z-index: 999;
-  background: #131340;
+  background: #1d1b20;
   text-align: center;
 }
 
@@ -2915,12 +2915,6 @@ header.header {
   background-attachment: fixed;
   background-size: cover;
   z-index: 1;
-}
-@media (min-width: 1440px) {
-  .hero {
-    background-size: contain;
-    background-position: top;
-  }
 }
 
 @media (min-width: 2000px) {
@@ -5906,5 +5900,37 @@ body.modal-open {
   .container-xl,
   .container-xxl {
     max-width: calc(100vw - 100px) !important;
+  }
+}
+
+.preloader__progress {
+  background: rgba(255, 255, 255, 0.1);
+  justify-content: flex-start;
+  border-radius: 100px;
+  align-items: center;
+  position: relative;
+  display: flex;
+  height: 10px;
+  width: 250px;
+  text-align: center;
+  right: 60px;
+  margin-top: 1rem;
+}
+
+.preloader__progress-value {
+  animation: load 0.8s normal forwards;
+  box-shadow: 0 10px 40px -10px #fff;
+  border-radius: 100px;
+  background: #fbb125;
+  height: 10px;
+  width: 0;
+}
+
+@keyframes load {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 68%;
   }
 }
