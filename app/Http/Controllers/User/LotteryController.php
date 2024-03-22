@@ -16,26 +16,31 @@ class LotteryController extends Controller
     public function lottery()
     {
         $pageTitle = "All Lotteries";
-        $phases = Phase::available()->latest('draw_date')->with([
+        $phases = Phase::runningAndComming()->latest('draw_date')->with([
             'lottery',
             'lottery.bonuses' => function ($query) {
-                $query->select('lottery_id', 'amount')
+                $query->select('lottery_id', 'prize')
                     ->where('level', '1');
             }
         ])->paginate(getPaginate());
         return view($this->activeTemplate . 'user.lottery.index', compact('pageTitle', 'phases'));
     }
-
     public function lotteryDetails($id)
     {
         $phase = Phase::available()->findOrFail($id);
         $pageTitle = " Details of" . ' ' . $phase->lottery->name;
         $tickets = Ticket::where('user_id', auth()->user()->id)->where('lottery_id', $phase->lottery_id)->with('phase')->orderByDesc('id')->paginate(getPaginate());
         $layout = 'frontend';
-        //        if(count($tickets)>0)
-        return view($this->activeTemplate . 'user.lottery.machine', compact('pageTitle', 'phase', 'tickets', 'layout'));
-        //        return view($this->activeTemplate . 'user.lottery.details', compact('pageTitle', 'phase', 'tickets', 'layout'));
+        return view($this->activeTemplate . 'user.lottery.details', compact('pageTitle', 'phase', 'tickets', 'layout'));
 
+    }
+    public function lotteryMachine($id)
+    {
+        $phase = Phase::available()->findOrFail($id);
+        $pageTitle = 'phase '. $phase->phase_number.' '. $phase->lottery->name;
+        $tickets = Ticket::where('user_id', auth()->id())->where('lottery_id', $phase->lottery_id)->with('phase')->orderByDesc('id')->paginate(getPaginate());
+        $layout = 'frontend';
+        return view($this->activeTemplate . 'user.lottery.machine', compact('pageTitle', 'phase', 'tickets', 'layout'));
     }
     public function buyTicket(Request $request)
     {

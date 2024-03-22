@@ -1,6 +1,5 @@
 @extends($activeTemplate . 'layouts.frontend')
 @section('content')
-<!-- blog section start -->
 <section>
     <div class="machine" style="background-image:  url('{{ asset($activeTemplateTrue . 'images/Machine1.jpg')}}') ">
         <div class="red">
@@ -39,7 +38,6 @@
         </div>
     </div>
 </section>
-{{-- @include($activeTemplate . 'sections.blog') --}}
 @endsection
 @push('script')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

@@ -23,9 +23,6 @@
                                 href="{{ route('pages', [$data->slug]) }}">{{ __($data->name) }}</a></li>
                         @endforeach
                         @endif
-
-                        <li><a class="{{ menuActive('blog') }}" href="{{ route('pages', ['blog']) }}">@lang('Blog')</a>
-                        </li>
                         <li><a class="{{ menuActive('contact') }}" href="{{ route('contact') }}">@lang('Contact')</a>
                         </li>
                     </ul>

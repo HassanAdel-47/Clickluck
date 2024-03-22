@@ -29,7 +29,8 @@ Route::controller('SiteController')->group(function () {
 
 
     Route::get('lottery', 'SiteController@lottery')->name('lottery');
-    Route::get('details/{id}', 'SiteController@lotteryDetails')->name('lottery.details');
+    Route::get('lottery/details/{id}', 'SiteController@lotteryDetails')->name('lottery.details');
+    Route::get('lottery/machine/{id}', 'lotteryMachine')->name('lottery.machine');
     Route::post('subscribe', 'SiteController@subscribe')->name('subscribe');
 
 
@@ -37,9 +38,6 @@ Route::controller('SiteController')->group(function () {
     Route::get('cookie-policy', 'cookiePolicy')->name('cookie.policy');
 
     Route::get('/cookie/accept', 'cookieAccept')->name('cookie.accept');
-
-    Route::get('blog', 'SiteController@blogs')->name('blog');
-    Route::get('blog/{slug}/{id}', 'blogDetails')->name('blog.details');
 
     Route::get('policy/{slug}/{id}', 'policyPages')->name('policy.pages');
 

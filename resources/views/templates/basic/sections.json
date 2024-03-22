@@ -44,6 +44,10 @@
     "counter": {
         "builder": true,
         "name": "Counter Section",
+        "content": {
+            "heading": "text",
+            "sub_heading": "text"
+        },
         "element": {
             "icon": "icon",
             "title": "text",
@@ -182,26 +186,6 @@
         "element": {
             "title": "text",
             "details": "textarea-nic",
-            "modal": false
-        }
-    },
-    "blog": {
-        "builder": true,
-        "name": "Blog Section",
-        "content": {
-            "heading": "text",
-            "subheading": "text"
-        },
-        "element": {
-            "images": {
-                "image": {
-                    "size": "728x465",
-                    "thumb": "120x80"
-                }
-            },
-            "title": "text",
-            "seo_description": "textarea",
-            "description_nic": "textarea-nic",
             "modal": false
         }
     },

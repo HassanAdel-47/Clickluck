@@ -99,8 +99,11 @@
                     </ul>
                     <div class="nav-right me-4">
                         @auth
+                        <span class="me-sm-3 me-2 px-3 breadcrumb-title text-white">
+                            Balance: ${{ number_format(Auth::user()->balance, 2)}}</span>
                             <a class="btn btn-sm btn--danger me-sm-3 me-2 btn--capsule px-3 text-white"
                                 href="{{ route('user.logout') }}">@lang('Logout')</a>
+
                         {{-- @else
                             <a class="btn btn-sm btn--base me-sm-3 me-2 btn--capsule px-3"
                                 href="{{ route('user.login') }}">@lang('Login')</a>

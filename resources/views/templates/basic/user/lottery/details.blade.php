@@ -5,11 +5,20 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="lottery-details-header">
-                        <div class="thumb"><img
-                                src="{{ getImage(getFilePath('lottery') . '/' . @$phase->lottery->image, getFileSize('lottery')) }}" alt="image"></div>
+                        <div class="thumb">
+                            <img src="{{ getImage(getFilePath('lottery') . '/' . @$phase->lottery->image, getFileSize('lottery')) }}"
+                                alt="image">
+                        </div>
+                        <div class="right">
+                            <a class="btn btn-md btn-outline--base"
+                             href="{{ route('user.lottery.machine', $phase->id) }}"
+                              type="button">
+                                @lang('Go to Draw Page')</a>
+                        </div>
                         <div class="content text-center">
                             <h3 class="game-name mb-4">{{ __($phase->lottery->name) }}</h3>
-                            <div class="clock" data-clock="{{ showDateTime($phase->draw_date, 'Y/m/d H:i:s') }}" data-title="@lang('The lottery is expired')"></div>
+                            <div class="clock" data-clock="{{ showDateTime($phase->draw_date, 'Y/m/d H:i:s') }}"
+                                data-title="@lang('The lottery is expired')"></div>
                         </div>
                     </div>
                 </div>
@@ -62,7 +71,8 @@
                                                             <span>0</span>
                                                             <span>0</span>
                                                         </div>
-                                                        <button class="btn btn-md btn--base w-100 generate" type="button">@lang('Generate')</button>
+                                                        <button class="btn btn-md btn--base w-100 generate"
+                                                            type="button">@lang('Generate')</button>
                                                     </div>
                                                 </div><!-- ticket-card end -->
                                             </div>
@@ -101,7 +111,8 @@
                                         <h4>@lang('Please log in to purchase lottery tickets')</h4>
                                     </div>
                                     <div class="right">
-                                        <a href="{{ route('user.login') }}"><button class="btn btn-md btn-outline--base" type="button"><i class="la la-user"></i> @lang('Login')</button></a>
+                                        <a href="{{ route('user.login') }}"><button class="btn btn-md btn-outline--base"
+                                                type="button"><i class="la la-user"></i> @lang('Login')</button></a>
                                     </div>
                                 </div>
                             </div>
@@ -118,19 +129,26 @@
                     <div class="lottery-details-instruction mt-5">
                         <ul class="nav nav-tabs cumtom--nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link active px-4" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">@lang('Instruction')</button>
+                                <button class="nav-link active px-4" id="home-tab" data-bs-toggle="tab"
+                                    data-bs-target="#home" type="button" role="tab" aria-controls="home"
+                                    aria-selected="true">@lang('Instruction')</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link px-4" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">@lang('Win Bonuses')</button>
+                                <button class="nav-link px-4" id="profile-tab" data-bs-toggle="tab"
+                                    data-bs-target="#profile" type="button" role="tab" aria-controls="profile"
+                                    aria-selected="false">@lang('Win Bonuses')</button>
                             </li>
                             @auth
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link px-4" id="profile-tab" data-bs-toggle="tab" data-bs-target="#history" type="button" role="tab" aria-controls="history" aria-selected="false">@lang('Purchased Tickets')</button>
+                                    <button class="nav-link px-4" id="profile-tab" data-bs-toggle="tab"
+                                        data-bs-target="#history" type="button" role="tab" aria-controls="history"
+                                        aria-selected="false">@lang('Purchased Tickets')</button>
                                 </li>
                             @endauth
                         </ul>
                         <div class="tab-content mt-4" id="myTabContent">
-                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel"
+                                aria-labelledby="home-tab">
                                 <div class="d-block">
                                     <h3 class="mb-3">@lang('Introduction')</h3>
                                     @php echo $phase->lottery->instruction @endphp
@@ -147,14 +165,14 @@
                                         </thead>
                                         <tbody>
 
-                                            @foreach ($phase->lottery->bonuses as $bonus)
-                                                <tr>
-                                                    <td class="text-white">@lang('Winner')- {{ $bonus->level }}</td>
-                                                    <td class="text-white">{{ $bonus->amount }}
-                                                        {{ __($general->cur_text) }}
-                                                    </td>
-                                                </tr>
-                                            @endforeach
+                                        @foreach ($phase->lottery->bonuses as $bonus)
+                                        <tr>
+                                            <td class="text-white">@lang('Winner')- {{ $bonus->level }}</td>
+                                            <td class="text-white">{{ $bonus->prize }}
+                                                {{ __($general->cur_text) }}
+                                            </td>
+                                        </tr>
+                                        @endforeach
 
                                         </tbody>
                                     </table>
@@ -184,7 +202,8 @@
                                                             @endphp
                                                         </td>
                                                     @empty
-                                                        <td class="text-center rounded-bottom" colspan="100%">{{ __($emptyMessage) }}</td>
+                                                        <td class="text-center rounded-bottom" colspan="100%">
+                                                            {{ __($emptyMessage) }}</td>
                                                     </tr>
                                                 @endforelse
                                             </tbody>

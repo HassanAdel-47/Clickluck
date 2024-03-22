@@ -69,6 +69,10 @@ Route::middleware('admin')->group(function () {
         Route::post('phase/store/{id?}', 'phaseStore')->name('phase.store');
         Route::post('phase/status/{id}', 'phaseStatus')->name('phase.status');
         Route::get('phase/{lottery_id}', 'lotteryPhase')->name('phase.single.lottery');
+
+
+        // add winner
+        Route::post('phase/{phase}/winner','addWinner')->name('phase.winner');
     });
     //Draw
 
