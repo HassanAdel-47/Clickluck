@@ -141,4 +141,20 @@ Route::namespace('Api')->name('api.')->group(function(){
 
         Route::get('logout', 'Auth\LoginController@logout');
     });
+
+    Route::controller('SiteController')->group(function () {
+        Route::post('/contact', 'contactSubmit');
+        Route::get('/change/{lang?}', 'changeLanguage')->name('lang');
+
+
+        Route::get('lottery', 'lottery')->name('lottery');
+        Route::get('lottery/details/{id}', 'lotteryDetails')->name('lottery.details');
+        Route::get('lottery/machine/{id}', 'lotteryMachine')->name('lottery.machine');
+        Route::get('cookie-policy', 'cookiePolicy')->name('cookie.policy');
+
+        Route::get('/cookie/accept', 'cookieAccept')->name('cookie.accept');
+
+        Route::get('/', 'index')->name('home');
+    });
+
 });
