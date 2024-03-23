@@ -1,6 +1,6 @@
 @extends($activeTemplate . 'layouts.master')
 @section('content')
-<section class="pt-100 pb-100">
+<section class="pt-50 pb-100">
     <div class="change__password">
         <div class="row justify-content-center">
             <div class="d-flex align-items-center">

@@ -52,7 +52,7 @@
     <div class="main-wrapper">
         @include($activeTemplate . 'partials.breadcrumb')
         <div class="row">
-            <div class="dashboard__sidebar col-lg-2 text-center pt-100 pb-100">
+            <div class="dashboard__sidebar col-12 col-lg-2 text-center">
                 <div class="sidebar">
                     <ul>
                         <li class="active">

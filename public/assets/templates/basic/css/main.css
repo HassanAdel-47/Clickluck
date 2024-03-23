@@ -4532,12 +4532,6 @@ blockquote {
   font-size: 18px;
 }
 
-@media (max-width: 991px) {
-  .sidebar {
-    margin-top: 65px;
-  }
-}
-
 .sidebar .widget + .widget {
   margin-top: 50px;
 }
@@ -5229,12 +5223,14 @@ body.modal-open {
   display: flex;
   justify-content: end;
   margin-left: 4rem;
+  padding-bottom: 100px;
+  padding-top: 100px;
 }
 
 @media (max-width: 991px) {
-  .dashboard__sidebar {
+  /* .dashboard__sidebar {
     display: none;
-  }
+  } */
 }
 
 .dashboard__line {
@@ -5250,11 +5246,11 @@ body.modal-open {
 
 .sidebar ul {
   list-style: none;
-  padding: 0;
-}
-
-.sidebar ul {
   padding: 10px;
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  flex-direction: column;
 }
 
 .sidebar ul li {
@@ -5281,6 +5277,58 @@ body.modal-open {
   background-color: #fbb02533;
   border-radius: 7px;
 }
+
+@media (max-width: 992px) {
+  .sidebar {
+    height: 4rem;
+  }
+  .sidebar ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: 1rem;
+  }
+  .sidebar ul li {
+    padding-left: 0px !important;
+  }
+
+  .sidebar ul li img {
+    display: none !important;
+  }
+  .sidebar ul li a {
+    font-size: 14px;
+    padding: 7px;
+  }
+  .dashboard__line {
+    display: none !important;
+  }
+  .dashboard__sidebar {
+    margin: 0px !important;
+    padding: 0px !important;
+    justify-content: start;
+    padding-top: 50px !important;
+  }
+  .change__password {
+    margin-left: 1rem;
+  }
+  .change__password input {
+    width: 18rem;
+  }
+  .btn {
+    padding: 0.4rem;
+  }
+  .Purchase__history__title,
+  .change__password__history__title,
+  .Deposit__history__title,
+  .Win__history__title,
+  .Withdraw__history__title {
+    font-size: 1.5rem !important;
+    color: #fbb125;
+  }
+  .recentTable {
+    overflow: scroll;
+  }
+}
+
 .content {
   flex: 1;
   padding: 20px;
