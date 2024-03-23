@@ -17,6 +17,7 @@
     <link href="{{ asset($activeTemplateTrue . 'css/main.css') }}" rel="stylesheet">
     <link href="{{ asset($activeTemplateTrue . 'css/bootstrap-fileinput.css') }}" rel="stylesheet">
     <link href="{{ asset($activeTemplateTrue . 'css/custom.css') }}" rel="stylesheet">
+    <link href="{{ asset($activeTemplateTrue . 'css/animation.css') }}" rel="stylesheet">
     <link href="{{ asset($activeTemplateTrue . 'css/odometer.css') }}" rel="stylesheet">
 
     @stack('style-lib')
