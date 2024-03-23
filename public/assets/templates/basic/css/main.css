@@ -1735,11 +1735,6 @@ button:focus {
   color: #fff;
 }
 
-.form--control[readonly] {
-  background-color: #4e4e94 !important;
-  color: #bebebe;
-}
-
 .form--control[disabled] {
   background-color: #3c3c5a !important;
   color: #bebebe;
@@ -2397,7 +2392,7 @@ header.header {
   background-attachment: fixed;
   background-size: cover;
   z-index: 1;
-  height: 110vh !important;
+  height: 105vh !important;
 }
 
 @media (min-width: 2000px) {
@@ -5166,12 +5161,22 @@ body.modal-open {
   height: 25rem;
   display: flex;
   align-items: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .contact__page .contact__title h1 {
   margin-left: 3rem;
   font-size: 4rem;
   color: #ffb125;
+}
+
+@media (max-width: 720px) {
+  .contact__page .contact__title h1 {
+    margin-left: 1.5rem;
+    font-size: 2rem;
+  }
 }
 
 .lottaries__details__title {

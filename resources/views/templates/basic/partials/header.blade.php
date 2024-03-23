@@ -1,7 +1,8 @@
 <header class="header">
     <div class="header__bottom">
         <div>
-            <nav class="navbar navbar-expand-xl align-items-center p-0">
+            <nav class="navbar navbar-expand-xl align-items-center p-0 wow bounceInDown" data-wow-duration="1s"
+                data-wow-delay="0.1s">
                 <a class="site-logo site-title ms-4" href="{{ route('home') }}"><img
                         src="{{ asset($activeTemplateTrue . 'images/logo.png') }}" alt="logo"></a>
                 <button class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"

@@ -1,6 +1,6 @@
 @extends($activeTemplate . 'layouts.frontend')
 @section('content')
-<section class="pt-100 pb-50">
+<section class="pt-100 ">
     <div class="row">
         <div class="col-lg-12">
             @include($activeTemplate . 'partials.lotteries')
@@ -15,4 +15,3 @@
 </section>
 @include($activeTemplate . 'sections.cta')
 @endsection
-

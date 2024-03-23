@@ -21,7 +21,7 @@
                         <input type="password" id="newpassword" name="newpassword" placeholder="Your Password" required>
                     </div>
                 </div>
-                <a class="mt-4" href="/ticket">Change Password</a>
+                <a class="mt-4" href="{{route('user.change.password')}}">Change Password</a>
             </form>
         </div>
 </section>
