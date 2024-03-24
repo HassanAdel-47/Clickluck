@@ -48,17 +48,21 @@
 
                         </p>
                     </div>
-                    <a class="btn p-2 btn--base--message wow fadeInUp mt-2" data-wow-duration="0.5s"
-                        data-wow-delay="0.7s" @auth href="{{ route('user.lottery.details', $phase->id) }}" @else
-                        href="{{ route('lottery.details', $phase->id) }}" @endauth>
-                        Buy Ticket ${{ number_format($phase->lottery->price, 2) }}</a>
+
                     @if ($phase->start_date > Carbon\Carbon::now())
+                    <button class="btn p-2 btn--base--message wow fadeInUp mt-2" data-wow-duration="0.5s"
+                        data-wow-delay="0.7s" href="" disabled>
+                        Buy Ticket ${{ number_format($phase->lottery->price, 2) }}</button>
                     <div class="label__coming d-flex justify-content-around align-items-between">
                         <p>
                             @lang('Coming')
                         </p>
                     </div>
                     @else
+                    <a class="btn p-2 btn--base--message wow fadeInUp mt-2" data-wow-duration="0.5s"
+                        data-wow-delay="0.7s" @auth href="{{ route('user.lottery.details', $phase->id) }}" @else
+                        href="{{ route('lottery.details', $phase->id) }}" @endauth>
+                        Buy Ticket ${{ number_format($phase->lottery->price, 2) }}</a>
                     <div class="label__running d-flex justify-content-around align-items-between">
                         <p>
                             @lang('Running')
