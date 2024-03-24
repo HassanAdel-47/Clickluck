@@ -62,7 +62,7 @@ class ProfileController extends Controller
 
         $this->validate($request, [
             'current_password' => 'required',
-            'password' => ['required', 'confirmed', $passwordValidation]
+            'password' => ['required', $passwordValidation]
         ]);
 
         $user = auth()->user();
@@ -71,7 +71,7 @@ class ProfileController extends Controller
             $user->password = $password;
             $user->save();
             $notify[] = ['success', 'Password changes successfully'];
-            return back()->withNotify($notify);
+            return to_route('ticket.index')->withNotify($notify);
         } else {
             $notify[] = ['error', 'The password doesn\'t match!'];
             return back()->withNotify($notify);

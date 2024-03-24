@@ -10,11 +10,15 @@
                 <div class="d-flex flex-column justify-content-between w-75 mt-4">
                     <div class="d-flex flex-column w-50 me-4">
                         <label for="username">Username</label>
-                        <input type="text" id="username" name="username" placeholder="Username" required>
+                        <input type="text" id="username" name="username" placeholder="Username"
+                        value="{{Auth::user()->username}}"
+                        required>
                     </div>
                     <div class="d-flex flex-column w-50 mt-4">
                         <label for="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="Example@gmail.com" required>
+                        <input type="email" id="email" name="email"
+                        value="{{Auth::user()->email}}"
+                        placeholder="email" required>
                     </div>
                     <div class="d-flex flex-column w-50 mt-4">
                         <label for="newpassword">Password</label>

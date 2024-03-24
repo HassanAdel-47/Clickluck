@@ -8,20 +8,21 @@
                         src="{{ asset($activeTemplateTrue . 'images/Back_Arrow.svg') }}" alt="image"></a>
                 <p class="change__password__history__title ml-4">Change Password</p>
             </div>
-            <form id="change__passwordForm">
+            <form id="change__passwordForm" action="{{url('/user/change-password')}}" method="POST">
+                @csrf
                 <div class="d-flex flex-column justify-content-between w-75 mt-4">
                     <div class="d-flex flex-column w-50 me-4">
                         <label for="oldpassword">Old Password</label>
-                        <input type="password" id="oldpassword" name="oldpassword" placeholder="Enter Your Old Password"
+                        <input type="password" id="oldpassword" name="current_password" placeholder="Enter Your Old Password"
                             required>
                     </div>
                     <div class="d-flex flex-column w-50 mt-4">
                         <label for="newpassword">New Password</label>
-                        <input type="password" id="newpassword" name="newpassword" placeholder="Enter Your New Password"
+                        <input type="password" id="newpassword" name="password" placeholder="Enter Your New Password"
                             required>
                     </div>
                 </div>
-                <a class="mt-4" href="/ticket">Change Password</a>
+                <button type="submit" class="btn btn--primary mt-4">Change Password</button>
             </form>
         </div>
 </section>
