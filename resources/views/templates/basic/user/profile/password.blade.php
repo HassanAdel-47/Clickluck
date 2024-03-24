@@ -1,51 +1,62 @@
-@extends($activeTemplate.'layouts.master')
-
+@extends($activeTemplate . 'layouts.master')
 @section('content')
 <section class="pt-100 pb-100">
-    <div class="container">
-        <div class="row justify-content-center mt-4">
-            <div class="col-md-8">
-
-                <div class="card account-wrapper">
-                    
-                    <div class="card-body">
-
-                        <form action="" method="post">
-                            @csrf
-                            <div class="form-group">
-                                <label class="form-label">@lang('Current Password')</label>
-                                <input type="password" class="form--control" name="current_password" required autocomplete="current-password">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">@lang('Password')</label>
-                                <input type="password" class="form--control" name="password" required autocomplete="current-password">
-                                @if($general->secure_password)
-                                    <div class="input-popup">
-                                      <p class="error lower">@lang('1 small letter minimum')</p>
-                                      <p class="error capital">@lang('1 capital letter minimum')</p>
-                                      <p class="error number">@lang('1 number minimum')</p>
-                                      <p class="error special">@lang('1 special character minimum')</p>
-                                      <p class="error minimum">@lang('6 character password')</p>
-                                    </div>
-                                @endif
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">@lang('Confirm Password')</label>
-                                <input type="password" class="form--control" name="password_confirmation" required autocomplete="current-password">
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn--base w-100">@lang('Submit')</button>
-                            </div>
-                        </form>
+    <div class="change__password">
+        <div class="row justify-content-center">
+            <div class="d-flex align-items-center">
+                <a href="/user/profile-setting" class="me-2"><img
+                        src="{{ asset($activeTemplateTrue . 'images/Back_Arrow.svg') }}" alt="image"></a>
+                <p class="change__password__history__title ml-4">Change Password</p>
+            </div>
+            <form id="change__passwordForm">
+                <div class="d-flex flex-column justify-content-between w-75 mt-4">
+                    <div class="d-flex flex-column w-50 me-4">
+                        <label for="oldpassword">Old Password</label>
+                        <input type="password" id="oldpassword" name="oldpassword" placeholder="Enter Your Old Password"
+                            required>
+                    </div>
+                    <div class="d-flex flex-column w-50 mt-4">
+                        <label for="newpassword">New Password</label>
+                        <input type="password" id="newpassword" name="newpassword" placeholder="Enter Your New Password"
+                            required>
                     </div>
                 </div>
-            </div>
+                <a class="mt-4" href="/ticket">Change Password</a>
+            </form>
         </div>
-    </div>
 </section>
 @endsection
-@if($general->secure_password)
-    @push('script-lib')
-        <script src="{{ asset('assets/global/js/secure_password.js') }}"></script>
-    @endpush
-@endif
+
+@push('style')
+<style>
+    .input-group-text:focus {
+        box-shadow: none !important;
+    }
+</style>
+@endpush
+
+@push('script')
+<script>
+    (function ($) {
+        "use strict";
+        var fileAdded = 0;
+        $('.addFile').on('click', function () {
+            if (fileAdded >= 4) {
+                notify('error', 'You\'ve added maximum number of file');
+                return false;
+            }
+            fileAdded++;
+            $("#fileUploadsContainer").append(`
+                    <div class="input-group my-3">
+                        <input type="file" name="attachments[]" accept=".png,.jpg,.jpeg,.pdf,.doc,.docx" class="form--control" required />
+                        <button type="button" class="input-group-text btn--danger remove-btn"><i class="las la-times"></i></button>
+                    </div>
+                `)
+        });
+        $(document).on('click', '.remove-btn', function () {
+            fileAdded--;
+            $(this).closest('.input-group').remove();
+        });
+    })(jQuery);
+</script>
+@endpush

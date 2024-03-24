@@ -4,14 +4,14 @@ $contact = getContent('contact_us.content', true);
 @extends($activeTemplate . 'layouts.frontend')
 @section('content')
 <section class="contact__page">
-    <div class="contact__title"
+    <div class="contact__title "
         style="background-image:  url('{{ asset($activeTemplateTrue . 'images/contact.jpg')}}') ">
 
-        <h1>Contact Us</h1>
+        <h1 class="wow bounceIn" data-wow-duration="1s" data-wow-delay="0.1s">Contact Us</h1>
     </div>
     <div class="contact_page_container container ">
         <div class="row justify-content-between gy-5">
-            <div class="col-lg-4">
+            <div class="col-lg-4 wow bounceInLeft" data-wow-duration="1s" data-wow-delay="0.1s">
                 <h2 class="mb-3">{{ __(@$contact->data_values->title) }}</h2>
                 <div class="row gy-4 mt-3">
                     <div class="col-lg-12">
@@ -48,7 +48,7 @@ $contact = getContent('contact_us.content', true);
                 </div><!-- row end -->
 
             </div>
-            <div class="col-lg-6 ps-lg-5">
+            <div class="col-lg-6 ps-lg-5 wow bounceInRight" data-wow-duration="1s" data-wow-delay="0.1s">
                 <div class="contact-wrapper rounded-3">
                     <form class="contact-form verify-gcaptcha" method="POST" action="/contact">
                         @csrf

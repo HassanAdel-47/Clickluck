@@ -17,6 +17,7 @@
     <link href="{{ asset($activeTemplateTrue . 'css/main.css') }}" rel="stylesheet">
     <link href="{{ asset($activeTemplateTrue . 'css/bootstrap-fileinput.css') }}" rel="stylesheet">
     <link href="{{ asset($activeTemplateTrue . 'css/custom.css') }}" rel="stylesheet">
+    <link href="{{ asset($activeTemplateTrue . 'css/animation.css') }}" rel="stylesheet">
     <link href="{{ asset($activeTemplateTrue . 'css/odometer.css') }}" rel="stylesheet">
 
     @stack('style-lib')
@@ -31,8 +32,12 @@
 <body>
 
     <div class="preloader">
-        <div class="preloader-container">
-            <span class="animated-preloader"></span>
+        <div class="preloader-container ">
+            <img src="{{ asset($activeTemplateTrue . 'images/logo.png')}}" alt="Logo">
+            <p>loading...</p>
+            <div class="preloader__progress">
+                <div class="preloader__progress-value"></div>
+            </div>
         </div>
     </div>
 
@@ -47,7 +52,7 @@
     <div class="main-wrapper">
         @include($activeTemplate . 'partials.breadcrumb')
         <div class="row">
-            <div class="dashboard__sidebar col-lg-2 text-center pt-100 pb-100">
+            <div class="dashboard__sidebar col-12 col-lg-2 text-center">
                 <div class="sidebar">
                     <ul>
                         <li class="active">
@@ -64,7 +69,7 @@
                         </li>
                         <li>
                             <img src="{{ asset($activeTemplateTrue . 'images/ImportDollar.svg') }}" alt="image">
-                            <a href="{{route("user.deposit.history")}}">Deposit History</a>
+                            <a href="{{route('user.deposit.history')}}">Deposit History</a>
                         </li>
                         <li>
                             <img src="{{ asset($activeTemplateTrue . 'images/user.svg') }}" alt="image">
