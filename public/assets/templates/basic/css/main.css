@@ -2757,11 +2757,12 @@ header.header {
 @media (max-width: 991px) {
   .grey__title__bold,
   .black__title__bold {
-    font-size: 3rem !important;
+    font-size: 1.2rem !important;
   }
   .gold__title,
   .black__title {
     top: 2rem !important;
+    font-size: 1.2rem !important;
   }
 }
 
